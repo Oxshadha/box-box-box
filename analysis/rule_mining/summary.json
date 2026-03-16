@@ -1,0 +1,238 @@
+{
+  "sequence_rule_count": 35,
+  "one_stop_rule_count": 84,
+  "top_sequence_rules": [
+    {
+      "temp_band": "hot",
+      "lap_band": "long",
+      "winner_sequence": "HARD>MEDIUM",
+      "loser_sequence": "HARD>SOFT",
+      "pairings": 6332,
+      "winner_win_rate": 0.9968,
+      "mean_rank_gap_for_winner": 8.7781,
+      "winner_first_stop_frac": 0.5805,
+      "loser_first_stop_frac": 0.5837,
+      "edge": 0.4968
+    },
+    {
+      "temp_band": "warm",
+      "lap_band": "long",
+      "winner_sequence": "HARD>MEDIUM",
+      "loser_sequence": "HARD>SOFT",
+      "pairings": 4482,
+      "winner_win_rate": 0.9938,
+      "mean_rank_gap_for_winner": 8.7923,
+      "winner_first_stop_frac": 0.5889,
+      "loser_first_stop_frac": 0.5864,
+      "edge": 0.4938
+    },
+    {
+      "temp_band": "mild",
+      "lap_band": "long",
+      "winner_sequence": "MEDIUM>HARD",
+      "loser_sequence": "SOFT>HARD",
+      "pairings": 3967,
+      "winner_win_rate": 0.9937,
+      "mean_rank_gap_for_winner": 5.9415,
+      "winner_first_stop_frac": 0.3932,
+      "loser_first_stop_frac": 0.2082,
+      "edge": 0.4937
+    },
+    {
+      "temp_band": "mild",
+      "lap_band": "long",
+      "winner_sequence": "HARD>MEDIUM",
+      "loser_sequence": "HARD>SOFT",
+      "pairings": 4049,
+      "winner_win_rate": 0.9936,
+      "mean_rank_gap_for_winner": 8.7128,
+      "winner_first_stop_frac": 0.5869,
+      "loser_first_stop_frac": 0.5826,
+      "edge": 0.4936
+    },
+    {
+      "temp_band": "hot",
+      "lap_band": "long",
+      "winner_sequence": "MEDIUM>HARD",
+      "loser_sequence": "SOFT>HARD",
+      "pairings": 6068,
+      "winner_win_rate": 0.9923,
+      "mean_rank_gap_for_winner": 5.8354,
+      "winner_first_stop_frac": 0.3971,
+      "loser_first_stop_frac": 0.2062,
+      "edge": 0.4923
+    },
+    {
+      "temp_band": "cool",
+      "lap_band": "long",
+      "winner_sequence": "MEDIUM>HARD",
+      "loser_sequence": "SOFT>HARD",
+      "pairings": 7265,
+      "winner_win_rate": 0.9922,
+      "mean_rank_gap_for_winner": 6.0948,
+      "winner_first_stop_frac": 0.3969,
+      "loser_first_stop_frac": 0.2073,
+      "edge": 0.4922
+    },
+    {
+      "temp_band": "cool",
+      "lap_band": "long",
+      "winner_sequence": "HARD>MEDIUM",
+      "loser_sequence": "HARD>SOFT",
+      "pairings": 7741,
+      "winner_win_rate": 0.9916,
+      "mean_rank_gap_for_winner": 8.812,
+      "winner_first_stop_frac": 0.5865,
+      "loser_first_stop_frac": 0.5852,
+      "edge": 0.4916
+    },
+    {
+      "temp_band": "warm",
+      "lap_band": "short",
+      "winner_sequence": "HARD>SOFT",
+      "loser_sequence": "HARD>MEDIUM",
+      "pairings": 23353,
+      "winner_win_rate": 0.9906,
+      "mean_rank_gap_for_winner": 7.4046,
+      "winner_first_stop_frac": 0.7906,
+      "loser_first_stop_frac": 0.7699,
+      "edge": 0.4906
+    },
+    {
+      "temp_band": "mild",
+      "lap_band": "short",
+      "winner_sequence": "HARD>SOFT",
+      "loser_sequence": "HARD>MEDIUM",
+      "pairings": 24862,
+      "winner_win_rate": 0.9897,
+      "mean_rank_gap_for_winner": 7.564,
+      "winner_first_stop_frac": 0.7895,
+      "loser_first_stop_frac": 0.7667,
+      "edge": 0.4897
+    },
+    {
+      "temp_band": "warm",
+      "lap_band": "long",
+      "winner_sequence": "MEDIUM>HARD",
+      "loser_sequence": "SOFT>HARD",
+      "pairings": 4358,
+      "winner_win_rate": 0.9881,
+      "mean_rank_gap_for_winner": 5.8125,
+      "winner_first_stop_frac": 0.3975,
+      "loser_first_stop_frac": 0.2081,
+      "edge": 0.4881
+    }
+  ],
+  "top_stop_rules": [
+    {
+      "tire_sequence": "HARD>MEDIUM",
+      "temp_band": "warm",
+      "lap_band": "mid_short",
+      "first_stop_frac_bin": "0.4-0.5",
+      "rows": 194,
+      "mean_finish_rank": 1.5052,
+      "podium_rate": 0.9742,
+      "top5_rate": 1.0,
+      "quality_score": 0.9803
+    },
+    {
+      "tire_sequence": "HARD>MEDIUM",
+      "temp_band": "mild",
+      "lap_band": "mid_short",
+      "first_stop_frac_bin": "0.4-0.5",
+      "rows": 196,
+      "mean_finish_rank": 1.5255,
+      "podium_rate": 0.9694,
+      "top5_rate": 1.0,
+      "quality_score": 0.9785
+    },
+    {
+      "tire_sequence": "HARD>SOFT",
+      "temp_band": "mild",
+      "lap_band": "short",
+      "first_stop_frac_bin": "0.5-0.7",
+      "rows": 459,
+      "mean_finish_rank": 1.5229,
+      "podium_rate": 0.9499,
+      "top5_rate": 0.9956,
+      "quality_score": 0.9726
+    },
+    {
+      "tire_sequence": "HARD>SOFT",
+      "temp_band": "warm",
+      "lap_band": "short",
+      "first_stop_frac_bin": "0.5-0.7",
+      "rows": 389,
+      "mean_finish_rank": 1.5296,
+      "podium_rate": 0.946,
+      "top5_rate": 0.9923,
+      "quality_score": 0.9706
+    },
+    {
+      "tire_sequence": "MEDIUM>HARD",
+      "temp_band": "hot",
+      "lap_band": "mid_short",
+      "first_stop_frac_bin": "0.4-0.5",
+      "rows": 327,
+      "mean_finish_rank": 1.9755,
+      "podium_rate": 0.8991,
+      "top5_rate": 0.9908,
+      "quality_score": 0.9468
+    },
+    {
+      "tire_sequence": "MEDIUM>HARD",
+      "temp_band": "hot",
+      "lap_band": "mid",
+      "first_stop_frac_bin": "0.3-0.4",
+      "rows": 360,
+      "mean_finish_rank": 2.0417,
+      "podium_rate": 0.8833,
+      "top5_rate": 0.9806,
+      "quality_score": 0.9386
+    },
+    {
+      "tire_sequence": "SOFT>MEDIUM",
+      "temp_band": "warm",
+      "lap_band": "short",
+      "first_stop_frac_bin": "0.3-0.4",
+      "rows": 1551,
+      "mean_finish_rank": 2.2456,
+      "podium_rate": 0.8427,
+      "top5_rate": 0.9768,
+      "quality_score": 0.9221
+    },
+    {
+      "tire_sequence": "MEDIUM>HARD",
+      "temp_band": "cool",
+      "lap_band": "mid",
+      "first_stop_frac_bin": "0.3-0.4",
+      "rows": 400,
+      "mean_finish_rank": 2.2775,
+      "podium_rate": 0.8475,
+      "top5_rate": 0.9625,
+      "quality_score": 0.9189
+    },
+    {
+      "tire_sequence": "SOFT>MEDIUM",
+      "temp_band": "mild",
+      "lap_band": "short",
+      "first_stop_frac_bin": "0.3-0.4",
+      "rows": 1462,
+      "mean_finish_rank": 2.2893,
+      "podium_rate": 0.8304,
+      "top5_rate": 0.9754,
+      "quality_score": 0.9175
+    },
+    {
+      "tire_sequence": "HARD>MEDIUM",
+      "temp_band": "hot",
+      "lap_band": "mid",
+      "first_stop_frac_bin": "0.5-0.7",
+      "rows": 808,
+      "mean_finish_rank": 2.4146,
+      "podium_rate": 0.797,
+      "top5_rate": 0.9691,
+      "quality_score": 0.9043
+    }
+  ]
+}

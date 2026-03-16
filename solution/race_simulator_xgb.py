@@ -3,6 +3,7 @@ import json
 import sys
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from xgboost import XGBRanker
 
@@ -11,6 +12,9 @@ ROOT = Path(__file__).resolve().parent.parent
 MODEL_DIR = ROOT / "analysis" / "models" / "xgb_ranker"
 MODEL_PATH = MODEL_DIR / "model.json"
 METADATA_PATH = MODEL_DIR / "metadata.json"
+RULE_DIR = ROOT / "analysis" / "rule_mining"
+SEQUENCE_RULES_PATH = RULE_DIR / "sequence_dominance_rules.csv"
+STOP_RULES_PATH = RULE_DIR / "one_stop_timing_rules.csv"
 
 BLEND_ALPHA_V2 = 0.6
 
@@ -74,6 +78,24 @@ with METADATA_PATH.open() as fh:
 
 RANKER = XGBRanker()
 RANKER.load_model(str(MODEL_PATH))
+
+SEQUENCE_RULES = pd.read_csv(SEQUENCE_RULES_PATH)
+STOP_RULES = pd.read_csv(STOP_RULES_PATH)
+
+SEQUENCE_RULE_MAP = {
+    (row.temp_band, row.lap_band, row.winner_sequence, row.loser_sequence): {
+        "winner_win_rate": float(row.winner_win_rate),
+        "pairings": int(row.pairings),
+    }
+    for row in SEQUENCE_RULES.itertuples(index=False)
+}
+STOP_RULE_MAP = {
+    (row.tire_sequence, row.temp_band, row.lap_band, row.first_stop_frac_bin): {
+        "quality_score": float(row.quality_score),
+        "rows": int(row.rows),
+    }
+    for row in STOP_RULES.itertuples(index=False)
+}
 
 
 def build_stints(strategy, total_laps):
@@ -220,6 +242,76 @@ def encode(frame):
     return frame[METADATA["encoded_columns"]]
 
 
+def stop_frac_bin(value):
+    if pd.isna(value) or value <= 0:
+        return None
+    if value <= 0.2:
+        return "0.0-0.2"
+    if value <= 0.3:
+        return "0.2-0.3"
+    if value <= 0.4:
+        return "0.3-0.4"
+    if value <= 0.5:
+        return "0.4-0.5"
+    if value <= 0.7:
+        return "0.5-0.7"
+    return "0.7-1.0"
+
+
+def apply_rule_rerank(frame):
+    frame = frame.copy()
+    spread = float(frame["pred_score"].max() - frame["pred_score"].min())
+    local_scale = max(spread / 80.0, 0.02)
+    bonuses = np.zeros(len(frame), dtype=float)
+
+    # Reward strategies whose stop timing matches historically strong bins.
+    for idx, row in enumerate(frame.itertuples(index=False)):
+        frac_bin = stop_frac_bin(row.first_stop_frac)
+        if frac_bin is None:
+            continue
+        key = (row.tire_sequence, row.temp_band, row.lap_band, frac_bin)
+        rule = STOP_RULE_MAP.get(key)
+        if not rule:
+            continue
+        quality = max(0.0, min(1.0, rule["quality_score"]))
+        support = min(rule["rows"], 1500) / 1500.0
+        bonuses[idx] += 0.45 * local_scale * quality * support
+
+    # Apply pairwise regime rules, strongest when model scores are close.
+    rows = list(frame.itertuples(index=False))
+    for i in range(len(rows)):
+        for j in range(i + 1, len(rows)):
+            left = rows[i]
+            right = rows[j]
+            gap = abs(left.pred_score - right.pred_score)
+            closeness = max(0.0, 1.0 - gap / (4.0 * local_scale))
+            if closeness <= 0:
+                continue
+
+            forward = SEQUENCE_RULE_MAP.get(
+                (left.temp_band, left.lap_band, left.tire_sequence, right.tire_sequence)
+            )
+            backward = SEQUENCE_RULE_MAP.get(
+                (left.temp_band, left.lap_band, right.tire_sequence, left.tire_sequence)
+            )
+
+            if forward:
+                strength = max(0.0, min(0.49, forward["winner_win_rate"] - 0.5))
+                support = min(forward["pairings"], 8000) / 8000.0
+                delta = 0.90 * local_scale * closeness * strength * support
+                bonuses[i] += delta
+                bonuses[j] -= delta
+            elif backward:
+                strength = max(0.0, min(0.49, backward["winner_win_rate"] - 0.5))
+                support = min(backward["pairings"], 8000) / 8000.0
+                delta = 0.90 * local_scale * closeness * strength * support
+                bonuses[i] -= delta
+                bonuses[j] += delta
+
+    frame["adjusted_score"] = frame["pred_score"] - bonuses
+    return frame.sort_values(["adjusted_score", "pred_score", "driver_id"], ascending=[True, True, True])
+
+
 def predict_finishing_positions(test_case):
     rows = []
     for grid_slot in sorted(test_case["strategies"]):
@@ -230,7 +322,7 @@ def predict_finishing_positions(test_case):
     frame = pd.DataFrame(rows)
     encoded = encode(frame.copy())
     frame["pred_score"] = RANKER.predict(encoded)
-    frame = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True])
+    frame = apply_rule_rerank(frame)
     return frame["driver_id"].tolist()
 
 
