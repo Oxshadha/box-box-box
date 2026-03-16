@@ -1,0 +1,688 @@
+[
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "compound_totals",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.566187134502924,
+      "mean_spearman_rho": 0.6857771094402674
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5678058479532164,
+      "mean_spearman_rho": 0.6859983291562238
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "raw_stints",
+      "compound_totals",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "stint_3_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5661847953216375,
+      "mean_spearman_rho": 0.6857777777777778
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5677988304093569,
+      "mean_spearman_rho": 0.6859899749373433
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "stop_laps",
+      "compound_totals",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5657730994152047,
+      "mean_spearman_rho": 0.684798663324979
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5676350877192983,
+      "mean_spearman_rho": 0.685123141186299
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "raw_stints",
+      "max_stints",
+      "race_context"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "stint_3_frac",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint",
+      "total_laps",
+      "track_temp",
+      "pit_lane_time",
+      "pit_stop_count"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5611812865497076,
+      "mean_spearman_rho": 0.6811725981620718
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5629941520467837,
+      "mean_spearman_rho": 0.6817934837092732
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "max_stints",
+      "race_context"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint",
+      "total_laps",
+      "track_temp",
+      "pit_lane_time",
+      "pit_stop_count"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5611789473684211,
+      "mean_spearman_rho": 0.6811712614870509
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5629941520467837,
+      "mean_spearman_rho": 0.6817934837092732
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5597637426900585,
+      "mean_spearman_rho": 0.679731328320802
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5617730994152047,
+      "mean_spearman_rho": 0.680463492063492
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "raw_stints",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5597637426900585,
+      "mean_spearman_rho": 0.679731328320802
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5617730994152047,
+      "mean_spearman_rho": 0.680463492063492
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "raw_stints",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "stint_3_frac",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5597590643274853,
+      "mean_spearman_rho": 0.6797243107769422
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5617426900584797,
+      "mean_spearman_rho": 0.6804380952380952
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "raw_stints",
+      "stop_laps",
+      "compound_totals"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "stint_3_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0,
+      "mean_kendall_tau": 0.5597847953216374,
+      "mean_spearman_rho": 0.6817413533834585
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.560514619883041,
+      "mean_spearman_rho": 0.6797944862155388
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "stop_laps",
+      "compound_totals"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0,
+      "mean_kendall_tau": 0.5596327485380118,
+      "mean_spearman_rho": 0.6816230576441102
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5603228070175439,
+      "mean_spearman_rho": 0.6796223893065997
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "stop_laps",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0,
+      "mean_kendall_tau": 0.5553660818713451,
+      "mean_spearman_rho": 0.6778873851294904
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5562643274853801,
+      "mean_spearman_rho": 0.6762349206349206
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "raw_stints",
+      "stop_laps",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "stint_3_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0,
+      "mean_kendall_tau": 0.5553426900584796,
+      "mean_spearman_rho": 0.67788671679198
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5562058479532164,
+      "mean_spearman_rho": 0.6762048454469508
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "compound_totals",
+      "max_stints",
+      "race_context"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint",
+      "total_laps",
+      "track_temp",
+      "pit_lane_time",
+      "pit_stop_count"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5664631578947368,
+      "mean_spearman_rho": 0.6851455304928988
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5682105263157894,
+      "mean_spearman_rho": 0.6850923976608186
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "compound_totals",
+      "max_stints"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "soft_max_stint",
+      "medium_max_stint",
+      "hard_max_stint"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5664491228070175,
+      "mean_spearman_rho": 0.6851391812865497
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5681918128654971,
+      "mean_spearman_rho": 0.6850720133667502
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "stop_laps",
+      "compound_totals",
+      "race_context"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "total_laps",
+      "track_temp",
+      "pit_lane_time",
+      "pit_stop_count"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.563101754385965,
+      "mean_spearman_rho": 0.6830152046783625
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.564961403508772,
+      "mean_spearman_rho": 0.6834539682539681
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "stop_laps",
+      "compound_totals"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "first_stop_lap",
+      "second_stop_lap",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5630947368421053,
+      "mean_spearman_rho": 0.6830098579782788
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5649380116959065,
+      "mean_spearman_rho": 0.6834385964912281
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "compound_totals"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5623321637426901,
+      "mean_spearman_rho": 0.6817122807017544
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5642853801169592,
+      "mean_spearman_rho": 0.6816401002506266
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "compound_totals",
+      "race_context"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "total_laps",
+      "track_temp",
+      "pit_lane_time",
+      "pit_stop_count"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "mean_kendall_tau": 0.5622058479532164,
+      "mean_spearman_rho": 0.6815619047619047
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5640163742690059,
+      "mean_spearman_rho": 0.681485380116959
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "compound_fractions",
+      "raw_stints",
+      "compound_totals"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "stint_1_frac",
+      "stint_2_frac",
+      "stint_3_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5622830409356725,
+      "mean_spearman_rho": 0.6817126148705095
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5639859649122807,
+      "mean_spearman_rho": 0.681508103592314
+    }
+  },
+  {
+    "families": [
+      "base_physics",
+      "stop_fraction",
+      "compound_fractions",
+      "compound_totals",
+      "race_context"
+    ],
+    "numeric_columns": [
+      "pred_blend",
+      "first_stop_frac",
+      "second_stop_frac",
+      "stint_3_frac",
+      "soft_frac",
+      "medium_frac",
+      "hard_frac",
+      "soft_laps",
+      "medium_laps",
+      "hard_laps",
+      "total_laps",
+      "track_temp",
+      "pit_lane_time",
+      "pit_stop_count"
+    ],
+    "validation": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.5621941520467836,
+      "mean_spearman_rho": 0.681604678362573
+    },
+    "test": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "mean_kendall_tau": 0.563927485380117,
+      "mean_spearman_rho": 0.681439933166249
+    }
+  }
+]
