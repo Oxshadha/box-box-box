@@ -1,0 +1,18 @@
+{
+  "validation": {
+    "races": 4500,
+    "exact_order_accuracy": 0.0024444444444444444,
+    "top3_set_accuracy": 0.42333333333333334,
+    "top5_set_accuracy": 0.3908888888888889,
+    "mean_kendall_tau": 0.7506035087719299,
+    "mean_spearman_rho": 0.8272698412698412
+  },
+  "test": {
+    "races": 4500,
+    "exact_order_accuracy": 0.002,
+    "top3_set_accuracy": 0.42933333333333334,
+    "top5_set_accuracy": 0.386,
+    "mean_kendall_tau": 0.7516514619883041,
+    "mean_spearman_rho": 0.8290105263157893
+  }
+}

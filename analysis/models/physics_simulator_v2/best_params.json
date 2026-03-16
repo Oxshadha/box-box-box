@@ -1,0 +1,41 @@
+{
+  "iteration": 0,
+  "params": {
+    "soft_offset": -0.6110845761949585,
+    "medium_offset": 0.19473605811872785,
+    "hard_offset": 0.29777243056406405,
+    "soft_fresh_linear": 0.0487811175818378,
+    "soft_wear_linear": 0.24745073443787763,
+    "soft_wear_quadratic": 0.008074578747492586,
+    "soft_temp_wear": 0.0012046249797155024,
+    "medium_fresh_linear": 0.018015437515822685,
+    "medium_wear_linear": 0.09191172339256137,
+    "medium_wear_quadratic": 0.006523972427515913,
+    "medium_temp_wear": 0.002646687456306525,
+    "hard_fresh_linear": 0.0229104645308332,
+    "hard_wear_linear": 0.0643414198827331,
+    "hard_wear_quadratic": 0.0011361936089238844,
+    "hard_temp_wear": 0.0016637543610475045
+  },
+  "thresholds": {
+    "SOFT": 4,
+    "MEDIUM": 14,
+    "HARD": 20
+  },
+  "train_metrics": {
+    "races": 200,
+    "exact_order_accuracy": 0.0,
+    "top3_set_accuracy": 0.39,
+    "top5_set_accuracy": 0.365,
+    "mean_kendall_tau": 0.7507894736842105,
+    "mean_spearman_rho": 0.8300225563909774
+  },
+  "validation_metrics": {
+    "races": 100,
+    "exact_order_accuracy": 0.0,
+    "top3_set_accuracy": 0.45,
+    "top5_set_accuracy": 0.43,
+    "mean_kendall_tau": 0.7827368421052633,
+    "mean_spearman_rho": 0.8502406015037594
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "validation": {
+    "physics_blend": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0026666666666666666,
+      "top3_set_accuracy": 0.4891111111111111,
+      "top5_set_accuracy": 0.43,
+      "mean_kendall_tau": 0.8394292397660819,
+      "mean_spearman_rho": 0.9246138680033417
+    },
+    "hybrid_ridge": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0,
+      "top3_set_accuracy": 0.044444444444444446,
+      "top5_set_accuracy": 0.03711111111111111,
+      "mean_kendall_tau": 0.15763742690058483,
+      "mean_spearman_rho": 0.15216006683375105
+    }
+  },
+  "test": {
+    "physics_blend": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0017777777777777779,
+      "top3_set_accuracy": 0.4988888888888889,
+      "top5_set_accuracy": 0.4108888888888889,
+      "mean_kendall_tau": 0.8372771929824562,
+      "mean_spearman_rho": 0.9225079365079364
+    },
+    "hybrid_ridge": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0,
+      "top3_set_accuracy": 0.043555555555555556,
+      "top5_set_accuracy": 0.03666666666666667,
+      "mean_kendall_tau": 0.1668421052631579,
+      "mean_spearman_rho": 0.1657717627401838
+    }
+  }
+}

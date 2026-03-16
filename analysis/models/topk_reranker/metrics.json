@@ -1,0 +1,42 @@
+{
+  "pair_dataset": {
+    "rows": 51669,
+    "baseline_pair_accuracy": 0.6073467649848071
+  },
+  "validation": {
+    "lgbm_ranker": {
+      "races": 4500,
+      "exact_order_accuracy": 0.042444444444444444,
+      "top3_set_accuracy": 0.3831111111111111,
+      "top5_set_accuracy": 0.4513333333333333,
+      "mean_kendall_tau": 0.9071859649122808,
+      "mean_spearman_rho": 0.9621824561403508
+    },
+    "topk_reranked": {
+      "races": 4500,
+      "exact_order_accuracy": 0.04088888888888889,
+      "top3_set_accuracy": 0.44355555555555554,
+      "top5_set_accuracy": 0.5057777777777778,
+      "mean_kendall_tau": 0.9135695906432748,
+      "mean_spearman_rho": 0.9662653299916457
+    }
+  },
+  "test": {
+    "lgbm_ranker": {
+      "races": 4500,
+      "exact_order_accuracy": 0.04844444444444444,
+      "top3_set_accuracy": 0.39444444444444443,
+      "top5_set_accuracy": 0.456,
+      "mean_kendall_tau": 0.908748538011696,
+      "mean_spearman_rho": 0.9628685045948203
+    },
+    "topk_reranked": {
+      "races": 4500,
+      "exact_order_accuracy": 0.044444444444444446,
+      "top3_set_accuracy": 0.45666666666666667,
+      "top5_set_accuracy": 0.5135555555555555,
+      "mean_kendall_tau": 0.9146105263157894,
+      "mean_spearman_rho": 0.9666843776106934
+    }
+  }
+}

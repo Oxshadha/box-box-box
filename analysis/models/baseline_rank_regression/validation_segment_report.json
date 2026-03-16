@@ -1,0 +1,226 @@
+{
+  "track": [
+    {
+      "track": "Spa",
+      "rows": 13340,
+      "mean_abs_rank_error": 4.1375,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    },
+    {
+      "track": "Monza",
+      "rows": 12480,
+      "mean_abs_rank_error": 4.0272,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    },
+    {
+      "track": "Suzuka",
+      "rows": 12160,
+      "mean_abs_rank_error": 4.012,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    },
+    {
+      "track": "COTA",
+      "rows": 13640,
+      "mean_abs_rank_error": 3.9632,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    },
+    {
+      "track": "Bahrain",
+      "rows": 13160,
+      "mean_abs_rank_error": 3.9567,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    },
+    {
+      "track": "Monaco",
+      "rows": 12680,
+      "mean_abs_rank_error": 3.9364,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    },
+    {
+      "track": "Silverstone",
+      "rows": 12540,
+      "mean_abs_rank_error": 3.9129,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5,
+      "mean_pred_rank": 10.5
+    }
+  ],
+  "starting_tire": [
+    {
+      "starting_tire": "HARD",
+      "rows": 30489,
+      "mean_abs_rank_error": 4.492,
+      "median_abs_rank_error": 4.0,
+      "mean_finish_rank": 10.5245,
+      "mean_pred_rank": 11.5913
+    },
+    {
+      "starting_tire": "SOFT",
+      "rows": 29275,
+      "mean_abs_rank_error": 4.4779,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.1458,
+      "mean_pred_rank": 9.6521
+    },
+    {
+      "starting_tire": "MEDIUM",
+      "rows": 30236,
+      "mean_abs_rank_error": 3.0197,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 10.8182,
+      "mean_pred_rank": 10.2206
+    }
+  ],
+  "pit_stop_count": [
+    {
+      "pit_stop_count": 1,
+      "rows": 81846,
+      "mean_abs_rank_error": 4.1299,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5537,
+      "mean_pred_rank": 10.5137
+    },
+    {
+      "pit_stop_count": 2,
+      "rows": 8154,
+      "mean_abs_rank_error": 2.6163,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 9.9614,
+      "mean_pred_rank": 10.3628
+    }
+  ],
+  "tire_sequence": [
+    {
+      "tire_sequence": "SOFT>MEDIUM",
+      "rows": 11411,
+      "mean_abs_rank_error": 5.0559,
+      "median_abs_rank_error": 4.0,
+      "mean_finish_rank": 13.42,
+      "mean_pred_rank": 15.5344
+    },
+    {
+      "tire_sequence": "HARD>MEDIUM",
+      "rows": 15191,
+      "mean_abs_rank_error": 5.0238,
+      "median_abs_rank_error": 4.0,
+      "mean_finish_rank": 10.1979,
+      "mean_pred_rank": 11.9298
+    },
+    {
+      "tire_sequence": "SOFT>HARD",
+      "rows": 15086,
+      "mean_abs_rank_error": 4.3302,
+      "median_abs_rank_error": 4.0,
+      "mean_finish_rank": 7.9935,
+      "mean_pred_rank": 5.5174
+    },
+    {
+      "tire_sequence": "HARD>SOFT",
+      "rows": 12585,
+      "mean_abs_rank_error": 4.3073,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.7011,
+      "mean_pred_rank": 10.9132
+    },
+    {
+      "tire_sequence": "MEDIUM>HARD",
+      "rows": 16557,
+      "mean_abs_rank_error": 3.8522,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 7.5348,
+      "mean_pred_rank": 5.3418
+    },
+    {
+      "tire_sequence": "SOFT>MEDIUM>SOFT",
+      "rows": 693,
+      "mean_abs_rank_error": 3.3636,
+      "median_abs_rank_error": 3.0,
+      "mean_finish_rank": 10.5584,
+      "mean_pred_rank": 11.8413
+    },
+    {
+      "tire_sequence": "MEDIUM>HARD>SOFT",
+      "rows": 661,
+      "mean_abs_rank_error": 2.8563,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 10.59,
+      "mean_pred_rank": 11.9395
+    },
+    {
+      "tire_sequence": "SOFT>HARD>MEDIUM",
+      "rows": 744,
+      "mean_abs_rank_error": 2.8347,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 5.582,
+      "mean_pred_rank": 2.9274
+    },
+    {
+      "tire_sequence": "HARD>MEDIUM>SOFT",
+      "rows": 664,
+      "mean_abs_rank_error": 2.7937,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 11.4985,
+      "mean_pred_rank": 13.4277
+    },
+    {
+      "tire_sequence": "SOFT>HARD>SOFT",
+      "rows": 679,
+      "mean_abs_rank_error": 2.7599,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 10.7496,
+      "mean_pred_rank": 11.975
+    },
+    {
+      "tire_sequence": "MEDIUM>HARD>MEDIUM",
+      "rows": 654,
+      "mean_abs_rank_error": 2.7202,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 4.9893,
+      "mean_pred_rank": 2.4985
+    },
+    {
+      "tire_sequence": "SOFT>MEDIUM>HARD",
+      "rows": 662,
+      "mean_abs_rank_error": 2.6556,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 6.8323,
+      "mean_pred_rank": 5.364
+    },
+    {
+      "tire_sequence": "HARD>MEDIUM>HARD",
+      "rows": 672,
+      "mean_abs_rank_error": 2.5476,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 8.1443,
+      "mean_pred_rank": 8.2039
+    },
+    {
+      "tire_sequence": "MEDIUM>SOFT>MEDIUM",
+      "rows": 709,
+      "mean_abs_rank_error": 2.5275,
+      "median_abs_rank_error": 2.0,
+      "mean_finish_rank": 11.4951,
+      "mean_pred_rank": 12.4485
+    },
+    {
+      "tire_sequence": "HARD>SOFT>MEDIUM",
+      "rows": 655,
+      "mean_abs_rank_error": 2.2565,
+      "median_abs_rank_error": 1.0,
+      "mean_finish_rank": 12.8305,
+      "mean_pred_rank": 14.3511
+    }
+  ]
+}

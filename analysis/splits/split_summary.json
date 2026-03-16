@@ -1,0 +1,134 @@
+{
+  "feature_set": {
+    "categorical_features": [
+      "track",
+      "starting_tire",
+      "tire_sequence",
+      "stint_1_compound",
+      "stint_2_compound",
+      "stint_3_compound"
+    ],
+    "numerical_features": [
+      "total_laps",
+      "base_lap_time",
+      "pit_lane_time",
+      "track_temp",
+      "pit_stop_count",
+      "first_stop_lap",
+      "second_stop_lap",
+      "stint_count",
+      "soft_laps",
+      "soft_stints",
+      "soft_max_stint",
+      "medium_laps",
+      "medium_stints",
+      "medium_max_stint",
+      "hard_laps",
+      "hard_stints",
+      "hard_max_stint",
+      "stint_1_laps",
+      "stint_2_laps",
+      "stint_3_laps"
+    ],
+    "excluded_columns": [
+      "race_id",
+      "grid_slot",
+      "driver_id",
+      "finish_rank",
+      "finish_rank_pct"
+    ],
+    "target_column": "finish_rank"
+  },
+  "splits": {
+    "train": {
+      "races": 21000,
+      "rows": 420000,
+      "tracks": {
+        "Bahrain": 60700,
+        "COTA": 57840,
+        "Monaco": 61060,
+        "Monza": 61780,
+        "Silverstone": 58340,
+        "Spa": 60460,
+        "Suzuka": 59820
+      },
+      "starting_tire_pct": {
+        "HARD": 33.76,
+        "MEDIUM": 33.75,
+        "SOFT": 32.49
+      },
+      "pit_stop_count_pct": {
+        "1": 90.97,
+        "2": 9.03
+      },
+      "track_temp_range": [
+        18,
+        42
+      ],
+      "total_laps_range": [
+        25,
+        70
+      ]
+    },
+    "validation": {
+      "races": 4500,
+      "rows": 90000,
+      "tracks": {
+        "Bahrain": 13160,
+        "COTA": 13640,
+        "Monaco": 12680,
+        "Monza": 12480,
+        "Silverstone": 12540,
+        "Spa": 13340,
+        "Suzuka": 12160
+      },
+      "starting_tire_pct": {
+        "HARD": 33.88,
+        "MEDIUM": 33.6,
+        "SOFT": 32.53
+      },
+      "pit_stop_count_pct": {
+        "1": 90.94,
+        "2": 9.06
+      },
+      "track_temp_range": [
+        18,
+        42
+      ],
+      "total_laps_range": [
+        25,
+        70
+      ]
+    },
+    "test": {
+      "races": 4500,
+      "rows": 90000,
+      "tracks": {
+        "Bahrain": 12600,
+        "COTA": 13220,
+        "Monaco": 12260,
+        "Monza": 12540,
+        "Silverstone": 13780,
+        "Spa": 12800,
+        "Suzuka": 12800
+      },
+      "starting_tire_pct": {
+        "HARD": 34.02,
+        "MEDIUM": 33.91,
+        "SOFT": 32.07
+      },
+      "pit_stop_count_pct": {
+        "1": 91.24,
+        "2": 8.76
+      },
+      "track_temp_range": [
+        18,
+        42
+      ],
+      "total_laps_range": [
+        25,
+        70
+      ]
+    }
+  }
+}

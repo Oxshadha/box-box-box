@@ -1,0 +1,26 @@
+{
+  "iteration": 8,
+  "params": {
+    "soft_offset": -1.6678309957272022,
+    "medium_offset": -0.824700161367798,
+    "hard_offset": 0.4714135748771852,
+    "soft_linear": 0.19314157961891262,
+    "soft_quadratic": 0.007177226216368464,
+    "soft_temp_linear": 0.002798828535242998,
+    "medium_linear": 0.03924569576054716,
+    "medium_quadratic": 0.005784234641434067,
+    "medium_temp_linear": 0.002336252711897384,
+    "hard_linear": 0.05735121513271965,
+    "hard_quadratic": 0.0012468075107189434,
+    "hard_temp_linear": 0.00031672468553547707
+  },
+  "train_kendall": 0.6026315789473684,
+  "validation_metrics": {
+    "races": 100,
+    "exact_order_accuracy": 0.0,
+    "top3_set_accuracy": 0.28,
+    "top5_set_accuracy": 0.26,
+    "mean_kendall_tau": 0.6474736842105264,
+    "mean_spearman_rho": 0.7439548872180451
+  }
+}

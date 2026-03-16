@@ -1,0 +1,23 @@
+{
+  "best_blend": {
+    "alpha_v2": 0.4,
+    "alpha_v4": 0.6,
+    "validation_metrics": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0026666666666666666,
+      "top3_set_accuracy": 0.5102222222222222,
+      "top5_set_accuracy": 0.4066666666666667,
+      "mean_kendall_tau": 0.8329497076023392,
+      "mean_spearman_rho": 0.9222135338345864
+    },
+    "selection_score": 0.4688
+  },
+  "test_metrics": {
+    "races": 4500,
+    "exact_order_accuracy": 0.0015555555555555555,
+    "top3_set_accuracy": 0.5235555555555556,
+    "top5_set_accuracy": 0.39111111111111113,
+    "mean_kendall_tau": 0.8316678362573099,
+    "mean_spearman_rho": 0.9205256474519633
+  }
+}

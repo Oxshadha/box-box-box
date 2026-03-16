@@ -1,0 +1,5 @@
+{
+  "pair_gap": 2.5,
+  "pair_sample_limit": 20000,
+  "correction_strength": 0.35
+}

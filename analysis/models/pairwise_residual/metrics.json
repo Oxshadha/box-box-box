@@ -1,0 +1,42 @@
+{
+  "pair_dataset": {
+    "rows": 15322,
+    "baseline_pair_accuracy": 0.6812426576164992
+  },
+  "validation": {
+    "physics_blend": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0026666666666666666,
+      "top3_set_accuracy": 0.4891111111111111,
+      "top5_set_accuracy": 0.43,
+      "mean_kendall_tau": 0.8394292397660819,
+      "mean_spearman_rho": 0.9246138680033417
+    },
+    "pairwise_corrected": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00022222222222222223,
+      "top3_set_accuracy": 0.45355555555555555,
+      "top5_set_accuracy": 0.4091111111111111,
+      "mean_kendall_tau": 0.8142970760233919,
+      "mean_spearman_rho": 0.9205035923141186
+    }
+  },
+  "test": {
+    "physics_blend": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0017777777777777779,
+      "top3_set_accuracy": 0.4988888888888889,
+      "top5_set_accuracy": 0.4108888888888889,
+      "mean_kendall_tau": 0.8372771929824562,
+      "mean_spearman_rho": 0.9225079365079364
+    },
+    "pairwise_corrected": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0006666666666666666,
+      "top3_set_accuracy": 0.4597777777777778,
+      "top5_set_accuracy": 0.4,
+      "mean_kendall_tau": 0.8130573099415205,
+      "mean_spearman_rho": 0.9189650793650793
+    }
+  }
+}

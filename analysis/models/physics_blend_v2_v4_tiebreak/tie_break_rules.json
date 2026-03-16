@@ -1,0 +1,222 @@
+{
+  "best_close_gap": 0.5,
+  "rule_count": 40,
+  "validation_metrics": {
+    "races": 4500,
+    "exact_order_accuracy": 0.0033333333333333335,
+    "top3_set_accuracy": 0.5,
+    "top5_set_accuracy": 0.438,
+    "mean_kendall_tau": 0.8455040935672514,
+    "mean_spearman_rho": 0.9292912280701753
+  },
+  "test_metrics": {
+    "races": 4500,
+    "exact_order_accuracy": 0.0017777777777777779,
+    "top3_set_accuracy": 0.5108888888888888,
+    "top5_set_accuracy": 0.41755555555555557,
+    "mean_kendall_tau": 0.843008187134503,
+    "mean_spearman_rho": 0.9270192147034252
+  },
+  "rules": {
+    "MEDIUM>HARD|SOFT>HARD": {
+      "preferred": "SOFT>HARD",
+      "count": 13631,
+      "win_rate": 0.5954808891497323
+    },
+    "HARD>SOFT|SOFT>HARD": {
+      "preferred": "HARD>SOFT",
+      "count": 20004,
+      "win_rate": 0.6250749850029994
+    },
+    "HARD>MEDIUM|SOFT>HARD": {
+      "preferred": "SOFT>HARD",
+      "count": 9070,
+      "win_rate": 0.7374862183020948
+    },
+    "HARD>SOFT|SOFT>MEDIUM": {
+      "preferred": "SOFT>MEDIUM",
+      "count": 3317,
+      "win_rate": 0.6273741332529394
+    },
+    "HARD>MEDIUM|HARD>MEDIUM>HARD": {
+      "preferred": "HARD>MEDIUM",
+      "count": 148,
+      "win_rate": 0.8445945945945946
+    },
+    "MEDIUM>HARD|SOFT>MEDIUM": {
+      "preferred": "SOFT>MEDIUM",
+      "count": 2102,
+      "win_rate": 0.6022835394862036
+    },
+    "SOFT>HARD|SOFT>MEDIUM": {
+      "preferred": "SOFT>MEDIUM",
+      "count": 2617,
+      "win_rate": 0.9847153228888039
+    },
+    "HARD>SOFT|MEDIUM>HARD": {
+      "preferred": "MEDIUM>HARD",
+      "count": 5052,
+      "win_rate": 0.7114014251781473
+    },
+    "HARD>MEDIUM|MEDIUM>HARD>MEDIUM": {
+      "preferred": "HARD>MEDIUM",
+      "count": 201,
+      "win_rate": 0.6169154228855721
+    },
+    "HARD>MEDIUM|SOFT>MEDIUM>HARD": {
+      "preferred": "HARD>MEDIUM",
+      "count": 151,
+      "win_rate": 0.5827814569536424
+    },
+    "MEDIUM>HARD|MEDIUM>SOFT": {
+      "preferred": "MEDIUM>SOFT",
+      "count": 1518,
+      "win_rate": 0.6100131752305665
+    },
+    "MEDIUM>SOFT|SOFT>HARD": {
+      "preferred": "MEDIUM>SOFT",
+      "count": 1787,
+      "win_rate": 0.9916060436485731
+    },
+    "HARD>MEDIUM|MEDIUM>SOFT": {
+      "preferred": "HARD>MEDIUM",
+      "count": 1286,
+      "win_rate": 0.5925349922239502
+    },
+    "HARD>MEDIUM|SOFT>MEDIUM": {
+      "preferred": "HARD>MEDIUM",
+      "count": 1972,
+      "win_rate": 0.654158215010142
+    },
+    "MEDIUM>HARD|SOFT>MEDIUM>HARD": {
+      "preferred": "SOFT>MEDIUM>HARD",
+      "count": 150,
+      "win_rate": 0.6666666666666667
+    },
+    "MEDIUM>HARD|MEDIUM>HARD>MEDIUM": {
+      "preferred": "MEDIUM>HARD>MEDIUM",
+      "count": 165,
+      "win_rate": 0.6242424242424243
+    },
+    "MEDIUM>HARD>MEDIUM|SOFT>HARD": {
+      "preferred": "MEDIUM>HARD>MEDIUM",
+      "count": 116,
+      "win_rate": 0.6810344827586207
+    },
+    "MEDIUM>HARD>SOFT|SOFT>HARD": {
+      "preferred": "SOFT>HARD",
+      "count": 89,
+      "win_rate": 0.651685393258427
+    },
+    "HARD>SOFT|MEDIUM>HARD>MEDIUM": {
+      "preferred": "MEDIUM>HARD>MEDIUM",
+      "count": 143,
+      "win_rate": 0.6853146853146853
+    },
+    "HARD>MEDIUM|MEDIUM>HARD>SOFT": {
+      "preferred": "HARD>MEDIUM",
+      "count": 118,
+      "win_rate": 0.635593220338983
+    },
+    "HARD>MEDIUM|MEDIUM>SOFT>MEDIUM": {
+      "preferred": "MEDIUM>SOFT>MEDIUM",
+      "count": 101,
+      "win_rate": 0.594059405940594
+    },
+    "HARD>SOFT|SOFT>HARD>SOFT": {
+      "preferred": "SOFT>HARD>SOFT",
+      "count": 80,
+      "win_rate": 0.6125
+    },
+    "SOFT>HARD|SOFT>MEDIUM>HARD": {
+      "preferred": "SOFT>MEDIUM>HARD",
+      "count": 155,
+      "win_rate": 0.6258064516129032
+    },
+    "MEDIUM>SOFT>HARD|SOFT>HARD": {
+      "preferred": "SOFT>HARD",
+      "count": 82,
+      "win_rate": 0.6829268292682926
+    },
+    "SOFT>HARD|SOFT>HARD>MEDIUM": {
+      "preferred": "SOFT>HARD>MEDIUM",
+      "count": 161,
+      "win_rate": 0.5962732919254659
+    },
+    "MEDIUM>HARD|SOFT>HARD>SOFT": {
+      "preferred": "SOFT>HARD>SOFT",
+      "count": 89,
+      "win_rate": 0.8539325842696629
+    },
+    "MEDIUM>SOFT>MEDIUM|SOFT>HARD": {
+      "preferred": "MEDIUM>SOFT>MEDIUM",
+      "count": 123,
+      "win_rate": 0.6422764227642277
+    },
+    "HARD>MEDIUM>SOFT|HARD>SOFT": {
+      "preferred": "HARD>MEDIUM>SOFT",
+      "count": 101,
+      "win_rate": 0.6633663366336634
+    },
+    "SOFT>HARD|SOFT>MEDIUM>SOFT": {
+      "preferred": "SOFT>MEDIUM>SOFT",
+      "count": 179,
+      "win_rate": 0.5810055865921788
+    },
+    "MEDIUM>HARD|SOFT>HARD>MEDIUM": {
+      "preferred": "SOFT>HARD>MEDIUM",
+      "count": 163,
+      "win_rate": 0.6748466257668712
+    },
+    "MEDIUM>HARD|MEDIUM>HARD>SOFT": {
+      "preferred": "MEDIUM>HARD>SOFT",
+      "count": 101,
+      "win_rate": 0.6435643564356436
+    },
+    "HARD>SOFT|SOFT>MEDIUM>HARD": {
+      "preferred": "SOFT>MEDIUM>HARD",
+      "count": 158,
+      "win_rate": 0.7341772151898734
+    },
+    "HARD>SOFT|HARD>SOFT>MEDIUM": {
+      "preferred": "HARD>SOFT>MEDIUM",
+      "count": 105,
+      "win_rate": 0.7523809523809524
+    },
+    "HARD>MEDIUM|HARD>SOFT>HARD": {
+      "preferred": "HARD>MEDIUM",
+      "count": 81,
+      "win_rate": 0.9629629629629629
+    },
+    "HARD>SOFT>HARD|SOFT>MEDIUM": {
+      "preferred": "HARD>SOFT>HARD",
+      "count": 89,
+      "win_rate": 0.6853932584269663
+    },
+    "HARD>MEDIUM|SOFT>HARD>SOFT": {
+      "preferred": "HARD>MEDIUM",
+      "count": 104,
+      "win_rate": 0.6057692307692307
+    },
+    "SOFT>HARD>MEDIUM|SOFT>MEDIUM>HARD": {
+      "preferred": "SOFT>HARD>MEDIUM",
+      "count": 88,
+      "win_rate": 0.6477272727272727
+    },
+    "HARD>SOFT|MEDIUM>SOFT>MEDIUM": {
+      "preferred": "MEDIUM>SOFT>MEDIUM",
+      "count": 127,
+      "win_rate": 0.6771653543307087
+    },
+    "HARD>SOFT|SOFT>HARD>MEDIUM": {
+      "preferred": "SOFT>HARD>MEDIUM",
+      "count": 161,
+      "win_rate": 0.7391304347826086
+    },
+    "HARD>SOFT|SOFT>MEDIUM>SOFT": {
+      "preferred": "SOFT>MEDIUM>SOFT",
+      "count": 117,
+      "win_rate": 0.641025641025641
+    }
+  }
+}

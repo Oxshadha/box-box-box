@@ -1,0 +1,50 @@
+{
+  "iteration": 16,
+  "params": {
+    "soft_offset": -1.3100243190006622,
+    "medium_offset": 0.36749713388380467,
+    "hard_offset": 0.82948959787935,
+    "track_wear_multiplier": {
+      "Bahrain": 1.221262994077308,
+      "COTA": 1.1511356722592265,
+      "Monaco": 1.0157163038560433,
+      "Monza": 0.9693617630663718,
+      "Silverstone": 1.243984195215945,
+      "Spa": 1.1229921062016395,
+      "Suzuka": 1.2280375970017285
+    },
+    "soft_fresh_linear": 0.005923928860852069,
+    "soft_wear_linear": 0.26711740942197215,
+    "soft_wear_quadratic": 0.006733664955920869,
+    "soft_temp_wear": 0.0011705692308431191,
+    "medium_fresh_linear": 0.02353031999876883,
+    "medium_wear_linear": 0.13605349111476284,
+    "medium_wear_quadratic": 0.0005799674582759184,
+    "medium_temp_wear": 0.001926408254998637,
+    "hard_fresh_linear": 0.023015980447852847,
+    "hard_wear_linear": 0.04953590253440898,
+    "hard_wear_quadratic": 0.0022927404089927556,
+    "hard_temp_wear": 0.0013269423812036795
+  },
+  "thresholds": {
+    "SOFT": 4,
+    "MEDIUM": 16,
+    "HARD": 19
+  },
+  "train_metrics": {
+    "races": 200,
+    "exact_order_accuracy": 0.0,
+    "top3_set_accuracy": 0.405,
+    "top5_set_accuracy": 0.265,
+    "mean_kendall_tau": 0.741,
+    "mean_spearman_rho": 0.8438120300751879
+  },
+  "validation_metrics": {
+    "races": 100,
+    "exact_order_accuracy": 0.0,
+    "top3_set_accuracy": 0.39,
+    "top5_set_accuracy": 0.28,
+    "mean_kendall_tau": 0.7450526315789473,
+    "mean_spearman_rho": 0.8440902255639097
+  }
+}

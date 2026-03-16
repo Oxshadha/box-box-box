@@ -1,0 +1,323 @@
+{
+  "leave_one_track_out": [
+    {
+      "split_name": "track=Bahrain",
+      "physics_blend": {
+        "races": 4323,
+        "exact_order_accuracy": 0.002081887578070784,
+        "mean_kendall_tau": 0.8392587993230822,
+        "mean_spearman_rho": 0.924063454959397
+      },
+      "lgbm_ranker": {
+        "races": 4323,
+        "exact_order_accuracy": 0.026139255146888734,
+        "mean_kendall_tau": 0.8892606255402559,
+        "mean_spearman_rho": 0.9529354266999907
+      },
+      "xgb_ranker": {
+        "races": 4323,
+        "exact_order_accuracy": 0.46055979643765904,
+        "mean_kendall_tau": 0.9847523040773344,
+        "mean_spearman_rho": 0.9965082727637969
+      }
+    },
+    {
+      "split_name": "track=COTA",
+      "physics_blend": {
+        "races": 4235,
+        "exact_order_accuracy": 0.0014167650531286896,
+        "mean_kendall_tau": 0.8375268750388368,
+        "mean_spearman_rho": 0.9230320192452797
+      },
+      "lgbm_ranker": {
+        "races": 4235,
+        "exact_order_accuracy": 0.0269185360094451,
+        "mean_kendall_tau": 0.888550301373268,
+        "mean_spearman_rho": 0.9521616319429033
+      },
+      "xgb_ranker": {
+        "races": 4235,
+        "exact_order_accuracy": 0.4587957497048406,
+        "mean_kendall_tau": 0.9848356428260736,
+        "mean_spearman_rho": 0.9965209363432193
+      }
+    },
+    {
+      "split_name": "track=Monaco",
+      "physics_blend": {
+        "races": 4300,
+        "exact_order_accuracy": 0.0018604651162790699,
+        "mean_kendall_tau": 0.8408200734394126,
+        "mean_spearman_rho": 0.9255768490994928
+      },
+      "lgbm_ranker": {
+        "races": 4300,
+        "exact_order_accuracy": 0.024651162790697675,
+        "mean_kendall_tau": 0.8902056303549571,
+        "mean_spearman_rho": 0.9534925686308795
+      },
+      "xgb_ranker": {
+        "races": 4300,
+        "exact_order_accuracy": 0.4553488372093023,
+        "mean_kendall_tau": 0.9847882496940026,
+        "mean_spearman_rho": 0.9966165413533836
+      }
+    },
+    {
+      "split_name": "track=Monza",
+      "physics_blend": {
+        "races": 4340,
+        "exact_order_accuracy": 0.001152073732718894,
+        "mean_kendall_tau": 0.8383337375697308,
+        "mean_spearman_rho": 0.9233086171650324
+      },
+      "lgbm_ranker": {
+        "races": 4340,
+        "exact_order_accuracy": 0.02880184331797235,
+        "mean_kendall_tau": 0.8904244482173175,
+        "mean_spearman_rho": 0.9536076366030282
+      },
+      "xgb_ranker": {
+        "races": 4340,
+        "exact_order_accuracy": 0.4435483870967742,
+        "mean_kendall_tau": 0.9842032500606357,
+        "mean_spearman_rho": 0.9963854336301581
+      }
+    },
+    {
+      "split_name": "track=Silverstone",
+      "physics_blend": {
+        "races": 4233,
+        "exact_order_accuracy": 0.001417434443656981,
+        "mean_kendall_tau": 0.8367016051823394,
+        "mean_spearman_rho": 0.9227615459627095
+      },
+      "lgbm_ranker": {
+        "races": 4233,
+        "exact_order_accuracy": 0.028348688873139617,
+        "mean_kendall_tau": 0.8914792296119463,
+        "mean_spearman_rho": 0.9538165044077237
+      },
+      "xgb_ranker": {
+        "races": 4233,
+        "exact_order_accuracy": 0.4649184975194897,
+        "mean_kendall_tau": 0.985139318885449,
+        "mean_spearman_rho": 0.9966198273856149
+      }
+    },
+    {
+      "split_name": "track=Spa",
+      "physics_blend": {
+        "races": 4330,
+        "exact_order_accuracy": 0.002771362586605081,
+        "mean_kendall_tau": 0.8382788379725294,
+        "mean_spearman_rho": 0.9239441560020142
+      },
+      "lgbm_ranker": {
+        "races": 4330,
+        "exact_order_accuracy": 0.021247113163972285,
+        "mean_kendall_tau": 0.8899282849155221,
+        "mean_spearman_rho": 0.9531733490770807
+      },
+      "xgb_ranker": {
+        "races": 4330,
+        "exact_order_accuracy": 0.4625866050808314,
+        "mean_kendall_tau": 0.9845921964264007,
+        "mean_spearman_rho": 0.9964812724652277
+      }
+    },
+    {
+      "split_name": "track=Suzuka",
+      "physics_blend": {
+        "races": 4239,
+        "exact_order_accuracy": 0.0011795234725171032,
+        "mean_kendall_tau": 0.8378242137544853,
+        "mean_spearman_rho": 0.9231064213967332
+      },
+      "lgbm_ranker": {
+        "races": 4239,
+        "exact_order_accuracy": 0.028544468034913895,
+        "mean_kendall_tau": 0.8900833116052693,
+        "mean_spearman_rho": 0.953609075767976
+      },
+      "xgb_ranker": {
+        "races": 4239,
+        "exact_order_accuracy": 0.4435008256664308,
+        "mean_kendall_tau": 0.9836530462745684,
+        "mean_spearman_rho": 0.9962219774489303
+      }
+    }
+  ],
+  "temp_band_holdout": [
+    {
+      "split_name": "temp_band=cool",
+      "physics_blend": {
+        "races": 3068,
+        "exact_order_accuracy": 0.0009778357235984355,
+        "mean_kendall_tau": 0.8954470596308242,
+        "mean_spearman_rho": 0.9687641528854731
+      },
+      "lgbm_ranker": {
+        "races": 3068,
+        "exact_order_accuracy": 0.001955671447196871,
+        "mean_kendall_tau": 0.868592602758526,
+        "mean_spearman_rho": 0.9494740763251021
+      },
+      "xgb_ranker": {
+        "races": 3068,
+        "exact_order_accuracy": 0.08898305084745763,
+        "mean_kendall_tau": 0.940914705276882,
+        "mean_spearman_rho": 0.981384360510141
+      }
+    },
+    {
+      "split_name": "temp_band=mild",
+      "physics_blend": {
+        "races": 12223,
+        "exact_order_accuracy": 0.0017180724862963265,
+        "mean_kendall_tau": 0.8300305291577139,
+        "mean_spearman_rho": 0.9165812756549804
+      },
+      "lgbm_ranker": {
+        "races": 12223,
+        "exact_order_accuracy": 0.02904360631596171,
+        "mean_kendall_tau": 0.884117517880441,
+        "mean_spearman_rho": 0.947891162906858
+      },
+      "xgb_ranker": {
+        "races": 12223,
+        "exact_order_accuracy": 0.14759060787040826,
+        "mean_kendall_tau": 0.9419394842337786,
+        "mean_spearman_rho": 0.980506243929385
+      }
+    },
+    {
+      "split_name": "temp_band=warm",
+      "physics_blend": {
+        "races": 12162,
+        "exact_order_accuracy": 0.001973359644795264,
+        "mean_kendall_tau": 0.8267909537039442,
+        "mean_spearman_rho": 0.9134870971211946
+      },
+      "lgbm_ranker": {
+        "races": 12162,
+        "exact_order_accuracy": 0.02178917941128104,
+        "mean_kendall_tau": 0.8803676680601356,
+        "mean_spearman_rho": 0.9467419164586355
+      },
+      "xgb_ranker": {
+        "races": 12162,
+        "exact_order_accuracy": 0.4801019569149811,
+        "mean_kendall_tau": 0.9844398860990661,
+        "mean_spearman_rho": 0.9962162436184195
+      }
+    },
+    {
+      "split_name": "temp_band=hot",
+      "physics_blend": {
+        "races": 2547,
+        "exact_order_accuracy": 0.001177856301531213,
+        "mean_kendall_tau": 0.8652739032504703,
+        "mean_spearman_rho": 0.9522227240657593
+      },
+      "lgbm_ranker": {
+        "races": 2547,
+        "exact_order_accuracy": 0.0043188064389477815,
+        "mean_kendall_tau": 0.8853346558386543,
+        "mean_spearman_rho": 0.9591263199223027
+      },
+      "xgb_ranker": {
+        "races": 2547,
+        "exact_order_accuracy": 0.154691794267766,
+        "mean_kendall_tau": 0.9688756638356788,
+        "mean_spearman_rho": 0.9930403157481452
+      }
+    }
+  ],
+  "lap_band_holdout": [
+    {
+      "split_name": "lap_band=short",
+      "physics_blend": {
+        "races": 4832,
+        "exact_order_accuracy": 0.0004139072847682119,
+        "mean_kendall_tau": 0.7558077727431161,
+        "mean_spearman_rho": 0.8452425558930438
+      },
+      "lgbm_ranker": {
+        "races": 4832,
+        "exact_order_accuracy": 0.0010347682119205299,
+        "mean_kendall_tau": 0.5930006099686301,
+        "mean_spearman_rho": 0.6761807249912861
+      },
+      "xgb_ranker": {
+        "races": 4832,
+        "exact_order_accuracy": 0.10202814569536424,
+        "mean_kendall_tau": 0.8676738410596028,
+        "mean_spearman_rho": 0.9305659637504357
+      }
+    },
+    {
+      "split_name": "lap_band=mid_short",
+      "physics_blend": {
+        "races": 10678,
+        "exact_order_accuracy": 0.00028095148904289194,
+        "mean_kendall_tau": 0.7803097366942362,
+        "mean_spearman_rho": 0.8907283192059565
+      },
+      "lgbm_ranker": {
+        "races": 10678,
+        "exact_order_accuracy": 0.001592058437909721,
+        "mean_kendall_tau": 0.6881103301426446,
+        "mean_spearman_rho": 0.797001212527479
+      },
+      "xgb_ranker": {
+        "races": 10678,
+        "exact_order_accuracy": 0.03474433414497097,
+        "mean_kendall_tau": 0.8706105026567167,
+        "mean_spearman_rho": 0.9460028137397246
+      }
+    },
+    {
+      "split_name": "lap_band=mid",
+      "physics_blend": {
+        "races": 10173,
+        "exact_order_accuracy": 0.003931976801336872,
+        "mean_kendall_tau": 0.9100208498243544,
+        "mean_spearman_rho": 0.9740220501120095
+      },
+      "lgbm_ranker": {
+        "races": 10173,
+        "exact_order_accuracy": 0.0013761918804679053,
+        "mean_kendall_tau": 0.8693248899305179,
+        "mean_spearman_rho": 0.951164848127396
+      },
+      "xgb_ranker": {
+        "races": 10173,
+        "exact_order_accuracy": 0.04443133785510665,
+        "mean_kendall_tau": 0.9427721471180163,
+        "mean_spearman_rho": 0.9858698648715567
+      }
+    },
+    {
+      "split_name": "lap_band=long",
+      "physics_blend": {
+        "races": 4317,
+        "exact_order_accuracy": 0.001389854065323141,
+        "mean_kendall_tau": 0.9057508259878326,
+        "mean_spearman_rho": 0.9744144934957266
+      },
+      "lgbm_ranker": {
+        "races": 4317,
+        "exact_order_accuracy": 0.000463284688441047,
+        "mean_kendall_tau": 0.8607780744425345,
+        "mean_spearman_rho": 0.9521771767849088
+      },
+      "xgb_ranker": {
+        "races": 4317,
+        "exact_order_accuracy": 0.007644197359277276,
+        "mean_kendall_tau": 0.8692976360289189,
+        "mean_spearman_rho": 0.956153761749753
+      }
+    }
+  ]
+}

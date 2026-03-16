@@ -1,0 +1,89 @@
+{
+  "train_races": 21000,
+  "n_estimators": 2000,
+  "learning_rate": 0.01,
+  "num_leaves": 255,
+  "min_child_samples": 10,
+  "categorical_columns": [
+    "track",
+    "starting_tire",
+    "tire_sequence",
+    "stint_1_compound",
+    "stint_2_compound",
+    "stint_3_compound"
+  ],
+  "numeric_columns": [
+    "pred_v2",
+    "pred_v4",
+    "pred_blend",
+    "pred_gap_v2_v4",
+    "total_laps",
+    "base_lap_time",
+    "pit_lane_time",
+    "track_temp",
+    "pit_stop_count",
+    "first_stop_lap",
+    "second_stop_lap",
+    "soft_laps",
+    "medium_laps",
+    "hard_laps",
+    "soft_max_stint",
+    "medium_max_stint",
+    "hard_max_stint",
+    "stint_1_laps",
+    "stint_2_laps",
+    "stint_3_laps"
+  ],
+  "categories": {
+    "track": [
+      "Bahrain",
+      "COTA",
+      "Monaco",
+      "Monza",
+      "Silverstone",
+      "Spa",
+      "Suzuka"
+    ],
+    "starting_tire": [
+      "HARD",
+      "MEDIUM",
+      "SOFT"
+    ],
+    "tire_sequence": [
+      "HARD>MEDIUM",
+      "HARD>MEDIUM>HARD",
+      "HARD>MEDIUM>SOFT",
+      "HARD>SOFT",
+      "HARD>SOFT>HARD",
+      "HARD>SOFT>MEDIUM",
+      "MEDIUM>HARD",
+      "MEDIUM>HARD>MEDIUM",
+      "MEDIUM>HARD>SOFT",
+      "MEDIUM>SOFT",
+      "MEDIUM>SOFT>HARD",
+      "MEDIUM>SOFT>MEDIUM",
+      "SOFT>HARD",
+      "SOFT>HARD>MEDIUM",
+      "SOFT>HARD>SOFT",
+      "SOFT>MEDIUM",
+      "SOFT>MEDIUM>HARD",
+      "SOFT>MEDIUM>SOFT"
+    ],
+    "stint_1_compound": [
+      "HARD",
+      "MEDIUM",
+      "SOFT"
+    ],
+    "stint_2_compound": [
+      "HARD",
+      "MEDIUM",
+      "SOFT"
+    ],
+    "stint_3_compound": [
+      "HARD",
+      "MEDIUM",
+      "SOFT",
+      "__MISSING__"
+    ]
+  }
+}
