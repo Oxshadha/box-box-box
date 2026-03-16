@@ -258,11 +258,28 @@ def stop_frac_bin(value):
     return "0.7-1.0"
 
 
+def sequence_family_key(tire_sequence):
+    parts = tire_sequence.split(">")
+    return (
+        len(parts) - 1,
+        parts[0],
+        parts[-1],
+        "".join(sorted(parts)),
+    )
+
+
 def apply_rule_rerank(frame):
     frame = frame.copy()
+    unique_sequences = int(frame["tire_sequence"].nunique())
+    two_stop_drivers = int((frame["pit_stop_count"] == 2).sum())
+    if unique_sequences < 7 and two_stop_drivers == 0:
+        frame["adjusted_score"] = frame["pred_score"]
+        return frame.sort_values(["adjusted_score", "pred_score", "driver_id"], ascending=[True, True, True])
+
     spread = float(frame["pred_score"].max() - frame["pred_score"].min())
-    local_scale = max(spread / 80.0, 0.02)
-    bonuses = np.zeros(len(frame), dtype=float)
+    local_scale = max(spread / 120.0, 0.015)
+    cluster_bonus = np.zeros(len(frame), dtype=float)
+    global_bonus = np.zeros(len(frame), dtype=float)
 
     # Reward strategies whose stop timing matches historically strong bins.
     for idx, row in enumerate(frame.itertuples(index=False)):
@@ -275,40 +292,86 @@ def apply_rule_rerank(frame):
             continue
         quality = max(0.0, min(1.0, rule["quality_score"]))
         support = min(rule["rows"], 1500) / 1500.0
-        bonuses[idx] += 0.45 * local_scale * quality * support
+        global_bonus[idx] += 0.15 * local_scale * quality * support
 
-    # Apply pairwise regime rules, strongest when model scores are close.
+    # Apply pairwise regime rules only inside ambiguous local families.
+    frame = frame.reset_index(drop=True)
+    family_keys = frame["tire_sequence"].map(sequence_family_key)
+    frame["family_key"] = family_keys
+    for _, family_idx in frame.groupby(["family_key", "pit_stop_count"], sort=False).groups.items():
+        idxs = sorted(list(family_idx))
+        if len(idxs) < 2:
+            continue
+        family_rows = frame.iloc[idxs]
+        family_gap = float(family_rows["pred_score"].max() - family_rows["pred_score"].min())
+        if family_gap > 8.0 * local_scale:
+            continue
+
+        for local_i in range(len(idxs)):
+            for local_j in range(local_i + 1, len(idxs)):
+                i = idxs[local_i]
+                j = idxs[local_j]
+                left = frame.iloc[i]
+                right = frame.iloc[j]
+                gap = abs(float(left["pred_score"] - right["pred_score"]))
+                closeness = max(0.0, 1.0 - gap / (3.0 * local_scale))
+                if closeness <= 0:
+                    continue
+
+                forward = SEQUENCE_RULE_MAP.get(
+                    (left["temp_band"], left["lap_band"], left["tire_sequence"], right["tire_sequence"])
+                )
+                backward = SEQUENCE_RULE_MAP.get(
+                    (left["temp_band"], left["lap_band"], right["tire_sequence"], left["tire_sequence"])
+                )
+
+                if forward:
+                    strength = max(0.0, min(0.49, forward["winner_win_rate"] - 0.5))
+                    support = min(forward["pairings"], 8000) / 8000.0
+                    delta = 0.55 * local_scale * closeness * strength * support
+                    cluster_bonus[i] += delta
+                    cluster_bonus[j] -= delta
+                elif backward:
+                    strength = max(0.0, min(0.49, backward["winner_win_rate"] - 0.5))
+                    support = min(backward["pairings"], 8000) / 8000.0
+                    delta = 0.55 * local_scale * closeness * strength * support
+                    cluster_bonus[i] -= delta
+                    cluster_bonus[j] += delta
+
+    # Apply a weak global rule pass only for very close neighbours in the current ranking.
     rows = list(frame.itertuples(index=False))
-    for i in range(len(rows)):
-        for j in range(i + 1, len(rows)):
-            left = rows[i]
-            right = rows[j]
-            gap = abs(left.pred_score - right.pred_score)
-            closeness = max(0.0, 1.0 - gap / (4.0 * local_scale))
-            if closeness <= 0:
-                continue
+    order = np.argsort(frame["pred_score"].to_numpy())
+    for pos in range(len(order) - 1):
+        i = int(order[pos])
+        j = int(order[pos + 1])
+        left = rows[i]
+        right = rows[j]
+        gap = abs(left.pred_score - right.pred_score)
+        closeness = max(0.0, 1.0 - gap / (2.0 * local_scale))
+        if closeness <= 0:
+            continue
 
-            forward = SEQUENCE_RULE_MAP.get(
-                (left.temp_band, left.lap_band, left.tire_sequence, right.tire_sequence)
-            )
-            backward = SEQUENCE_RULE_MAP.get(
-                (left.temp_band, left.lap_band, right.tire_sequence, left.tire_sequence)
-            )
+        forward = SEQUENCE_RULE_MAP.get(
+            (left.temp_band, left.lap_band, left.tire_sequence, right.tire_sequence)
+        )
+        backward = SEQUENCE_RULE_MAP.get(
+            (left.temp_band, left.lap_band, right.tire_sequence, left.tire_sequence)
+        )
 
-            if forward:
-                strength = max(0.0, min(0.49, forward["winner_win_rate"] - 0.5))
-                support = min(forward["pairings"], 8000) / 8000.0
-                delta = 0.90 * local_scale * closeness * strength * support
-                bonuses[i] += delta
-                bonuses[j] -= delta
-            elif backward:
-                strength = max(0.0, min(0.49, backward["winner_win_rate"] - 0.5))
-                support = min(backward["pairings"], 8000) / 8000.0
-                delta = 0.90 * local_scale * closeness * strength * support
-                bonuses[i] -= delta
-                bonuses[j] += delta
+        if forward:
+            strength = max(0.0, min(0.49, forward["winner_win_rate"] - 0.5))
+            support = min(forward["pairings"], 8000) / 8000.0
+            delta = 0.20 * local_scale * closeness * strength * support
+            global_bonus[i] += delta
+            global_bonus[j] -= delta
+        elif backward:
+            strength = max(0.0, min(0.49, backward["winner_win_rate"] - 0.5))
+            support = min(backward["pairings"], 8000) / 8000.0
+            delta = 0.20 * local_scale * closeness * strength * support
+            global_bonus[i] -= delta
+            global_bonus[j] += delta
 
-    frame["adjusted_score"] = frame["pred_score"] - bonuses
+    frame["adjusted_score"] = frame["pred_score"] - cluster_bonus - global_bonus
     return frame.sort_values(["adjusted_score", "pred_score", "driver_id"], ascending=[True, True, True])
 
 
