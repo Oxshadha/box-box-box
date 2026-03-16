@@ -229,6 +229,35 @@ def feature_row(strategy, rc):
     return row
 
 
+def add_race_composition_features(frame):
+    frame = frame.copy()
+    major_sequences = METADATA.get("major_sequences", [])
+    race_size = float(len(frame))
+    frame["race_size"] = race_size
+    frame["unique_sequence_count"] = float(frame["tire_sequence"].nunique())
+    seq_counts = frame["tire_sequence"].value_counts().to_dict()
+    tire_counts = frame["starting_tire"].value_counts().to_dict()
+    one_stop_count = float((frame["pit_stop_count"] == 1).sum())
+    two_stop_count = float((frame["pit_stop_count"] == 2).sum())
+    frame["sequence_field_count"] = frame["tire_sequence"].map(seq_counts).astype(float)
+    frame["sequence_field_share"] = frame["sequence_field_count"] / race_size
+    frame["starting_tire_field_count"] = frame["starting_tire"].map(tire_counts).astype(float)
+    frame["starting_tire_field_share"] = frame["starting_tire_field_count"] / race_size
+    frame["one_stop_field_count"] = one_stop_count
+    frame["two_stop_field_count"] = two_stop_count
+    frame["one_stop_field_share"] = one_stop_count / race_size
+    frame["two_stop_field_share"] = two_stop_count / race_size
+
+    for seq_name in major_sequences:
+        safe = seq_name.lower().replace(">", "_to_")
+        count_col = f"field_count__{safe}"
+        share_col = f"field_share__{safe}"
+        count = float(seq_counts.get(seq_name, 0.0))
+        frame[count_col] = count
+        frame[share_col] = count / race_size
+    return frame
+
+
 def encode(frame):
     for col in METADATA["categorical_columns"]:
         frame[col] = frame[col].fillna("__MISSING__").astype(str)
@@ -383,6 +412,7 @@ def predict_finishing_positions(test_case):
         row["driver_id"] = strategy["driver_id"]
         rows.append(row)
     frame = pd.DataFrame(rows)
+    frame = add_race_composition_features(frame)
     encoded = encode(frame.copy())
     frame["pred_score"] = RANKER.predict(encoded)
     frame = apply_rule_rerank(frame)

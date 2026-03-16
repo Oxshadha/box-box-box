@@ -26,9 +26,10 @@ TRAIN_RACES = int(os.environ.get("TRAIN_RACES", "600"))
 N_ESTIMATORS = int(os.environ.get("N_ESTIMATORS", "300"))
 LEARNING_RATE = float(os.environ.get("LEARNING_RATE", "0.05"))
 MAX_DEPTH = int(os.environ.get("MAX_DEPTH", "6"))
+USE_COMPOSITION_FEATURES = os.environ.get("USE_COMPOSITION_FEATURES", "1") != "0"
 
 
-FEATURE_COLUMNS = [
+BASE_FEATURE_COLUMNS = [
     "track",
     "starting_tire",
     "tire_sequence",
@@ -70,7 +71,7 @@ FEATURE_COLUMNS = [
     "stint_3_frac",
 ]
 
-CATEGORICAL_COLUMNS = [
+BASE_CATEGORICAL_COLUMNS = [
     "track",
     "starting_tire",
     "tire_sequence",
@@ -141,14 +142,64 @@ def add_regime_features(df):
     return out
 
 
-def one_hot_encode(train, validation, test):
+def derive_major_sequences(train_df, top_n=8):
+    return train_df["tire_sequence"].value_counts().head(top_n).index.tolist()
+
+
+def add_race_composition_features(df, major_sequences):
+    out = df.copy()
+    race_size = out.groupby("race_id")["driver_id"].transform("size").astype(float)
+    out["race_size"] = race_size
+    out["unique_sequence_count"] = out.groupby("race_id")["tire_sequence"].transform("nunique").astype(float)
+    out["sequence_field_count"] = out.groupby(["race_id", "tire_sequence"])["driver_id"].transform("size").astype(float)
+    out["sequence_field_share"] = out["sequence_field_count"] / race_size
+    out["starting_tire_field_count"] = out.groupby(["race_id", "starting_tire"])["driver_id"].transform("size").astype(float)
+    out["starting_tire_field_share"] = out["starting_tire_field_count"] / race_size
+    out["one_stop_field_count"] = out.groupby("race_id")["pit_stop_count"].transform(lambda s: float((s == 1).sum()))
+    out["two_stop_field_count"] = out.groupby("race_id")["pit_stop_count"].transform(lambda s: float((s == 2).sum()))
+    out["one_stop_field_share"] = out["one_stop_field_count"] / race_size
+    out["two_stop_field_share"] = out["two_stop_field_count"] / race_size
+
+    for seq in major_sequences:
+        safe = seq.lower().replace(">", "_to_")
+        count_col = f"field_count__{safe}"
+        share_col = f"field_share__{safe}"
+        seq_counts = out.groupby("race_id")["tire_sequence"].transform(lambda s, target=seq: float((s == target).sum()))
+        out[count_col] = seq_counts
+        out[share_col] = seq_counts / race_size
+
+    return out
+
+
+def get_feature_config(major_sequences):
+    feature_columns = list(BASE_FEATURE_COLUMNS) + [
+        "race_size",
+        "unique_sequence_count",
+        "sequence_field_count",
+        "sequence_field_share",
+        "starting_tire_field_count",
+        "starting_tire_field_share",
+        "one_stop_field_count",
+        "two_stop_field_count",
+        "one_stop_field_share",
+        "two_stop_field_share",
+    ]
+    for seq in major_sequences:
+        safe = seq.lower().replace(">", "_to_")
+        feature_columns.append(f"field_count__{safe}")
+        feature_columns.append(f"field_share__{safe}")
+    categorical_columns = list(BASE_CATEGORICAL_COLUMNS)
+    return feature_columns, categorical_columns
+
+
+def one_hot_encode(train, validation, test, categorical_columns):
     combined = pd.concat([train, validation, test], axis=0, ignore_index=True)
     categories = {}
-    for col in CATEGORICAL_COLUMNS:
+    for col in categorical_columns:
         categories[col] = sorted(combined[col].fillna("__MISSING__").astype(str).unique().tolist())
     combined = pd.get_dummies(
         combined,
-        columns=CATEGORICAL_COLUMNS,
+        columns=categorical_columns,
         dummy_na=True,
     )
 
@@ -211,6 +262,18 @@ def main():
     validation = df[df["race_id"].isin(splits["validation"])].copy()
     test = df[df["race_id"].isin(splits["test"])].copy()
 
+    if USE_COMPOSITION_FEATURES:
+        major_sequences = derive_major_sequences(train)
+        df = add_race_composition_features(df, major_sequences)
+        train = df[df["race_id"].isin(splits["train"])].copy()
+        validation = df[df["race_id"].isin(splits["validation"])].copy()
+        test = df[df["race_id"].isin(splits["test"])].copy()
+        feature_columns, categorical_columns = get_feature_config(major_sequences)
+    else:
+        major_sequences = []
+        feature_columns = list(BASE_FEATURE_COLUMNS)
+        categorical_columns = list(BASE_CATEGORICAL_COLUMNS)
+
     available_races = train["race_id"].drop_duplicates()
     sampled_train_races = available_races.sample(
         n=min(TRAIN_RACES, len(available_races)),
@@ -219,9 +282,10 @@ def main():
     train = train[train["race_id"].isin(sampled_train_races)].copy()
 
     train_x, validation_x, test_x, categories, encoded_columns = one_hot_encode(
-        train[FEATURE_COLUMNS],
-        validation[FEATURE_COLUMNS],
-        test[FEATURE_COLUMNS],
+        train[feature_columns],
+        validation[feature_columns],
+        test[feature_columns],
+        categorical_columns,
     )
 
     ranker = XGBRanker(
@@ -264,10 +328,12 @@ def main():
     METADATA_PATH.write_text(
         json.dumps(
             {
-                "feature_columns": FEATURE_COLUMNS,
-                "categorical_columns": CATEGORICAL_COLUMNS,
+                "feature_columns": feature_columns,
+                "categorical_columns": categorical_columns,
                 "categories": categories,
                 "encoded_columns": encoded_columns,
+                "major_sequences": major_sequences,
+                "use_composition_features": USE_COMPOSITION_FEATURES,
                 "train_races": len(sampled_train_races),
                 "n_estimators": N_ESTIMATORS,
                 "learning_rate": LEARNING_RATE,
