@@ -1,0 +1,379 @@
+{
+  "overall": {
+    "races": 100,
+    "passed": 9,
+    "failed": 91,
+    "exact_match_rate": 0.09,
+    "first_match_rate": 0.66,
+    "top3_set_match_rate": 0.69,
+    "top5_set_match_rate": 0.74
+  },
+  "pass_vs_fail_means": {
+    "passed_mean_total_laps": 44.44444444444444,
+    "failed_mean_total_laps": 45.42857142857143,
+    "passed_mean_track_temp": 30.666666666666668,
+    "failed_mean_track_temp": 30.054945054945055,
+    "passed_mean_pit_lane_time": 21.96666666666667,
+    "failed_mean_pit_lane_time": 22.02747252747253,
+    "passed_mean_unique_sequence_count": 6.0,
+    "failed_mean_unique_sequence_count": 6.967032967032967
+  },
+  "by_track": [
+    {
+      "track": "Bahrain",
+      "races": 13,
+      "exact_match_rate": 0.0769,
+      "first_match_rate": 0.7692,
+      "top3_set_match_rate": 0.4615,
+      "top5_set_match_rate": 0.7692
+    },
+    {
+      "track": "COTA",
+      "races": 10,
+      "exact_match_rate": 0.1,
+      "first_match_rate": 0.7,
+      "top3_set_match_rate": 0.5,
+      "top5_set_match_rate": 0.6
+    },
+    {
+      "track": "Monaco",
+      "races": 16,
+      "exact_match_rate": 0.0625,
+      "first_match_rate": 0.5625,
+      "top3_set_match_rate": 0.75,
+      "top5_set_match_rate": 0.6875
+    },
+    {
+      "track": "Monza",
+      "races": 19,
+      "exact_match_rate": 0.0526,
+      "first_match_rate": 0.4737,
+      "top3_set_match_rate": 0.6316,
+      "top5_set_match_rate": 0.6842
+    },
+    {
+      "track": "Silverstone",
+      "races": 12,
+      "exact_match_rate": 0.1667,
+      "first_match_rate": 0.5833,
+      "top3_set_match_rate": 0.75,
+      "top5_set_match_rate": 0.9167
+    },
+    {
+      "track": "Spa",
+      "races": 12,
+      "exact_match_rate": 0.0833,
+      "first_match_rate": 0.8333,
+      "top3_set_match_rate": 0.75,
+      "top5_set_match_rate": 0.8333
+    },
+    {
+      "track": "Suzuka",
+      "races": 18,
+      "exact_match_rate": 0.1111,
+      "first_match_rate": 0.7778,
+      "top3_set_match_rate": 0.8889,
+      "top5_set_match_rate": 0.7222
+    }
+  ],
+  "by_temp_band": [
+    {
+      "temp_band": "cool",
+      "races": 12,
+      "exact_match_rate": 0.0,
+      "first_match_rate": 0.5833,
+      "top3_set_match_rate": 0.5833,
+      "top5_set_match_rate": 0.9167
+    },
+    {
+      "temp_band": "hot",
+      "races": 10,
+      "exact_match_rate": 0.1,
+      "first_match_rate": 0.7,
+      "top3_set_match_rate": 0.9,
+      "top5_set_match_rate": 0.8
+    },
+    {
+      "temp_band": "mild",
+      "races": 43,
+      "exact_match_rate": 0.1163,
+      "first_match_rate": 0.6047,
+      "top3_set_match_rate": 0.6047,
+      "top5_set_match_rate": 0.6512
+    },
+    {
+      "temp_band": "warm",
+      "races": 35,
+      "exact_match_rate": 0.0857,
+      "first_match_rate": 0.7429,
+      "top3_set_match_rate": 0.7714,
+      "top5_set_match_rate": 0.7714
+    }
+  ],
+  "by_lap_band": [
+    {
+      "lap_band": "long",
+      "races": 13,
+      "exact_match_rate": 0.0769,
+      "first_match_rate": 0.7692,
+      "top3_set_match_rate": 0.8462,
+      "top5_set_match_rate": 1.0
+    },
+    {
+      "lap_band": "mid",
+      "races": 30,
+      "exact_match_rate": 0.1,
+      "first_match_rate": 0.8667,
+      "top3_set_match_rate": 0.9667,
+      "top5_set_match_rate": 0.9333
+    },
+    {
+      "lap_band": "mid_short",
+      "races": 40,
+      "exact_match_rate": 0.075,
+      "first_match_rate": 0.575,
+      "top3_set_match_rate": 0.5,
+      "top5_set_match_rate": 0.6
+    },
+    {
+      "lap_band": "short",
+      "races": 17,
+      "exact_match_rate": 0.1176,
+      "first_match_rate": 0.4118,
+      "top3_set_match_rate": 0.5294,
+      "top5_set_match_rate": 0.5294
+    }
+  ],
+  "passed_cases": [
+    {
+      "race_id": "TEST_062",
+      "track": "Bahrain",
+      "total_laps": 38,
+      "track_temp": 32,
+      "pit_lane_time": 21.4,
+      "temp_band": "warm",
+      "lap_band": "mid_short",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 6,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "SOFT>HARD",
+      "top_sequence_1_count": 6,
+      "top_sequence_2": "HARD>SOFT",
+      "top_sequence_2_count": 4,
+      "top_sequence_3": "SOFT>MEDIUM",
+      "top_sequence_3_count": 4
+    },
+    {
+      "race_id": "TEST_041",
+      "track": "COTA",
+      "total_laps": 39,
+      "track_temp": 28,
+      "pit_lane_time": 23.9,
+      "temp_band": "mild",
+      "lap_band": "mid_short",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 6,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "MEDIUM>SOFT",
+      "top_sequence_1_count": 5,
+      "top_sequence_2": "SOFT>HARD",
+      "top_sequence_2_count": 5,
+      "top_sequence_3": "SOFT>MEDIUM",
+      "top_sequence_3_count": 4
+    },
+    {
+      "race_id": "TEST_002",
+      "track": "Monaco",
+      "total_laps": 34,
+      "track_temp": 30,
+      "pit_lane_time": 21.1,
+      "temp_band": "mild",
+      "lap_band": "short",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 4,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "SOFT>HARD",
+      "top_sequence_1_count": 9,
+      "top_sequence_2": "HARD>MEDIUM",
+      "top_sequence_2_count": 5,
+      "top_sequence_3": "MEDIUM>HARD",
+      "top_sequence_3_count": 5
+    },
+    {
+      "race_id": "TEST_078",
+      "track": "Monza",
+      "total_laps": 51,
+      "track_temp": 27,
+      "pit_lane_time": 22.5,
+      "temp_band": "mild",
+      "lap_band": "mid",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 6,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "HARD>MEDIUM",
+      "top_sequence_1_count": 6,
+      "top_sequence_2": "HARD>SOFT",
+      "top_sequence_2_count": 4,
+      "top_sequence_3": "SOFT>HARD",
+      "top_sequence_3_count": 3
+    },
+    {
+      "race_id": "TEST_047",
+      "track": "Silverstone",
+      "total_laps": 57,
+      "track_temp": 37,
+      "pit_lane_time": 23.2,
+      "temp_band": "hot",
+      "lap_band": "long",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 11,
+      "one_stop_drivers": 13,
+      "two_stop_drivers": 7,
+      "top_sequence_1": "HARD>MEDIUM>SOFT",
+      "top_sequence_1_count": 3,
+      "top_sequence_2": "MEDIUM>HARD",
+      "top_sequence_2_count": 3,
+      "top_sequence_3": "SOFT>MEDIUM",
+      "top_sequence_3_count": 3
+    },
+    {
+      "race_id": "TEST_084",
+      "track": "Silverstone",
+      "total_laps": 44,
+      "track_temp": 29,
+      "pit_lane_time": 20.5,
+      "temp_band": "mild",
+      "lap_band": "mid_short",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 6,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "MEDIUM>HARD",
+      "top_sequence_1_count": 6,
+      "top_sequence_2": "HARD>MEDIUM",
+      "top_sequence_2_count": 4,
+      "top_sequence_3": "HARD>SOFT",
+      "top_sequence_3_count": 4
+    },
+    {
+      "race_id": "TEST_091",
+      "track": "Spa",
+      "total_laps": 30,
+      "track_temp": 28,
+      "pit_lane_time": 20.4,
+      "temp_band": "mild",
+      "lap_band": "short",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 4,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "HARD>MEDIUM",
+      "top_sequence_1_count": 6,
+      "top_sequence_2": "HARD>SOFT",
+      "top_sequence_2_count": 5,
+      "top_sequence_3": "MEDIUM>HARD",
+      "top_sequence_3_count": 5
+    },
+    {
+      "race_id": "TEST_011",
+      "track": "Suzuka",
+      "total_laps": 53,
+      "track_temp": 33,
+      "pit_lane_time": 23.9,
+      "temp_band": "warm",
+      "lap_band": "mid",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 6,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "HARD>SOFT",
+      "top_sequence_1_count": 6,
+      "top_sequence_2": "MEDIUM>HARD",
+      "top_sequence_2_count": 4,
+      "top_sequence_3": "MEDIUM>SOFT",
+      "top_sequence_3_count": 4
+    },
+    {
+      "race_id": "TEST_044",
+      "track": "Suzuka",
+      "total_laps": 54,
+      "track_temp": 32,
+      "pit_lane_time": 20.8,
+      "temp_band": "warm",
+      "lap_band": "mid",
+      "exact_match": 1,
+      "first_match": 1,
+      "top3_set_match": 1,
+      "top5_set_match": 1,
+      "unique_sequence_count": 5,
+      "one_stop_drivers": 20,
+      "two_stop_drivers": 0,
+      "top_sequence_1": "SOFT>HARD",
+      "top_sequence_1_count": 6,
+      "top_sequence_2": "HARD>MEDIUM",
+      "top_sequence_2_count": 5,
+      "top_sequence_3": "HARD>SOFT",
+      "top_sequence_3_count": 4
+    }
+  ],
+  "failed_top_sequence_1": [
+    {
+      "top_sequence_1": "MEDIUM>HARD",
+      "races": 26,
+      "exact_match_rate": 0.0
+    },
+    {
+      "top_sequence_1": "HARD>MEDIUM",
+      "races": 22,
+      "exact_match_rate": 0.0
+    },
+    {
+      "top_sequence_1": "HARD>SOFT",
+      "races": 15,
+      "exact_match_rate": 0.0
+    },
+    {
+      "top_sequence_1": "MEDIUM>SOFT",
+      "races": 13,
+      "exact_match_rate": 0.0
+    },
+    {
+      "top_sequence_1": "SOFT>MEDIUM",
+      "races": 11,
+      "exact_match_rate": 0.0
+    },
+    {
+      "top_sequence_1": "SOFT>HARD",
+      "races": 4,
+      "exact_match_rate": 0.0
+    }
+  ]
+}
