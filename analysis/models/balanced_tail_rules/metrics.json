@@ -1,0 +1,116 @@
+{
+  "rule_templates": 22,
+  "templates_with_rules": [
+    {
+      "template": "short|warm|SOFT>HARD|8_10",
+      "rules": 2,
+      "train_races": 230
+    },
+    {
+      "template": "mid_short|mild|HARD>MEDIUM|4_5",
+      "rules": 1,
+      "train_races": 27
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>HARD|8_10",
+      "rules": 1,
+      "train_races": 86
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>SOFT|4_5",
+      "rules": 1,
+      "train_races": 96
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>SOFT|6_7",
+      "rules": 1,
+      "train_races": 125
+    },
+    {
+      "template": "mid_short|mild|SOFT>HARD|4_5",
+      "rules": 1,
+      "train_races": 158
+    },
+    {
+      "template": "mid_short|mild|SOFT>MEDIUM|4_5",
+      "rules": 1,
+      "train_races": 122
+    },
+    {
+      "template": "mid_short|warm|MEDIUM>HARD|4_5",
+      "rules": 1,
+      "train_races": 159
+    },
+    {
+      "template": "mid_short|warm|MEDIUM>SOFT|6_7",
+      "rules": 1,
+      "train_races": 187
+    },
+    {
+      "template": "mid_short|warm|MEDIUM>SOFT|8_10",
+      "rules": 1,
+      "train_races": 35
+    },
+    {
+      "template": "mid_short|warm|SOFT>HARD|4_5",
+      "rules": 1,
+      "train_races": 199
+    },
+    {
+      "template": "mid_short|warm|SOFT>HARD|6_7",
+      "rules": 1,
+      "train_races": 231
+    },
+    {
+      "template": "mid_short|warm|SOFT>MEDIUM|4_5",
+      "rules": 1,
+      "train_races": 162
+    },
+    {
+      "template": "mid_short|warm|SOFT>MEDIUM|6_7",
+      "rules": 1,
+      "train_races": 179
+    },
+    {
+      "template": "mid_short|warm|SOFT>MEDIUM|8_10",
+      "rules": 1,
+      "train_races": 23
+    },
+    {
+      "template": "short|mild|MEDIUM>HARD|6_7",
+      "rules": 1,
+      "train_races": 244
+    },
+    {
+      "template": "short|mild|MEDIUM>HARD|8_10",
+      "rules": 1,
+      "train_races": 339
+    },
+    {
+      "template": "short|mild|SOFT>HARD|6_7",
+      "rules": 1,
+      "train_races": 201
+    },
+    {
+      "template": "short|warm|MEDIUM>HARD|6_7",
+      "rules": 1,
+      "train_races": 228
+    },
+    {
+      "template": "short|warm|MEDIUM>HARD|8_10",
+      "rules": 1,
+      "train_races": 315
+    },
+    {
+      "template": "short|warm|SOFT>HARD|6_7",
+      "rules": 1,
+      "train_races": 220
+    },
+    {
+      "template": "short|warm|SOFT>MEDIUM|6_7",
+      "rules": 1,
+      "train_races": 46
+    }
+  ],
+  "validation_balanced_races": 1154
+}
