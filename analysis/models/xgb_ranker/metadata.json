@@ -586,6 +586,7 @@
     "SOFT>HARD>MEDIUM",
     "HARD>SOFT>MEDIUM"
   ],
+  "use_composition_features": true,
   "train_races": 6000,
   "n_estimators": 600,
   "learning_rate": 0.03,

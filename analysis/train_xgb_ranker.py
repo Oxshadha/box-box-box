@@ -17,16 +17,18 @@ DATA_PATH = ROOT / "analysis" / "historical_driver_features.csv"
 SPLIT_PATH = ROOT / "analysis" / "splits" / "race_id_splits.json"
 V2_PARAMS_PATH = ROOT / "analysis" / "models" / "physics_simulator_v2" / "best_params.json"
 V4_PARAMS_PATH = ROOT / "analysis" / "models" / "physics_simulator_v4" / "best_params.json"
-OUTPUT_DIR = ROOT / "analysis" / "models" / "xgb_ranker"
-METRICS_PATH = OUTPUT_DIR / "metrics.json"
-MODEL_PATH = OUTPUT_DIR / "model.json"
-METADATA_PATH = OUTPUT_DIR / "metadata.json"
-
 TRAIN_RACES = int(os.environ.get("TRAIN_RACES", "600"))
 N_ESTIMATORS = int(os.environ.get("N_ESTIMATORS", "300"))
 LEARNING_RATE = float(os.environ.get("LEARNING_RATE", "0.05"))
 MAX_DEPTH = int(os.environ.get("MAX_DEPTH", "6"))
 USE_COMPOSITION_FEATURES = os.environ.get("USE_COMPOSITION_FEATURES", "1") != "0"
+MODEL_TAG = os.environ.get("MODEL_TAG", "").strip()
+
+MODEL_DIR_NAME = f"xgb_ranker_{MODEL_TAG}" if MODEL_TAG else "xgb_ranker"
+OUTPUT_DIR = ROOT / "analysis" / "models" / MODEL_DIR_NAME
+METRICS_PATH = OUTPUT_DIR / "metrics.json"
+MODEL_PATH = OUTPUT_DIR / "model.json"
+METADATA_PATH = OUTPUT_DIR / "metadata.json"
 
 
 BASE_FEATURE_COLUMNS = [
@@ -334,6 +336,7 @@ def main():
                 "encoded_columns": encoded_columns,
                 "major_sequences": major_sequences,
                 "use_composition_features": USE_COMPOSITION_FEATURES,
+                "model_tag": MODEL_TAG,
                 "train_races": len(sampled_train_races),
                 "n_estimators": N_ESTIMATORS,
                 "learning_rate": LEARNING_RATE,

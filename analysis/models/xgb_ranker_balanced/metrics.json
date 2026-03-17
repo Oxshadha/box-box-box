@@ -1,0 +1,27 @@
+{
+  "validation": {
+    "xgb_ranker": {
+      "races": 1610,
+      "exact_order_accuracy": 0.4763975155279503,
+      "top3_set_accuracy": 0.8875776397515528,
+      "top5_set_accuracy": 0.8950310559006212,
+      "mean_kendall_tau": 0.9853154625694673,
+      "mean_spearman_rho": 0.9963330686965863
+    }
+  },
+  "test": {
+    "xgb_ranker": {
+      "races": 1660,
+      "exact_order_accuracy": 0.5048192771084338,
+      "top3_set_accuracy": 0.9168674698795181,
+      "top5_set_accuracy": 0.9072289156626506,
+      "mean_kendall_tau": 0.9867406467977172,
+      "mean_spearman_rho": 0.996754234985053
+    }
+  },
+  "specialist_filter": {
+    "train_races": 6000,
+    "validation_races": 1610,
+    "test_races": 1660
+  }
+}
