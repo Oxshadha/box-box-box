@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import pickle
 import sys
 from pathlib import Path
 
@@ -11,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NO_COMP_DIR = ROOT / "analysis" / "models" / "xgb_ranker_no_comp"
 COMP_DIR = ROOT / "analysis" / "models" / "xgb_ranker_comp"
 BALANCED_DIR = ROOT / "analysis" / "models" / "xgb_ranker_balanced"
+TIEBREAK_DIR = ROOT / "analysis" / "models" / "comp_tiebreaker"
 
 BLEND_ALPHA_V2 = 0.6
 
@@ -70,6 +72,14 @@ if HAS_BALANCED:
     BALANCED_META, BALANCED_MODEL = load_bundle(BALANCED_DIR)
 else:
     BALANCED_META, BALANCED_MODEL = None, None
+HAS_TIEBREAK = TIEBREAK_DIR.exists()
+if HAS_TIEBREAK:
+    with (TIEBREAK_DIR / "model.pkl").open("rb") as fh:
+        COMP_TIEBREAK_MODEL = pickle.load(fh)
+    COMP_TIEBREAK_META = json.loads((TIEBREAK_DIR / "metadata.json").read_text())
+else:
+    COMP_TIEBREAK_MODEL = None
+    COMP_TIEBREAK_META = {"pair_gap": 0.12, "adjustment_strength": 0.08}
 
 
 def build_stints(strategy, total_laps):
@@ -245,6 +255,60 @@ def encode(frame, metadata):
     return frame[metadata["encoded_columns"]]
 
 
+def apply_comp_tiebreak(frame):
+    if COMP_TIEBREAK_MODEL is None:
+        return frame
+    pair_gap = float(COMP_TIEBREAK_META.get("pair_gap", 0.12))
+    adjustment_strength = float(COMP_TIEBREAK_META.get("adjustment_strength", 0.08))
+    race = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True]).reset_index(drop=True).copy()
+    adjustment = [0.0] * len(race)
+    pair_rows = []
+    pair_positions = []
+    for i in range(len(race) - 1):
+        j = i + 1
+        if abs(float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"])) > pair_gap:
+            continue
+        pair_rows.append(
+            {
+                "track": race.loc[i, "track"],
+                "temp_band": race.loc[i, "temp_band"],
+                "lap_band": race.loc[i, "lap_band"],
+                "left_starting_tire": race.loc[i, "starting_tire"],
+                "right_starting_tire": race.loc[j, "starting_tire"],
+                "left_tire_sequence": race.loc[i, "tire_sequence"],
+                "right_tire_sequence": race.loc[j, "tire_sequence"],
+                "score_gap": float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"]),
+                "abs_score_gap": abs(float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"])),
+                "blend_gap": float(race.loc[i, "pred_blend"] - race.loc[j, "pred_blend"]),
+                "v2_gap": float(race.loc[i, "pred_v2"] - race.loc[j, "pred_v2"]),
+                "v4_gap": float(race.loc[i, "pred_v4"] - race.loc[j, "pred_v4"]),
+                "pit_stop_gap": float(race.loc[i, "pit_stop_count"] - race.loc[j, "pit_stop_count"]),
+                "first_stop_frac_gap": float(race.loc[i, "first_stop_frac"] - race.loc[j, "first_stop_frac"]),
+                "second_stop_frac_gap": float(race.loc[i, "second_stop_frac"] - race.loc[j, "second_stop_frac"]),
+                "soft_frac_gap": float(race.loc[i, "soft_frac"] - race.loc[j, "soft_frac"]),
+                "medium_frac_gap": float(race.loc[i, "medium_frac"] - race.loc[j, "medium_frac"]),
+                "hard_frac_gap": float(race.loc[i, "hard_frac"] - race.loc[j, "hard_frac"]),
+                "stint_1_frac_gap": float(race.loc[i, "stint_1_frac"] - race.loc[j, "stint_1_frac"]),
+                "stint_2_frac_gap": float(race.loc[i, "stint_2_frac"] - race.loc[j, "stint_2_frac"]),
+                "stint_3_frac_gap": float(race.loc[i, "stint_3_frac"] - race.loc[j, "stint_3_frac"]),
+                "sequence_field_share_gap": float(race.loc[i, "sequence_field_share"] - race.loc[j, "sequence_field_share"]),
+                "starting_tire_field_share_gap": float(race.loc[i, "starting_tire_field_share"] - race.loc[j, "starting_tire_field_share"]),
+                "track_temp": float(race.loc[i, "track_temp"]),
+                "total_laps": float(race.loc[i, "total_laps"]),
+                "pit_lane_time": float(race.loc[i, "pit_lane_time"]),
+            }
+        )
+        pair_positions.append((i, j))
+    if pair_rows:
+        probs = COMP_TIEBREAK_MODEL.predict_proba(pd.DataFrame(pair_rows))[:, 1]
+        for (i, j), prob_left_ahead in zip(pair_positions, probs):
+            centered = float(prob_left_ahead) - 0.5
+            adjustment[i] -= adjustment_strength * centered
+            adjustment[j] += adjustment_strength * centered
+    race["pred_score"] = race["pred_score"] + adjustment
+    return race
+
+
 def choose_bundle(frame):
     unique_sequences = int(frame["tire_sequence"].nunique())
     two_stop = int((frame["pit_stop_count"] == 2).sum())
@@ -267,24 +331,24 @@ def choose_bundle(frame):
     )
 
     if HAS_BALANCED and balanced_cluster and top_sequence in {"MEDIUM>HARD", "SOFT>HARD", "SOFT>MEDIUM", "MEDIUM>SOFT"}:
-        return BALANCED_META, BALANCED_MODEL
+        return "balanced", BALANCED_META, BALANCED_MODEL
     if total_laps <= 35 and unique_sequences <= 4:
-        return NO_COMP_META, NO_COMP_MODEL
+        return "no_comp", NO_COMP_META, NO_COMP_MODEL
     if dominant_soft_hard and two_stop == 0 and unique_sequences <= 6 and total_laps <= 55:
-        return NO_COMP_META, NO_COMP_MODEL
+        return "no_comp", NO_COMP_META, NO_COMP_MODEL
     if dominant_hard_medium_short and two_stop == 0 and unique_sequences <= 5 and temp_band in {"mild", "warm"}:
-        return NO_COMP_META, NO_COMP_MODEL
+        return "no_comp", NO_COMP_META, NO_COMP_MODEL
     if dominant_medium_hard_short and two_stop == 0 and unique_sequences <= 5:
-        return NO_COMP_META, NO_COMP_MODEL
+        return "no_comp", NO_COMP_META, NO_COMP_MODEL
     if two_stop >= 5:
-        return COMP_META, COMP_MODEL
+        return "comp", COMP_META, COMP_MODEL
     if top_sequence == "HARD>MEDIUM" and lap_band in {"mid", "long"}:
-        return COMP_META, COMP_MODEL
+        return "comp", COMP_META, COMP_MODEL
     if total_laps >= 48:
-        return COMP_META, COMP_MODEL
+        return "comp", COMP_META, COMP_MODEL
     if unique_sequences >= 7:
-        return COMP_META, COMP_MODEL
-    return COMP_META, COMP_MODEL
+        return "comp", COMP_META, COMP_MODEL
+    return "comp", COMP_META, COMP_MODEL
 
 
 def predict_finishing_positions(test_case):
@@ -295,11 +359,13 @@ def predict_finishing_positions(test_case):
         row["driver_id"] = strategy["driver_id"]
         rows.append(row)
     frame = pd.DataFrame(rows)
-    metadata, model = choose_bundle(frame)
+    branch, metadata, model = choose_bundle(frame)
     if metadata.get("use_composition_features", False):
         frame = add_race_composition_features(frame, metadata)
     encoded = encode(frame, metadata)
     frame["pred_score"] = model.predict(encoded)
+    if branch == "comp":
+        frame = apply_comp_tiebreak(frame)
     frame = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True])
     return frame["driver_id"].tolist()
 
