@@ -13,6 +13,8 @@ NO_COMP_DIR = ROOT / "analysis" / "models" / "xgb_ranker_no_comp"
 COMP_DIR = ROOT / "analysis" / "models" / "xgb_ranker_comp"
 BALANCED_DIR = ROOT / "analysis" / "models" / "xgb_ranker_balanced"
 TIEBREAK_DIR = ROOT / "analysis" / "models" / "comp_tiebreaker"
+TAIL_TIEBREAK_DIR = ROOT / "analysis" / "models" / "comp_tail_tiebreaker"
+BALANCED_TAIL_TIEBREAK_DIR = ROOT / "analysis" / "models" / "balanced_tail_tiebreaker"
 
 BLEND_ALPHA_V2 = 0.6
 
@@ -80,6 +82,22 @@ if HAS_TIEBREAK:
 else:
     COMP_TIEBREAK_MODEL = None
     COMP_TIEBREAK_META = {"pair_gap": 0.12, "adjustment_strength": 0.08}
+HAS_TAIL_TIEBREAK = TAIL_TIEBREAK_DIR.exists()
+if HAS_TAIL_TIEBREAK:
+    with (TAIL_TIEBREAK_DIR / "model.pkl").open("rb") as fh:
+        COMP_TAIL_TIEBREAK_MODEL = pickle.load(fh)
+    COMP_TAIL_TIEBREAK_META = json.loads((TAIL_TIEBREAK_DIR / "metadata.json").read_text())
+else:
+    COMP_TAIL_TIEBREAK_MODEL = None
+    COMP_TAIL_TIEBREAK_META = {"pair_gap": 0.18, "adjustment_strength": 0.10, "top_keep": 5}
+HAS_BALANCED_TAIL_TIEBREAK = BALANCED_TAIL_TIEBREAK_DIR.exists()
+if HAS_BALANCED_TAIL_TIEBREAK:
+    with (BALANCED_TAIL_TIEBREAK_DIR / "model.pkl").open("rb") as fh:
+        BALANCED_TAIL_TIEBREAK_MODEL = pickle.load(fh)
+    BALANCED_TAIL_TIEBREAK_META = json.loads((BALANCED_TAIL_TIEBREAK_DIR / "metadata.json").read_text())
+else:
+    BALANCED_TAIL_TIEBREAK_MODEL = None
+    BALANCED_TAIL_TIEBREAK_META = {"pair_gap": 0.16, "adjustment_strength": 0.09, "top_keep": 5}
 
 
 def build_stints(strategy, total_laps):
@@ -309,6 +327,120 @@ def apply_comp_tiebreak(frame):
     return race
 
 
+def apply_comp_tail_tiebreak(frame):
+    if COMP_TAIL_TIEBREAK_MODEL is None:
+        return frame
+    pair_gap = float(COMP_TAIL_TIEBREAK_META.get("pair_gap", 0.18))
+    adjustment_strength = float(COMP_TAIL_TIEBREAK_META.get("adjustment_strength", 0.10))
+    top_keep = int(COMP_TAIL_TIEBREAK_META.get("top_keep", 5))
+    race = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True]).reset_index(drop=True).copy()
+    if len(race) <= top_keep:
+        return race
+    adjustment = [0.0] * len(race)
+    pair_rows = []
+    pair_positions = []
+    for i in range(top_keep, len(race) - 1):
+        j = i + 1
+        if abs(float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"])) > pair_gap:
+            continue
+        pair_rows.append(
+            {
+                "track": race.loc[i, "track"],
+                "temp_band": race.loc[i, "temp_band"],
+                "lap_band": race.loc[i, "lap_band"],
+                "left_starting_tire": race.loc[i, "starting_tire"],
+                "right_starting_tire": race.loc[j, "starting_tire"],
+                "left_tire_sequence": race.loc[i, "tire_sequence"],
+                "right_tire_sequence": race.loc[j, "tire_sequence"],
+                "score_gap": float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"]),
+                "abs_score_gap": abs(float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"])),
+                "blend_gap": float(race.loc[i, "pred_blend"] - race.loc[j, "pred_blend"]),
+                "v2_gap": float(race.loc[i, "pred_v2"] - race.loc[j, "pred_v2"]),
+                "v4_gap": float(race.loc[i, "pred_v4"] - race.loc[j, "pred_v4"]),
+                "pit_stop_gap": float(race.loc[i, "pit_stop_count"] - race.loc[j, "pit_stop_count"]),
+                "first_stop_frac_gap": float(race.loc[i, "first_stop_frac"] - race.loc[j, "first_stop_frac"]),
+                "second_stop_frac_gap": float(race.loc[i, "second_stop_frac"] - race.loc[j, "second_stop_frac"]),
+                "soft_frac_gap": float(race.loc[i, "soft_frac"] - race.loc[j, "soft_frac"]),
+                "medium_frac_gap": float(race.loc[i, "medium_frac"] - race.loc[j, "medium_frac"]),
+                "hard_frac_gap": float(race.loc[i, "hard_frac"] - race.loc[j, "hard_frac"]),
+                "stint_1_frac_gap": float(race.loc[i, "stint_1_frac"] - race.loc[j, "stint_1_frac"]),
+                "stint_2_frac_gap": float(race.loc[i, "stint_2_frac"] - race.loc[j, "stint_2_frac"]),
+                "stint_3_frac_gap": float(race.loc[i, "stint_3_frac"] - race.loc[j, "stint_3_frac"]),
+                "sequence_field_share_gap": float(race.loc[i, "sequence_field_share"] - race.loc[j, "sequence_field_share"]),
+                "starting_tire_field_share_gap": float(race.loc[i, "starting_tire_field_share"] - race.loc[j, "starting_tire_field_share"]),
+                "track_temp": float(race.loc[i, "track_temp"]),
+                "total_laps": float(race.loc[i, "total_laps"]),
+                "pit_lane_time": float(race.loc[i, "pit_lane_time"]),
+            }
+        )
+        pair_positions.append((i, j))
+    if pair_rows:
+        probs = COMP_TAIL_TIEBREAK_MODEL.predict_proba(pd.DataFrame(pair_rows))[:, 1]
+        for (i, j), prob_left_ahead in zip(pair_positions, probs):
+            centered = float(prob_left_ahead) - 0.5
+            adjustment[i] -= adjustment_strength * centered
+            adjustment[j] += adjustment_strength * centered
+    race["pred_score"] = race["pred_score"] + adjustment
+    return race
+
+
+def apply_balanced_tail_tiebreak(frame):
+    if BALANCED_TAIL_TIEBREAK_MODEL is None:
+        return frame
+    pair_gap = float(BALANCED_TAIL_TIEBREAK_META.get("pair_gap", 0.16))
+    adjustment_strength = float(BALANCED_TAIL_TIEBREAK_META.get("adjustment_strength", 0.09))
+    top_keep = int(BALANCED_TAIL_TIEBREAK_META.get("top_keep", 5))
+    race = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True]).reset_index(drop=True).copy()
+    if len(race) <= top_keep:
+        return race
+    adjustment = [0.0] * len(race)
+    pair_rows = []
+    pair_positions = []
+    for i in range(top_keep, len(race) - 1):
+        j = i + 1
+        if abs(float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"])) > pair_gap:
+            continue
+        pair_rows.append(
+            {
+                "track": race.loc[i, "track"],
+                "temp_band": race.loc[i, "temp_band"],
+                "lap_band": race.loc[i, "lap_band"],
+                "left_starting_tire": race.loc[i, "starting_tire"],
+                "right_starting_tire": race.loc[j, "starting_tire"],
+                "left_tire_sequence": race.loc[i, "tire_sequence"],
+                "right_tire_sequence": race.loc[j, "tire_sequence"],
+                "score_gap": float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"]),
+                "abs_score_gap": abs(float(race.loc[i, "pred_score"] - race.loc[j, "pred_score"])),
+                "blend_gap": float(race.loc[i, "pred_blend"] - race.loc[j, "pred_blend"]),
+                "v2_gap": float(race.loc[i, "pred_v2"] - race.loc[j, "pred_v2"]),
+                "v4_gap": float(race.loc[i, "pred_v4"] - race.loc[j, "pred_v4"]),
+                "pit_stop_gap": float(race.loc[i, "pit_stop_count"] - race.loc[j, "pit_stop_count"]),
+                "first_stop_frac_gap": float(race.loc[i, "first_stop_frac"] - race.loc[j, "first_stop_frac"]),
+                "second_stop_frac_gap": float(race.loc[i, "second_stop_frac"] - race.loc[j, "second_stop_frac"]),
+                "soft_frac_gap": float(race.loc[i, "soft_frac"] - race.loc[j, "soft_frac"]),
+                "medium_frac_gap": float(race.loc[i, "medium_frac"] - race.loc[j, "medium_frac"]),
+                "hard_frac_gap": float(race.loc[i, "hard_frac"] - race.loc[j, "hard_frac"]),
+                "stint_1_frac_gap": float(race.loc[i, "stint_1_frac"] - race.loc[j, "stint_1_frac"]),
+                "stint_2_frac_gap": float(race.loc[i, "stint_2_frac"] - race.loc[j, "stint_2_frac"]),
+                "stint_3_frac_gap": float(race.loc[i, "stint_3_frac"] - race.loc[j, "stint_3_frac"]),
+                "sequence_field_share_gap": float(race.loc[i, "sequence_field_share"] - race.loc[j, "sequence_field_share"]),
+                "starting_tire_field_share_gap": float(race.loc[i, "starting_tire_field_share"] - race.loc[j, "starting_tire_field_share"]),
+                "track_temp": float(race.loc[i, "track_temp"]),
+                "total_laps": float(race.loc[i, "total_laps"]),
+                "pit_lane_time": float(race.loc[i, "pit_lane_time"]),
+            }
+        )
+        pair_positions.append((i, j))
+    if pair_rows:
+        probs = BALANCED_TAIL_TIEBREAK_MODEL.predict_proba(pd.DataFrame(pair_rows))[:, 1]
+        for (i, j), prob_left_ahead in zip(pair_positions, probs):
+            centered = float(prob_left_ahead) - 0.5
+            adjustment[i] -= adjustment_strength * centered
+            adjustment[j] += adjustment_strength * centered
+    race["pred_score"] = race["pred_score"] + adjustment
+    return race
+
+
 def choose_bundle(frame):
     unique_sequences = int(frame["tire_sequence"].nunique())
     two_stop = int((frame["pit_stop_count"] == 2).sum())
@@ -366,6 +498,9 @@ def predict_finishing_positions(test_case):
     frame["pred_score"] = model.predict(encoded)
     if branch == "comp":
         frame = apply_comp_tiebreak(frame)
+        frame = apply_comp_tail_tiebreak(frame)
+    elif branch == "balanced":
+        frame = apply_balanced_tail_tiebreak(frame)
     frame = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True])
     return frame["driver_id"].tolist()
 

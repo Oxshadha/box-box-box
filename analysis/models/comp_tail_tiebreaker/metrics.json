@@ -1,0 +1,31 @@
+{
+  "validation": {
+    "base": {
+      "races": 3079,
+      "exact_order_accuracy": 0.08444300097434232,
+      "top3_set_accuracy": 0.7960376745696655,
+      "top5_set_accuracy": 0.7720038973692758
+    },
+    "tiebreak": {
+      "races": 3079,
+      "exact_order_accuracy": 0.09516076648262423,
+      "top3_set_accuracy": 0.794088989931796,
+      "top5_set_accuracy": 0.7388762585254953
+    },
+    "pair_rows": 30122
+  },
+  "test": {
+    "base": {
+      "races": 3050,
+      "exact_order_accuracy": 0.09147540983606557,
+      "top3_set_accuracy": 0.7947540983606557,
+      "top5_set_accuracy": 0.7718032786885246
+    },
+    "tiebreak": {
+      "races": 3050,
+      "exact_order_accuracy": 0.09868852459016393,
+      "top3_set_accuracy": 0.7944262295081967,
+      "top5_set_accuracy": 0.7455737704918033
+    }
+  }
+}
