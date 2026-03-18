@@ -33,6 +33,9 @@ tmp/
 temp/
 *.tmp
 
+# Local model artifacts too large for GitHub
+analysis/models/assignment_model/model.json
+
 # System files
 Thumbs.db
 desktop.ini

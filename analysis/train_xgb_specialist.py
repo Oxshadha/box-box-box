@@ -54,10 +54,7 @@ def main():
     feature_columns, categorical_columns = base.get_feature_config(major_sequences)
 
     available_races = train["race_id"].drop_duplicates()
-    sampled_train_races = available_races.sample(
-        n=min(base.TRAIN_RACES, len(available_races)),
-        random_state=42,
-    )
+    sampled_train_races = base.select_train_races(available_races)
     train = train[train["race_id"].isin(sampled_train_races)].copy()
 
     train_x, validation_x, test_x, categories, encoded_columns = base.one_hot_encode(
@@ -66,6 +63,9 @@ def main():
         test[feature_columns],
         categorical_columns,
     )
+    race_weights = base.load_race_weights()
+    train_weights = base.sample_weights_for_frame(train, race_weights)
+    validation_weights = base.sample_weights_for_frame(validation, race_weights)
 
     ranker = base.XGBRanker(
         objective="rank:pairwise",
@@ -85,8 +85,10 @@ def main():
         train_x,
         train["finish_rank"],
         group=base.group_sizes(train),
+        sample_weight=train_weights,
         eval_set=[(validation_x, validation["finish_rank"])],
         eval_group=[base.group_sizes(validation)],
+        sample_weight_eval_set=[validation_weights] if validation_weights is not None else None,
         verbose=False,
     )
 
@@ -117,6 +119,8 @@ def main():
                 "major_sequences": major_sequences,
                 "use_composition_features": True,
                 "model_tag": MODEL_TAG,
+                "train_race_list_path": base.TRAIN_RACE_LIST_PATH,
+                "train_race_weights_path": base.TRAIN_RACE_WEIGHTS_PATH,
             },
             indent=2,
         )

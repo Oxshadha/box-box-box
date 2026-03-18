@@ -1,0 +1,1002 @@
+[
+  {
+    "race_id": "TEST_001",
+    "track": "Monaco",
+    "total_laps": 31,
+    "track_temp": 32,
+    "pit_lane_time": 21.4,
+    "expected_top5": "D006,D018,D003,D009,D019",
+    "pred_top5": "D006,D018,D003,D019,D009",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_002",
+    "track": "Monaco",
+    "total_laps": 34,
+    "track_temp": 30,
+    "pit_lane_time": 21.1,
+    "expected_top5": "D001,D003,D004,D009,D011",
+    "pred_top5": "D001,D003,D004,D009,D011",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_003",
+    "track": "Suzuka",
+    "total_laps": 44,
+    "track_temp": 32,
+    "pit_lane_time": 20.3,
+    "expected_top5": "D016,D015,D008,D001,D005",
+    "pred_top5": "D016,D015,D008,D001,D005",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_004",
+    "track": "Bahrain",
+    "total_laps": 36,
+    "track_temp": 29,
+    "pit_lane_time": 23.2,
+    "expected_top5": "D018,D005,D017,D011,D020",
+    "pred_top5": "D018,D011,D005,D020,D017",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_005",
+    "track": "Silverstone",
+    "total_laps": 47,
+    "track_temp": 31,
+    "pit_lane_time": 22.1,
+    "expected_top5": "D007,D015,D005,D017,D016",
+    "pred_top5": "D007,D015,D005,D017,D016",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_006",
+    "track": "Silverstone",
+    "total_laps": 45,
+    "track_temp": 42,
+    "pit_lane_time": 23.9,
+    "expected_top5": "D012,D015,D009,D017,D020",
+    "pred_top5": "D015,D009,D012,D017,D020",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_007",
+    "track": "Monza",
+    "total_laps": 45,
+    "track_temp": 19,
+    "pit_lane_time": 21.5,
+    "expected_top5": "D002,D018,D019,D008,D014",
+    "pred_top5": "D018,D002,D019,D008,D014",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_008",
+    "track": "Monza",
+    "total_laps": 49,
+    "track_temp": 23,
+    "pit_lane_time": 23.7,
+    "expected_top5": "D007,D006,D008,D015,D018",
+    "pred_top5": "D007,D008,D006,D015,D017",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_009",
+    "track": "Bahrain",
+    "total_laps": 51,
+    "track_temp": 33,
+    "pit_lane_time": 21.8,
+    "expected_top5": "D006,D020,D018,D015,D016",
+    "pred_top5": "D006,D020,D015,D018,D016",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_010",
+    "track": "Monaco",
+    "total_laps": 49,
+    "track_temp": 30,
+    "pit_lane_time": 22.2,
+    "expected_top5": "D011,D015,D017,D007,D004",
+    "pred_top5": "D011,D015,D017,D007,D004",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_011",
+    "track": "Suzuka",
+    "total_laps": 53,
+    "track_temp": 33,
+    "pit_lane_time": 23.9,
+    "expected_top5": "D009,D017,D001,D018,D004",
+    "pred_top5": "D009,D017,D001,D018,D004",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_012",
+    "track": "Monaco",
+    "total_laps": 41,
+    "track_temp": 30,
+    "pit_lane_time": 20.5,
+    "expected_top5": "D002,D005,D008,D006,D004",
+    "pred_top5": "D002,D005,D008,D006,D004",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_013",
+    "track": "Silverstone",
+    "total_laps": 53,
+    "track_temp": 33,
+    "pit_lane_time": 21.4,
+    "expected_top5": "D017,D015,D010,D008,D019",
+    "pred_top5": "D017,D015,D008,D010,D019",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_014",
+    "track": "Spa",
+    "total_laps": 46,
+    "track_temp": 23,
+    "pit_lane_time": 20.8,
+    "expected_top5": "D003,D008,D002,D017,D014",
+    "pred_top5": "D003,D008,D014,D017,D002",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_015",
+    "track": "Monza",
+    "total_laps": 27,
+    "track_temp": 32,
+    "pit_lane_time": 23.2,
+    "expected_top5": "D010,D014,D015,D016,D001",
+    "pred_top5": "D010,D014,D015,D001,D016",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_016",
+    "track": "Suzuka",
+    "total_laps": 48,
+    "track_temp": 39,
+    "pit_lane_time": 21.6,
+    "expected_top5": "D002,D007,D009,D010,D013",
+    "pred_top5": "D002,D007,D009,D010,D013",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_017",
+    "track": "Bahrain",
+    "total_laps": 69,
+    "track_temp": 30,
+    "pit_lane_time": 20.4,
+    "expected_top5": "D020,D004,D014,D006,D013",
+    "pred_top5": "D020,D004,D014,D006,D013",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_018",
+    "track": "Bahrain",
+    "total_laps": 32,
+    "track_temp": 28,
+    "pit_lane_time": 20.7,
+    "expected_top5": "D006,D007,D009,D011,D015",
+    "pred_top5": "D006,D007,D009,D011,D015",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_019",
+    "track": "Bahrain",
+    "total_laps": 35,
+    "track_temp": 28,
+    "pit_lane_time": 23.3,
+    "expected_top5": "D003,D011,D002,D009,D014",
+    "pred_top5": "D003,D011,D002,D009,D014",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_020",
+    "track": "Spa",
+    "total_laps": 66,
+    "track_temp": 38,
+    "pit_lane_time": 22.3,
+    "expected_top5": "D011,D013,D005,D007,D017",
+    "pred_top5": "D011,D005,D013,D007,D017",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_021",
+    "track": "Silverstone",
+    "total_laps": 49,
+    "track_temp": 32,
+    "pit_lane_time": 21.4,
+    "expected_top5": "D006,D008,D014,D005,D015",
+    "pred_top5": "D006,D008,D014,D005,D015",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_022",
+    "track": "COTA",
+    "total_laps": 46,
+    "track_temp": 26,
+    "pit_lane_time": 23.2,
+    "expected_top5": "D012,D008,D011,D018,D016",
+    "pred_top5": "D012,D008,D011,D016,D018",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_023",
+    "track": "Suzuka",
+    "total_laps": 47,
+    "track_temp": 33,
+    "pit_lane_time": 21.2,
+    "expected_top5": "D008,D013,D015,D001,D010",
+    "pred_top5": "D008,D013,D015,D001,D010",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_024",
+    "track": "Silverstone",
+    "total_laps": 44,
+    "track_temp": 22,
+    "pit_lane_time": 21.8,
+    "expected_top5": "D015,D014,D010,D013,D020",
+    "pred_top5": "D014,D015,D013,D010,D020",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_025",
+    "track": "Suzuka",
+    "total_laps": 57,
+    "track_temp": 18,
+    "pit_lane_time": 22.7,
+    "expected_top5": "D013,D016,D018,D004,D017",
+    "pred_top5": "D013,D016,D018,D004,D017",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_026",
+    "track": "Spa",
+    "total_laps": 37,
+    "track_temp": 33,
+    "pit_lane_time": 22.0,
+    "expected_top5": "D002,D014,D001,D016,D013",
+    "pred_top5": "D002,D014,D001,D016,D013",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_027",
+    "track": "Suzuka",
+    "total_laps": 45,
+    "track_temp": 32,
+    "pit_lane_time": 23.3,
+    "expected_top5": "D015,D005,D010,D011,D014",
+    "pred_top5": "D015,D005,D010,D011,D014",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_028",
+    "track": "Monaco",
+    "total_laps": 67,
+    "track_temp": 41,
+    "pit_lane_time": 23.9,
+    "expected_top5": "D018,D001,D006,D003,D019",
+    "pred_top5": "D018,D001,D006,D003,D019",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_029",
+    "track": "Monza",
+    "total_laps": 41,
+    "track_temp": 31,
+    "pit_lane_time": 22.2,
+    "expected_top5": "D017,D014,D009,D007,D019",
+    "pred_top5": "D017,D009,D007,D019,D014",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_030",
+    "track": "Monza",
+    "total_laps": 27,
+    "track_temp": 32,
+    "pit_lane_time": 22.0,
+    "expected_top5": "D013,D008,D009,D020,D010",
+    "pred_top5": "D013,D008,D009,D020,D010",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_031",
+    "track": "COTA",
+    "total_laps": 37,
+    "track_temp": 28,
+    "pit_lane_time": 23.9,
+    "expected_top5": "D003,D009,D008,D018,D012",
+    "pred_top5": "D012,D003,D013,D009,D006",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_032",
+    "track": "COTA",
+    "total_laps": 41,
+    "track_temp": 29,
+    "pit_lane_time": 21.8,
+    "expected_top5": "D011,D007,D019,D006,D005",
+    "pred_top5": "D011,D019,D007,D015,D009",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_033",
+    "track": "Bahrain",
+    "total_laps": 43,
+    "track_temp": 32,
+    "pit_lane_time": 23.8,
+    "expected_top5": "D015,D019,D003,D012,D005",
+    "pred_top5": "D015,D019,D012,D003,D005",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_034",
+    "track": "Bahrain",
+    "total_laps": 43,
+    "track_temp": 29,
+    "pit_lane_time": 21.8,
+    "expected_top5": "D015,D003,D018,D011,D004",
+    "pred_top5": "D015,D003,D018,D011,D004",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_035",
+    "track": "Monza",
+    "total_laps": 50,
+    "track_temp": 32,
+    "pit_lane_time": 22.1,
+    "expected_top5": "D009,D016,D006,D002,D014",
+    "pred_top5": "D009,D016,D006,D002,D014",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_036",
+    "track": "Monza",
+    "total_laps": 47,
+    "track_temp": 34,
+    "pit_lane_time": 23.3,
+    "expected_top5": "D018,D013,D020,D006,D004",
+    "pred_top5": "D018,D013,D020,D006,D004",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_037",
+    "track": "Spa",
+    "total_laps": 45,
+    "track_temp": 40,
+    "pit_lane_time": 22.1,
+    "expected_top5": "D001,D003,D019,D009,D015",
+    "pred_top5": "D001,D019,D003,D015,D009",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_038",
+    "track": "Silverstone",
+    "total_laps": 66,
+    "track_temp": 20,
+    "pit_lane_time": 23.1,
+    "expected_top5": "D001,D003,D013,D011,D006",
+    "pred_top5": "D001,D003,D013,D011,D006",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_039",
+    "track": "Monaco",
+    "total_laps": 55,
+    "track_temp": 34,
+    "pit_lane_time": 20.6,
+    "expected_top5": "D017,D009,D020,D008,D018",
+    "pred_top5": "D017,D009,D020,D008,D018",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_040",
+    "track": "COTA",
+    "total_laps": 57,
+    "track_temp": 23,
+    "pit_lane_time": 21.3,
+    "expected_top5": "D014,D012,D013,D003,D001",
+    "pred_top5": "D012,D014,D001,D013,D003",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_041",
+    "track": "COTA",
+    "total_laps": 39,
+    "track_temp": 28,
+    "pit_lane_time": 23.9,
+    "expected_top5": "D010,D020,D015,D007,D013",
+    "pred_top5": "D010,D020,D007,D013,D018",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_042",
+    "track": "Monaco",
+    "total_laps": 54,
+    "track_temp": 37,
+    "pit_lane_time": 20.3,
+    "expected_top5": "D012,D014,D006,D010,D001",
+    "pred_top5": "D014,D012,D006,D010,D001",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_043",
+    "track": "Bahrain",
+    "total_laps": 41,
+    "track_temp": 41,
+    "pit_lane_time": 20.3,
+    "expected_top5": "D004,D005,D013,D011,D007",
+    "pred_top5": "D004,D013,D011,D005,D007",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_044",
+    "track": "Suzuka",
+    "total_laps": 54,
+    "track_temp": 32,
+    "pit_lane_time": 20.8,
+    "expected_top5": "D007,D010,D005,D015,D016",
+    "pred_top5": "D007,D010,D005,D015,D016",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_045",
+    "track": "COTA",
+    "total_laps": 49,
+    "track_temp": 33,
+    "pit_lane_time": 22.9,
+    "expected_top5": "D015,D001,D020,D017,D002",
+    "pred_top5": "D015,D001,D020,D017,D002",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_046",
+    "track": "Silverstone",
+    "total_laps": 30,
+    "track_temp": 28,
+    "pit_lane_time": 23.0,
+    "expected_top5": "D015,D016,D020,D006,D009",
+    "pred_top5": "D015,D016,D020,D009,D006",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_047",
+    "track": "Silverstone",
+    "total_laps": 57,
+    "track_temp": 37,
+    "pit_lane_time": 23.2,
+    "expected_top5": "D008,D002,D001,D007,D015",
+    "pred_top5": "D008,D002,D001,D007,D015",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_048",
+    "track": "COTA",
+    "total_laps": 34,
+    "track_temp": 29,
+    "pit_lane_time": 22.5,
+    "expected_top5": "D011,D001,D017,D019,D007",
+    "pred_top5": "D011,D001,D017,D019,D007",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_049",
+    "track": "Monaco",
+    "total_laps": 40,
+    "track_temp": 29,
+    "pit_lane_time": 22.8,
+    "expected_top5": "D017,D005,D015,D001,D020",
+    "pred_top5": "D017,D005,D015,D001,D004",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_050",
+    "track": "Monza",
+    "total_laps": 40,
+    "track_temp": 30,
+    "pit_lane_time": 23.4,
+    "expected_top5": "D007,D006,D005,D018,D010",
+    "pred_top5": "D007,D006,D005,D018,D010",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_051",
+    "track": "Monza",
+    "total_laps": 47,
+    "track_temp": 27,
+    "pit_lane_time": 23.6,
+    "expected_top5": "D011,D017,D004,D008,D013",
+    "pred_top5": "D011,D017,D004,D008,D013",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_052",
+    "track": "Silverstone",
+    "total_laps": 31,
+    "track_temp": 32,
+    "pit_lane_time": 20.8,
+    "expected_top5": "D002,D008,D013,D014,D016",
+    "pred_top5": "D008,D013,D002,D014,D016",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_053",
+    "track": "Suzuka",
+    "total_laps": 53,
+    "track_temp": 33,
+    "pit_lane_time": 21.2,
+    "expected_top5": "D003,D004,D009,D017,D008",
+    "pred_top5": "D003,D004,D009,D017,D008",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_054",
+    "track": "Monaco",
+    "total_laps": 35,
+    "track_temp": 31,
+    "pit_lane_time": 20.4,
+    "expected_top5": "D020,D002,D018,D013,D006",
+    "pred_top5": "D002,D018,D020,D006,D014",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_055",
+    "track": "Monza",
+    "total_laps": 40,
+    "track_temp": 28,
+    "pit_lane_time": 21.2,
+    "expected_top5": "D015,D019,D012,D002,D013",
+    "pred_top5": "D019,D002,D013,D012,D015",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_056",
+    "track": "Suzuka",
+    "total_laps": 49,
+    "track_temp": 29,
+    "pit_lane_time": 21.0,
+    "expected_top5": "D019,D004,D002,D016,D005",
+    "pred_top5": "D004,D019,D002,D005,D016",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_057",
+    "track": "Monaco",
+    "total_laps": 43,
+    "track_temp": 34,
+    "pit_lane_time": 23.6,
+    "expected_top5": "D015,D002,D012,D006,D009",
+    "pred_top5": "D015,D012,D002,D006,D009",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_058",
+    "track": "Monza",
+    "total_laps": 45,
+    "track_temp": 27,
+    "pit_lane_time": 22.2,
+    "expected_top5": "D017,D003,D006,D010,D007",
+    "pred_top5": "D006,D010,D003,D007,D017",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_059",
+    "track": "Spa",
+    "total_laps": 48,
+    "track_temp": 29,
+    "pit_lane_time": 22.6,
+    "expected_top5": "D002,D018,D016,D005,D009",
+    "pred_top5": "D002,D018,D016,D005,D009",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_060",
+    "track": "Spa",
+    "total_laps": 37,
+    "track_temp": 29,
+    "pit_lane_time": 23.0,
+    "expected_top5": "D013,D002,D008,D014,D005",
+    "pred_top5": "D013,D002,D016,D014,D008",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_061",
+    "track": "Bahrain",
+    "total_laps": 54,
+    "track_temp": 27,
+    "pit_lane_time": 23.3,
+    "expected_top5": "D005,D019,D015,D003,D010",
+    "pred_top5": "D005,D019,D015,D003,D018",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_062",
+    "track": "Bahrain",
+    "total_laps": 38,
+    "track_temp": 32,
+    "pit_lane_time": 21.4,
+    "expected_top5": "D001,D003,D015,D006,D012",
+    "pred_top5": "D001,D003,D015,D006,D012",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_063",
+    "track": "COTA",
+    "total_laps": 55,
+    "track_temp": 19,
+    "pit_lane_time": 20.8,
+    "expected_top5": "D016,D001,D006,D020,D005",
+    "pred_top5": "D016,D001,D006,D020,D005",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_064",
+    "track": "Monaco",
+    "total_laps": 45,
+    "track_temp": 20,
+    "pit_lane_time": 23.6,
+    "expected_top5": "D013,D014,D010,D020,D012",
+    "pred_top5": "D013,D014,D010,D020,D012",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_065",
+    "track": "Suzuka",
+    "total_laps": 35,
+    "track_temp": 30,
+    "pit_lane_time": 22.6,
+    "expected_top5": "D012,D002,D010,D020,D013",
+    "pred_top5": "D012,D002,D010,D020,D013",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_066",
+    "track": "Monaco",
+    "total_laps": 35,
+    "track_temp": 27,
+    "pit_lane_time": 22.7,
+    "expected_top5": "D003,D019,D020,D010,D015",
+    "pred_top5": "D003,D019,D020,D010,D015",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_067",
+    "track": "Monza",
+    "total_laps": 35,
+    "track_temp": 28,
+    "pit_lane_time": 23.4,
+    "expected_top5": "D013,D015,D012,D016,D018",
+    "pred_top5": "D013,D015,D012,D016,D018",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_068",
+    "track": "Spa",
+    "total_laps": 28,
+    "track_temp": 29,
+    "pit_lane_time": 22.0,
+    "expected_top5": "D001,D006,D016,D012,D004",
+    "pred_top5": "D001,D006,D016,D012,D004",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_069",
+    "track": "COTA",
+    "total_laps": 42,
+    "track_temp": 30,
+    "pit_lane_time": 20.6,
+    "expected_top5": "D007,D014,D013,D004,D001",
+    "pred_top5": "D007,D014,D013,D004,D001",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_070",
+    "track": "Monza",
+    "total_laps": 35,
+    "track_temp": 29,
+    "pit_lane_time": 22.9,
+    "expected_top5": "D006,D007,D011,D016,D014",
+    "pred_top5": "D016,D006,D007,D011,D014",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_071",
+    "track": "Spa",
+    "total_laps": 52,
+    "track_temp": 31,
+    "pit_lane_time": 20.5,
+    "expected_top5": "D008,D009,D016,D007,D018",
+    "pred_top5": "D008,D009,D016,D007,D018",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_072",
+    "track": "Spa",
+    "total_laps": 65,
+    "track_temp": 27,
+    "pit_lane_time": 21.9,
+    "expected_top5": "D002,D011,D015,D008,D019",
+    "pred_top5": "D002,D011,D015,D008,D019",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_073",
+    "track": "Suzuka",
+    "total_laps": 52,
+    "track_temp": 30,
+    "pit_lane_time": 22.5,
+    "expected_top5": "D003,D015,D007,D001,D002",
+    "pred_top5": "D003,D015,D007,D001,D002",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_074",
+    "track": "Monza",
+    "total_laps": 64,
+    "track_temp": 40,
+    "pit_lane_time": 23.5,
+    "expected_top5": "D005,D020,D010,D013,D019",
+    "pred_top5": "D010,D005,D020,D013,D019",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_075",
+    "track": "Monza",
+    "total_laps": 41,
+    "track_temp": 31,
+    "pit_lane_time": 21.2,
+    "expected_top5": "D013,D020,D012,D014,D005",
+    "pred_top5": "D013,D020,D012,D014,D005",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_076",
+    "track": "Bahrain",
+    "total_laps": 62,
+    "track_temp": 20,
+    "pit_lane_time": 22.0,
+    "expected_top5": "D006,D001,D010,D019,D009",
+    "pred_top5": "D006,D001,D010,D019,D020",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_077",
+    "track": "Monaco",
+    "total_laps": 38,
+    "track_temp": 30,
+    "pit_lane_time": 22.7,
+    "expected_top5": "D014,D015,D007,D001,D017",
+    "pred_top5": "D014,D015,D007,D010,D017",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_078",
+    "track": "Monza",
+    "total_laps": 51,
+    "track_temp": 27,
+    "pit_lane_time": 22.5,
+    "expected_top5": "D006,D011,D017,D014,D013",
+    "pred_top5": "D006,D011,D017,D014,D013",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_079",
+    "track": "Monaco",
+    "total_laps": 39,
+    "track_temp": 30,
+    "pit_lane_time": 23.0,
+    "expected_top5": "D012,D013,D018,D020,D002",
+    "pred_top5": "D002,D017,D018,D012,D020",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_080",
+    "track": "Monaco",
+    "total_laps": 42,
+    "track_temp": 22,
+    "pit_lane_time": 20.8,
+    "expected_top5": "D014,D006,D019,D011,D020",
+    "pred_top5": "D014,D006,D011,D020,D019",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_081",
+    "track": "Spa",
+    "total_laps": 44,
+    "track_temp": 30,
+    "pit_lane_time": 20.1,
+    "expected_top5": "D003,D010,D005,D008,D007",
+    "pred_top5": "D003,D010,D005,D008,D007",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_082",
+    "track": "Bahrain",
+    "total_laps": 44,
+    "track_temp": 36,
+    "pit_lane_time": 22.5,
+    "expected_top5": "D006,D002,D004,D017,D008",
+    "pred_top5": "D006,D004,D002,D017,D001",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_083",
+    "track": "Monaco",
+    "total_laps": 44,
+    "track_temp": 29,
+    "pit_lane_time": 20.9,
+    "expected_top5": "D018,D001,D004,D005,D019",
+    "pred_top5": "D001,D018,D004,D005,D019",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_084",
+    "track": "Silverstone",
+    "total_laps": 44,
+    "track_temp": 29,
+    "pit_lane_time": 20.5,
+    "expected_top5": "D004,D009,D014,D018,D003",
+    "pred_top5": "D004,D009,D014,D018,D003",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_085",
+    "track": "Suzuka",
+    "total_laps": 58,
+    "track_temp": 34,
+    "pit_lane_time": 22.5,
+    "expected_top5": "D009,D016,D015,D007,D002",
+    "pred_top5": "D009,D016,D007,D015,D002",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_086",
+    "track": "Silverstone",
+    "total_laps": 66,
+    "track_temp": 19,
+    "pit_lane_time": 21.1,
+    "expected_top5": "D013,D006,D010,D016,D011",
+    "pred_top5": "D013,D006,D010,D016,D011",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_087",
+    "track": "Suzuka",
+    "total_laps": 40,
+    "track_temp": 28,
+    "pit_lane_time": 22.4,
+    "expected_top5": "D001,D005,D012,D010,D017",
+    "pred_top5": "D001,D005,D012,D010,D017",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_088",
+    "track": "Monza",
+    "total_laps": 52,
+    "track_temp": 34,
+    "pit_lane_time": 21.4,
+    "expected_top5": "D013,D012,D001,D014,D019",
+    "pred_top5": "D013,D012,D001,D014,D019",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_089",
+    "track": "Monza",
+    "total_laps": 40,
+    "track_temp": 30,
+    "pit_lane_time": 20.6,
+    "expected_top5": "D004,D007,D010,D006,D005",
+    "pred_top5": "D004,D007,D010,D006,D005",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_090",
+    "track": "Suzuka",
+    "total_laps": 48,
+    "track_temp": 31,
+    "pit_lane_time": 20.1,
+    "expected_top5": "D017,D019,D005,D002,D014",
+    "pred_top5": "D017,D019,D005,D002,D014",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_091",
+    "track": "Spa",
+    "total_laps": 30,
+    "track_temp": 28,
+    "pit_lane_time": 20.4,
+    "expected_top5": "D002,D020,D001,D010,D005",
+    "pred_top5": "D002,D020,D001,D010,D005",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_092",
+    "track": "Spa",
+    "total_laps": 51,
+    "track_temp": 32,
+    "pit_lane_time": 20.9,
+    "expected_top5": "D016,D019,D005,D020,D009",
+    "pred_top5": "D016,D019,D005,D020,D009",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_093",
+    "track": "Suzuka",
+    "total_laps": 54,
+    "track_temp": 33,
+    "pit_lane_time": 20.8,
+    "expected_top5": "D019,D008,D016,D003,D001",
+    "pred_top5": "D019,D008,D016,D003,D001",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_094",
+    "track": "Suzuka",
+    "total_laps": 40,
+    "track_temp": 33,
+    "pit_lane_time": 20.2,
+    "expected_top5": "D009,D004,D019,D017,D018",
+    "pred_top5": "D009,D004,D017,D018,D019",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_095",
+    "track": "Suzuka",
+    "total_laps": 42,
+    "track_temp": 30,
+    "pit_lane_time": 22.7,
+    "expected_top5": "D010,D011,D013,D002,D016",
+    "pred_top5": "D011,D010,D013,D002,D016",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_096",
+    "track": "Suzuka",
+    "total_laps": 59,
+    "track_temp": 28,
+    "pit_lane_time": 20.7,
+    "expected_top5": "D020,D008,D007,D014,D015",
+    "pred_top5": "D020,D008,D007,D014,D015",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_097",
+    "track": "Silverstone",
+    "total_laps": 41,
+    "track_temp": 28,
+    "pit_lane_time": 22.7,
+    "expected_top5": "D017,D008,D005,D019,D018",
+    "pred_top5": "D005,D019,D017,D018,D008",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_098",
+    "track": "COTA",
+    "total_laps": 38,
+    "track_temp": 33,
+    "pit_lane_time": 21.3,
+    "expected_top5": "D009,D020,D001,D006,D011",
+    "pred_top5": "D009,D020,D001,D006,D011",
+    "exact_match": 1
+  },
+  {
+    "race_id": "TEST_099",
+    "track": "Monza",
+    "total_laps": 35,
+    "track_temp": 31,
+    "pit_lane_time": 23.5,
+    "expected_top5": "D002,D011,D013,D018,D004",
+    "pred_top5": "D002,D011,D013,D018,D004",
+    "exact_match": 0
+  },
+  {
+    "race_id": "TEST_100",
+    "track": "Bahrain",
+    "total_laps": 45,
+    "track_temp": 37,
+    "pit_lane_time": 23.5,
+    "expected_top5": "D010,D006,D003,D018,D019",
+    "pred_top5": "D010,D006,D003,D018,D019",
+    "exact_match": 0
+  }
+]

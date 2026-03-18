@@ -1,26 +1,26 @@
 {
-  "snapshot": "gate27.json",
+  "snapshot": "gate33.json",
   "overall": {
     "races": 100,
-    "passed": 27,
-    "failed": 73
+    "passed": 33,
+    "failed": 67
   },
   "failed_by_branch": [
     {
       "branch": "comp",
-      "races": 55,
-      "mean_laps": 47.873,
-      "mean_temp": 30.018,
-      "mean_unique_sequences": 7.764,
-      "mean_top_count": 5.091
+      "races": 52,
+      "mean_laps": 47.788,
+      "mean_temp": 29.827,
+      "mean_unique_sequences": 7.865,
+      "mean_top_count": 5.058
     },
     {
       "branch": "balanced",
-      "races": 16,
-      "mean_laps": 37.062,
-      "mean_temp": 30.062,
-      "mean_unique_sequences": 4.938,
-      "mean_top_count": 6.625
+      "races": 13,
+      "mean_laps": 37.462,
+      "mean_temp": 30.0,
+      "mean_unique_sequences": 5.0,
+      "mean_top_count": 6.308
     },
     {
       "branch": "no_comp",
@@ -34,35 +34,35 @@
   "failed_by_track": [
     {
       "track": "Monza",
-      "races": 15,
-      "mean_laps": 43.533,
-      "mean_temp": 29.733,
-      "mean_unique_sequences": 6.533,
-      "mean_top_count": 5.733
+      "races": 14,
+      "mean_laps": 43.286,
+      "mean_temp": 29.429,
+      "mean_unique_sequences": 6.571,
+      "mean_top_count": 5.714
     },
     {
       "track": "Monaco",
-      "races": 13,
-      "mean_laps": 40.692,
-      "mean_temp": 29.308,
-      "mean_unique_sequences": 6.154,
-      "mean_top_count": 6.308
+      "races": 12,
+      "mean_laps": 41.25,
+      "mean_temp": 29.25,
+      "mean_unique_sequences": 6.333,
+      "mean_top_count": 6.083
     },
     {
       "track": "Bahrain",
-      "races": 12,
-      "mean_laps": 46.75,
-      "mean_temp": 31.167,
-      "mean_unique_sequences": 7.917,
-      "mean_top_count": 5.167
+      "races": 11,
+      "mean_laps": 47.545,
+      "mean_temp": 31.091,
+      "mean_unique_sequences": 8.091,
+      "mean_top_count": 5.091
     },
     {
       "track": "Suzuka",
-      "races": 12,
-      "mean_laps": 49.5,
-      "mean_temp": 30.833,
-      "mean_unique_sequences": 7.0,
-      "mean_top_count": 5.417
+      "races": 10,
+      "mean_laps": 49.3,
+      "mean_temp": 30.4,
+      "mean_unique_sequences": 7.2,
+      "mean_top_count": 5.4
     },
     {
       "track": "Silverstone",
@@ -74,11 +74,11 @@
     },
     {
       "track": "COTA",
-      "races": 7,
-      "mean_laps": 43.286,
-      "mean_temp": 28.0,
-      "mean_unique_sequences": 6.571,
-      "mean_top_count": 5.857
+      "races": 6,
+      "mean_laps": 44.833,
+      "mean_temp": 27.833,
+      "mean_unique_sequences": 7.0,
+      "mean_top_count": 5.333
     },
     {
       "track": "Spa",
@@ -92,27 +92,27 @@
   "failed_by_lap_band": [
     {
       "lap_band": "mid_short",
-      "races": 29,
-      "mean_laps": 41.517,
-      "mean_temp": 30.172,
-      "mean_unique_sequences": 6.897,
-      "mean_top_count": 5.483
+      "races": 28,
+      "mean_laps": 41.643,
+      "mean_temp": 30.107,
+      "mean_unique_sequences": 6.929,
+      "mean_top_count": 5.464
     },
     {
       "lap_band": "mid",
-      "races": 22,
-      "mean_laps": 49.909,
-      "mean_temp": 31.045,
-      "mean_unique_sequences": 7.182,
-      "mean_top_count": 5.045
+      "races": 19,
+      "mean_laps": 50.0,
+      "mean_temp": 30.684,
+      "mean_unique_sequences": 7.368,
+      "mean_top_count": 4.947
     },
     {
       "lap_band": "short",
-      "races": 13,
-      "mean_laps": 33.231,
-      "mean_temp": 29.769,
-      "mean_unique_sequences": 4.462,
-      "mean_top_count": 8.077
+      "races": 11,
+      "mean_laps": 33.091,
+      "mean_temp": 29.818,
+      "mean_unique_sequences": 4.545,
+      "mean_top_count": 7.909
     },
     {
       "lap_band": "long",
@@ -126,19 +126,19 @@
   "failed_by_temp_band": [
     {
       "temp_band": "mild",
-      "races": 30,
-      "mean_laps": 42.0,
-      "mean_temp": 28.633,
-      "mean_unique_sequences": 5.7,
-      "mean_top_count": 6.067
+      "races": 28,
+      "mean_laps": 42.571,
+      "mean_temp": 28.571,
+      "mean_unique_sequences": 5.821,
+      "mean_top_count": 5.857
     },
     {
       "temp_band": "warm",
-      "races": 25,
-      "mean_laps": 44.44,
-      "mean_temp": 32.52,
-      "mean_unique_sequences": 5.96,
-      "mean_top_count": 6.2
+      "races": 21,
+      "mean_laps": 44.048,
+      "mean_temp": 32.429,
+      "mean_unique_sequences": 5.952,
+      "mean_top_count": 6.286
     },
     {
       "temp_band": "cool",
@@ -160,27 +160,11 @@
   "failed_by_top_sequence": [
     {
       "top_sequence": "MEDIUM>HARD",
-      "races": 18,
-      "mean_laps": 42.833,
-      "mean_temp": 29.667,
-      "mean_unique_sequences": 6.167,
-      "mean_top_count": 6.611
-    },
-    {
-      "top_sequence": "HARD>MEDIUM",
-      "races": 13,
-      "mean_laps": 43.923,
-      "mean_temp": 30.0,
-      "mean_unique_sequences": 6.154,
-      "mean_top_count": 6.231
-    },
-    {
-      "top_sequence": "HARD>SOFT",
-      "races": 13,
-      "mean_laps": 47.0,
-      "mean_temp": 31.0,
-      "mean_unique_sequences": 7.231,
-      "mean_top_count": 5.077
+      "races": 17,
+      "mean_laps": 43.353,
+      "mean_temp": 29.706,
+      "mean_unique_sequences": 6.294,
+      "mean_top_count": 6.471
     },
     {
       "top_sequence": "MEDIUM>SOFT",
@@ -191,20 +175,36 @@
       "mean_top_count": 4.615
     },
     {
+      "top_sequence": "HARD>MEDIUM",
+      "races": 12,
+      "mean_laps": 43.667,
+      "mean_temp": 29.667,
+      "mean_unique_sequences": 6.167,
+      "mean_top_count": 6.25
+    },
+    {
+      "top_sequence": "HARD>SOFT",
+      "races": 12,
+      "mean_laps": 46.417,
+      "mean_temp": 30.833,
+      "mean_unique_sequences": 7.333,
+      "mean_top_count": 5.083
+    },
+    {
       "top_sequence": "SOFT>HARD",
-      "races": 8,
-      "mean_laps": 39.5,
-      "mean_temp": 31.25,
-      "mean_unique_sequences": 6.375,
-      "mean_top_count": 5.625
+      "races": 6,
+      "mean_laps": 40.667,
+      "mean_temp": 31.333,
+      "mean_unique_sequences": 6.833,
+      "mean_top_count": 5.0
     },
     {
       "top_sequence": "SOFT>MEDIUM",
-      "races": 7,
-      "mean_laps": 48.857,
-      "mean_temp": 30.286,
-      "mean_unique_sequences": 9.286,
-      "mean_top_count": 4.857
+      "races": 6,
+      "mean_laps": 49.167,
+      "mean_temp": 29.833,
+      "mean_unique_sequences": 9.833,
+      "mean_top_count": 4.667
     },
     {
       "top_sequence": "SOFT>HARD>SOFT",
@@ -227,19 +227,6 @@
       "unique_sequence_count": 4,
       "top_sequence": "MEDIUM>HARD",
       "top_sequence_count": 8,
-      "two_stop_drivers": 0
-    },
-    {
-      "race_id": "TEST_062",
-      "track": "Bahrain",
-      "total_laps": 38,
-      "track_temp": 32.0,
-      "lap_band": "mid_short",
-      "temp_band": "warm",
-      "branch": "balanced",
-      "unique_sequence_count": 6,
-      "top_sequence": "SOFT>HARD",
-      "top_sequence_count": 6,
       "two_stop_drivers": 0
     },
     {
@@ -269,19 +256,6 @@
       "two_stop_drivers": 0
     },
     {
-      "race_id": "TEST_048",
-      "track": "COTA",
-      "total_laps": 34,
-      "track_temp": 29.0,
-      "lap_band": "short",
-      "temp_band": "mild",
-      "branch": "balanced",
-      "unique_sequence_count": 4,
-      "top_sequence": "MEDIUM>HARD",
-      "top_sequence_count": 9,
-      "two_stop_drivers": 0
-    },
-    {
       "race_id": "TEST_041",
       "track": "COTA",
       "total_laps": 39,
@@ -301,19 +275,6 @@
       "track_temp": 32.0,
       "lap_band": "short",
       "temp_band": "warm",
-      "branch": "balanced",
-      "unique_sequence_count": 4,
-      "top_sequence": "SOFT>HARD",
-      "top_sequence_count": 9,
-      "two_stop_drivers": 0
-    },
-    {
-      "race_id": "TEST_002",
-      "track": "Monaco",
-      "total_laps": 34,
-      "track_temp": 30.0,
-      "lap_band": "short",
-      "temp_band": "mild",
       "branch": "balanced",
       "unique_sequence_count": 4,
       "top_sequence": "SOFT>HARD",
@@ -603,6 +564,45 @@
       "branch": "comp",
       "unique_sequence_count": 6,
       "top_sequence": "MEDIUM>SOFT",
+      "top_sequence_count": 5,
+      "two_stop_drivers": 0
+    },
+    {
+      "race_id": "TEST_077",
+      "track": "Monaco",
+      "total_laps": 38,
+      "track_temp": 30.0,
+      "lap_band": "mid_short",
+      "temp_band": "mild",
+      "branch": "comp",
+      "unique_sequence_count": 6,
+      "top_sequence": "HARD>SOFT",
+      "top_sequence_count": 6,
+      "two_stop_drivers": 0
+    },
+    {
+      "race_id": "TEST_079",
+      "track": "Monaco",
+      "total_laps": 39,
+      "track_temp": 30.0,
+      "lap_band": "mid_short",
+      "temp_band": "mild",
+      "branch": "comp",
+      "unique_sequence_count": 3,
+      "top_sequence": "HARD>MEDIUM",
+      "top_sequence_count": 11,
+      "two_stop_drivers": 0
+    },
+    {
+      "race_id": "TEST_049",
+      "track": "Monaco",
+      "total_laps": 40,
+      "track_temp": 29.0,
+      "lap_band": "mid_short",
+      "temp_band": "mild",
+      "branch": "comp",
+      "unique_sequence_count": 6,
+      "top_sequence": "HARD>SOFT",
       "top_sequence_count": 5,
       "two_stop_drivers": 0
     }

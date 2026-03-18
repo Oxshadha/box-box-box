@@ -1,0 +1,22 @@
+{
+  "validation": {
+    "assignment_model": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "top3_set_accuracy": 0.57,
+      "top5_set_accuracy": 0.4935555555555556,
+      "mean_kendall_tau": 0.878093567251462,
+      "mean_spearman_rho": 0.9525941520467834
+    }
+  },
+  "test": {
+    "assignment_model": {
+      "races": 4500,
+      "exact_order_accuracy": 0.00044444444444444447,
+      "top3_set_accuracy": 0.5775555555555556,
+      "top5_set_accuracy": 0.5104444444444445,
+      "mean_kendall_tau": 0.8798409356725148,
+      "mean_spearman_rho": 0.9533888053467001
+    }
+  }
+}

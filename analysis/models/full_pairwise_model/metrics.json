@@ -1,0 +1,30 @@
+{
+  "validation": {
+    "pairwise_model": {
+      "races": 4500,
+      "exact_order_accuracy": 0.206,
+      "top3_set_accuracy": 0.8175555555555556,
+      "top5_set_accuracy": 0.804,
+      "mean_kendall_tau": 0.9706713450292397,
+      "mean_spearman_rho": 0.9927766081871345
+    }
+  },
+  "test": {
+    "pairwise_model": {
+      "races": 4500,
+      "exact_order_accuracy": 0.21977777777777777,
+      "top3_set_accuracy": 0.826,
+      "top5_set_accuracy": 0.8084444444444444,
+      "mean_kendall_tau": 0.971838596491228,
+      "mean_spearman_rho": 0.9932835421888052
+    }
+  },
+  "pair_rows": {
+    "train": 300000,
+    "validation": 300000
+  },
+  "config": {
+    "train_races": 6000,
+    "max_pairs": 300000
+  }
+}

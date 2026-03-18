@@ -589,6 +589,8 @@
   "use_composition_features": true,
   "model_tag": "comp",
   "train_races": 6000,
+  "train_race_list_path": "",
+  "train_race_weights_path": "",
   "n_estimators": 600,
   "learning_rate": 0.03,
   "max_depth": 8

@@ -1,0 +1,27 @@
+{
+  "validation": {
+    "rule_program": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0008888888888888889,
+      "top3_set_accuracy": 0.20977777777777779,
+      "top5_set_accuracy": 0.16533333333333333,
+      "mean_kendall_tau": 0.6426994152046783,
+      "mean_spearman_rho": 0.7419973266499582
+    }
+  },
+  "test": {
+    "rule_program": {
+      "races": 4500,
+      "exact_order_accuracy": 0.0028888888888888888,
+      "top3_set_accuracy": 0.2088888888888889,
+      "top5_set_accuracy": 0.15333333333333332,
+      "mean_kendall_tau": 0.6428654970760235,
+      "mean_spearman_rho": 0.7423391812865496
+    }
+  },
+  "program": {
+    "templates": 1196,
+    "templates_with_pair_rules": 1195,
+    "templates_with_stop_rules": 1195
+  }
+}

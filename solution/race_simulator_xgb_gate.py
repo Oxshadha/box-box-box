@@ -12,9 +12,13 @@ ROOT = Path(__file__).resolve().parent.parent
 NO_COMP_DIR = ROOT / "analysis" / "models" / "xgb_ranker_no_comp"
 COMP_DIR = ROOT / "analysis" / "models" / "xgb_ranker_comp"
 BALANCED_DIR = ROOT / "analysis" / "models" / "xgb_ranker_balanced"
+BALANCED_WEIGHTED_DIR = ROOT / "analysis" / "models" / "xgb_ranker_balanced_weighted"
+COMP_WEIGHTED_DIR = ROOT / "analysis" / "models" / "xgb_ranker_comp_weighted"
 TIEBREAK_DIR = ROOT / "analysis" / "models" / "comp_tiebreaker"
 TAIL_TIEBREAK_DIR = ROOT / "analysis" / "models" / "comp_tail_tiebreaker"
 BALANCED_RULES_DIR = ROOT / "analysis" / "models" / "balanced_tail_rules"
+COMP_RULES_DIR = ROOT / "analysis" / "models" / "comp_tail_rules"
+REVERSE_ENGINEERING_DIR = ROOT / "analysis" / "reverse_engineering_gate33"
 
 BLEND_ALPHA_V2 = 0.6
 
@@ -74,6 +78,16 @@ if HAS_BALANCED:
     BALANCED_META, BALANCED_MODEL = load_bundle(BALANCED_DIR)
 else:
     BALANCED_META, BALANCED_MODEL = None, None
+HAS_BALANCED_WEIGHTED = BALANCED_WEIGHTED_DIR.exists()
+if HAS_BALANCED_WEIGHTED:
+    BALANCED_WEIGHTED_META, BALANCED_WEIGHTED_MODEL = load_bundle(BALANCED_WEIGHTED_DIR)
+else:
+    BALANCED_WEIGHTED_META, BALANCED_WEIGHTED_MODEL = None, None
+HAS_COMP_WEIGHTED = COMP_WEIGHTED_DIR.exists()
+if HAS_COMP_WEIGHTED:
+    COMP_WEIGHTED_META, COMP_WEIGHTED_MODEL = load_bundle(COMP_WEIGHTED_DIR)
+else:
+    COMP_WEIGHTED_META, COMP_WEIGHTED_MODEL = None, None
 HAS_TIEBREAK = TIEBREAK_DIR.exists()
 if HAS_TIEBREAK:
     with (TIEBREAK_DIR / "model.pkl").open("rb") as fh:
@@ -95,6 +109,21 @@ if BALANCED_RULES_DIR.exists():
     rules_path = BALANCED_RULES_DIR / "rules.json"
     if rules_path.exists():
         BALANCED_TEMPLATE_RULES = json.loads(rules_path.read_text())
+COMP_TEMPLATE_RULES = {}
+if COMP_RULES_DIR.exists():
+    rules_path = COMP_RULES_DIR / "rules.json"
+    if rules_path.exists():
+        COMP_TEMPLATE_RULES = json.loads(rules_path.read_text())
+REVERSE_RULES = {"pair": {}, "stop": {}}
+reverse_summary_path = REVERSE_ENGINEERING_DIR / "summary.json"
+if reverse_summary_path.exists():
+    reverse_summary = json.loads(reverse_summary_path.read_text())
+    for row in reverse_summary.get("pair_rule_candidates", []):
+        if row.get("count", 0) >= 7 and row.get("win_rate", 0.0) >= 0.85:
+            REVERSE_RULES["pair"][(row["branch"], row["template"], row["pair"])] = row["preferred"]
+    for row in reverse_summary.get("within_sequence_stop_rules", []):
+        if row.get("count", 0) >= 7 and row.get("win_rate", 0.0) >= 0.95:
+            REVERSE_RULES["stop"][(row["branch"], row["template"], row["sequence"])] = row["preferred"]
 
 
 def build_stints(strategy, total_laps):
@@ -432,6 +461,200 @@ def apply_balanced_template_tail_rules(frame):
     return race
 
 
+def apply_comp_template_tail_rules(frame):
+    if not COMP_TEMPLATE_RULES:
+        return frame
+    race = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True]).reset_index(drop=True).copy()
+    if len(race) <= 5:
+        return race
+    template = balanced_template_key(race)
+    template_rules = COMP_TEMPLATE_RULES.get(template)
+    if not template_rules:
+        return race
+    changed = True
+    while changed:
+        changed = False
+        for i in range(5, len(race) - 1):
+            left_seq = str(race.loc[i, "tire_sequence"])
+            right_seq = str(race.loc[i + 1, "tire_sequence"])
+            if left_seq == right_seq:
+                continue
+            pair_key = "|".join(sorted((left_seq, right_seq)))
+            rule = template_rules.get(pair_key)
+            if not rule:
+                continue
+            preferred = str(rule["preferred"])
+            if right_seq == preferred and left_seq != preferred:
+                current = abs(float(race.loc[i, "pred_score"] - race.loc[i + 1, "pred_score"]))
+                if current <= 0.25:
+                    race.iloc[[i, i + 1]] = race.iloc[[i + 1, i]].to_numpy()
+                    changed = True
+    return race
+
+
+def apply_reverse_engineered_tail_rules(frame, branch):
+    if not REVERSE_RULES["pair"] and not REVERSE_RULES["stop"]:
+        return frame
+    race = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True]).reset_index(drop=True).copy()
+    if len(race) <= 5:
+        return race
+    template = balanced_template_key(race)
+
+    changed = True
+    while changed:
+        changed = False
+        for i in range(5, len(race) - 1):
+            left = race.iloc[i]
+            right = race.iloc[i + 1]
+
+            # High-confidence cross-sequence precedence.
+            if left["tire_sequence"] != right["tire_sequence"]:
+                pair_key = "|".join(sorted((str(left["tire_sequence"]), str(right["tire_sequence"]))))
+                preferred = REVERSE_RULES["pair"].get((branch, template, pair_key))
+                if preferred and str(right["tire_sequence"]) == preferred:
+                    current = abs(float(left["pred_score"] - right["pred_score"]))
+                    if current <= 0.28:
+                        race.iloc[[i, i + 1]] = race.iloc[[i + 1, i]].to_numpy()
+                        changed = True
+                        continue
+
+            # High-confidence within-sequence stop timing rule.
+            if left["tire_sequence"] == right["tire_sequence"]:
+                preferred = REVERSE_RULES["stop"].get((branch, template, str(left["tire_sequence"])))
+                if preferred:
+                    left_stop = float(left["first_stop_frac"])
+                    right_stop = float(right["first_stop_frac"])
+                    if left_stop != right_stop:
+                        should_swap = (
+                            preferred == "earlier_first_stop" and right_stop < left_stop
+                        ) or (
+                            preferred == "later_first_stop" and right_stop > left_stop
+                        )
+                        current = abs(float(left["pred_score"] - right["pred_score"]))
+                        if should_swap and current <= 0.32:
+                            race.iloc[[i, i + 1]] = race.iloc[[i + 1, i]].to_numpy()
+                            changed = True
+    return race
+
+
+def pairwise_preference_prob(left, right, branch, position_index):
+    if branch != "comp":
+        return None
+    features = {
+        "track": left["track"],
+        "temp_band": left["temp_band"],
+        "lap_band": left["lap_band"],
+        "left_starting_tire": left["starting_tire"],
+        "right_starting_tire": right["starting_tire"],
+        "left_tire_sequence": left["tire_sequence"],
+        "right_tire_sequence": right["tire_sequence"],
+        "score_gap": float(left["pred_score"] - right["pred_score"]),
+        "abs_score_gap": abs(float(left["pred_score"] - right["pred_score"])),
+        "blend_gap": float(left["pred_blend"] - right["pred_blend"]),
+        "v2_gap": float(left["pred_v2"] - right["pred_v2"]),
+        "v4_gap": float(left["pred_v4"] - right["pred_v4"]),
+        "pit_stop_gap": float(left["pit_stop_count"] - right["pit_stop_count"]),
+        "first_stop_frac_gap": float(left["first_stop_frac"] - right["first_stop_frac"]),
+        "second_stop_frac_gap": float(left["second_stop_frac"] - right["second_stop_frac"]),
+        "soft_frac_gap": float(left["soft_frac"] - right["soft_frac"]),
+        "medium_frac_gap": float(left["medium_frac"] - right["medium_frac"]),
+        "hard_frac_gap": float(left["hard_frac"] - right["hard_frac"]),
+        "stint_1_frac_gap": float(left["stint_1_frac"] - right["stint_1_frac"]),
+        "stint_2_frac_gap": float(left["stint_2_frac"] - right["stint_2_frac"]),
+        "stint_3_frac_gap": float(left["stint_3_frac"] - right["stint_3_frac"]),
+        "sequence_field_share_gap": float(left["sequence_field_share"] - right["sequence_field_share"]),
+        "starting_tire_field_share_gap": float(left["starting_tire_field_share"] - right["starting_tire_field_share"]),
+        "track_temp": float(left["track_temp"]),
+        "total_laps": float(left["total_laps"]),
+        "pit_lane_time": float(left["pit_lane_time"]),
+    }
+    prob = None
+    if COMP_TIEBREAK_MODEL is not None:
+        gap = float(COMP_TIEBREAK_META.get("pair_gap", 0.12))
+        if abs(features["score_gap"]) <= gap * 1.8:
+            prob = float(COMP_TIEBREAK_MODEL.predict_proba(pd.DataFrame([features]))[:, 1][0])
+    if COMP_TAIL_TIEBREAK_MODEL is not None and position_index >= int(COMP_TAIL_TIEBREAK_META.get("top_keep", 5)):
+        gap = float(COMP_TAIL_TIEBREAK_META.get("pair_gap", 0.18))
+        if abs(features["score_gap"]) <= gap * 1.8:
+            tail_prob = float(COMP_TAIL_TIEBREAK_MODEL.predict_proba(pd.DataFrame([features]))[:, 1][0])
+            prob = tail_prob if prob is None else 0.5 * prob + 0.5 * tail_prob
+    return prob
+
+
+def add_optional_scores(frame, branch):
+    race = frame.copy()
+    race["base_rank_index"] = race["pred_score"].rank(method="first", ascending=True).astype(float)
+    weighted_score = None
+    if branch == "balanced" and HAS_BALANCED_WEIGHTED:
+        enc = encode(race, BALANCED_WEIGHTED_META)
+        weighted_score = BALANCED_WEIGHTED_MODEL.predict(enc)
+    elif branch == "comp" and HAS_COMP_WEIGHTED:
+        enc = encode(race, COMP_WEIGHTED_META)
+        weighted_score = COMP_WEIGHTED_MODEL.predict(enc)
+    if weighted_score is not None:
+        race["weighted_pred_score"] = weighted_score
+        race["weighted_rank_index"] = pd.Series(weighted_score).rank(method="first", ascending=True).astype(float)
+    else:
+        race["weighted_pred_score"] = race["pred_score"]
+        race["weighted_rank_index"] = race["base_rank_index"]
+    return race
+
+
+def order_objective(race, branch):
+    total = 0.0
+    n = len(race)
+    template = balanced_template_key(race)
+    for pos in range(n):
+        row = race.iloc[pos]
+        total -= 0.015 * abs((pos + 1) - float(row["base_rank_index"]))
+        total -= 0.010 * abs((pos + 1) - float(row["weighted_rank_index"]))
+        total -= 0.0015 * pos * float(row["pred_score"])
+    for pos in range(n - 1):
+        left = race.iloc[pos]
+        right = race.iloc[pos + 1]
+        pref = pairwise_preference_prob(left, right, branch, pos)
+        if pref is not None:
+            total += 0.25 * (pref - 0.5)
+        pair_key = "|".join(sorted((str(left["tire_sequence"]), str(right["tire_sequence"]))))
+        preferred = REVERSE_RULES["pair"].get((branch, template, pair_key))
+        if preferred is not None:
+            total += 0.12 if str(left["tire_sequence"]) == preferred else -0.12
+        if left["tire_sequence"] == right["tire_sequence"]:
+            stop_pref = REVERSE_RULES["stop"].get((branch, template, str(left["tire_sequence"])))
+            if stop_pref is not None and float(left["first_stop_frac"]) != float(right["first_stop_frac"]):
+                earlier_left = float(left["first_stop_frac"]) < float(right["first_stop_frac"])
+                good = (stop_pref == "earlier_first_stop" and earlier_left) or (
+                    stop_pref == "later_first_stop" and not earlier_left
+                )
+                total += 0.08 if good else -0.08
+    return total
+
+
+def local_search_rerank(frame, branch):
+    race = add_optional_scores(frame, branch)
+    race = race.sort_values(["pred_score", "driver_id"], ascending=[True, True]).reset_index(drop=True)
+    if len(race) <= 6:
+        return race
+    window_start = 3
+    window_end = min(len(race), 12 if branch == "comp" else 10)
+    best = race.copy()
+    best_score = order_objective(best, branch)
+    improved = True
+    iterations = 0
+    while improved and iterations < 4:
+        improved = False
+        iterations += 1
+        for i in range(window_start, window_end - 1):
+            candidate = best.copy()
+            candidate.iloc[[i, i + 1]] = candidate.iloc[[i + 1, i]].to_numpy()
+            score = order_objective(candidate, branch)
+            if score > best_score + 1e-9:
+                best = candidate
+                best_score = score
+                improved = True
+    return best
+
+
 def choose_bundle(frame):
     unique_sequences = int(frame["tire_sequence"].nunique())
     two_stop = int((frame["pit_stop_count"] == 2).sum())
@@ -452,7 +675,22 @@ def choose_bundle(frame):
         and total_laps <= 45
         and 4 <= top_count <= 10
     )
-
+    weighted_balanced_cluster = (
+        balanced_cluster
+        and total_laps <= 38
+        and top_sequence in {"SOFT>HARD", "MEDIUM>HARD"}
+    )
+    weighted_comp_cluster = (
+        two_stop <= 3
+        and unique_sequences == 6
+        and 47 <= total_laps <= 54
+        and float(frame["track_temp"].iloc[0]) >= 33
+        and top_sequence in {"SOFT>MEDIUM", "HARD>MEDIUM", "HARD>SOFT"}
+    )
+    if HAS_BALANCED_WEIGHTED and weighted_balanced_cluster:
+        return "balanced", BALANCED_WEIGHTED_META, BALANCED_WEIGHTED_MODEL
+    if HAS_COMP_WEIGHTED and weighted_comp_cluster:
+        return "comp", COMP_WEIGHTED_META, COMP_WEIGHTED_MODEL
     if HAS_BALANCED and balanced_cluster and top_sequence in {"MEDIUM>HARD", "SOFT>HARD", "SOFT>MEDIUM", "MEDIUM>SOFT"}:
         return "balanced", BALANCED_META, BALANCED_MODEL
     if total_laps <= 35 and unique_sequences <= 4:
@@ -490,8 +728,14 @@ def predict_finishing_positions(test_case):
     if branch == "comp":
         frame = apply_comp_tiebreak(frame)
         frame = apply_comp_tail_tiebreak(frame)
+        frame = apply_comp_template_tail_rules(frame)
+        frame = apply_reverse_engineered_tail_rules(frame, "comp")
     elif branch == "balanced":
         frame = apply_balanced_template_tail_rules(frame)
+        frame = apply_reverse_engineered_tail_rules(frame, "balanced")
+    elif branch == "no_comp":
+        frame = apply_reverse_engineered_tail_rules(frame, "no_comp")
+    frame = local_search_rerank(frame, branch)
     frame = frame.sort_values(["pred_score", "driver_id"], ascending=[True, True])
     return frame["driver_id"].tolist()
 

@@ -299,5 +299,7 @@
     "MEDIUM>SOFT"
   ],
   "use_composition_features": true,
-  "model_tag": "balanced"
+  "model_tag": "balanced",
+  "train_race_list_path": "",
+  "train_race_weights_path": ""
 }

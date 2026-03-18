@@ -1,1 +1,1 @@
-/opt/anaconda3/envs/dashboard-project/bin/python solution/race_simulator_xgb_gate.py
+/opt/anaconda3/envs/dashboard-project/bin/python solution/race_simulator_rule_program.py

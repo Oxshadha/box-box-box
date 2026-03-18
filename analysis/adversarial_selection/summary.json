@@ -1,0 +1,8 @@
+{
+  "challenge_cases": 100,
+  "train_historical_races": 21000,
+  "holdout_auc": 0.6381999999999999,
+  "top_races": 2500,
+  "top_score_mean": 0.009174185174406315,
+  "all_score_mean": 0.004695566800619857
+}

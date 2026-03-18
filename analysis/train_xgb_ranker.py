@@ -29,6 +29,10 @@ OUTPUT_DIR = ROOT / "analysis" / "models" / MODEL_DIR_NAME
 METRICS_PATH = OUTPUT_DIR / "metrics.json"
 MODEL_PATH = OUTPUT_DIR / "model.json"
 METADATA_PATH = OUTPUT_DIR / "metadata.json"
+TRAIN_RACE_LIST_PATH = os.environ.get("TRAIN_RACE_LIST_PATH", "").strip()
+TRAIN_RACE_WEIGHTS_PATH = os.environ.get("TRAIN_RACE_WEIGHTS_PATH", "").strip()
+TRAIN_RACE_WEIGHT_POWER = float(os.environ.get("TRAIN_RACE_WEIGHT_POWER", "2.0"))
+TRAIN_RACE_WEIGHT_FLOOR = float(os.environ.get("TRAIN_RACE_WEIGHT_FLOOR", "0.5"))
 
 
 BASE_FEATURE_COLUMNS = [
@@ -217,6 +221,56 @@ def group_sizes(frame):
     return frame.groupby("race_id", sort=False).size().tolist()
 
 
+def select_train_races(available_races):
+    available = available_races.drop_duplicates().tolist()
+    if TRAIN_RACE_LIST_PATH:
+        selected_payload = json.loads(Path(TRAIN_RACE_LIST_PATH).read_text())
+        if isinstance(selected_payload, dict):
+            selected_ids = selected_payload.get("train_races", [])
+        else:
+            selected_ids = selected_payload
+        ordered = [race_id for race_id in selected_ids if race_id in set(available)]
+        if ordered:
+            return ordered[: min(TRAIN_RACES, len(ordered))]
+    sampled = available_races.sample(
+        n=min(TRAIN_RACES, len(available_races)),
+        random_state=42,
+    )
+    return sampled.tolist()
+
+
+def load_race_weights():
+    if not TRAIN_RACE_WEIGHTS_PATH:
+        return {}
+    path = Path(TRAIN_RACE_WEIGHTS_PATH)
+    if path.suffix.lower() == ".csv":
+        frame = pd.read_csv(path)
+        if "race_id" not in frame.columns or "challenge_score" not in frame.columns:
+            return {}
+        scores = frame[["race_id", "challenge_score"]].copy()
+    else:
+        payload = json.loads(path.read_text())
+        if isinstance(payload, dict) and "race_weights" in payload:
+            return {str(k): float(v) for k, v in payload["race_weights"].items()}
+        return {}
+    raw = scores.set_index("race_id")["challenge_score"].astype(float)
+    min_score = float(raw.min())
+    max_score = float(raw.max())
+    if max_score <= min_score:
+        normalized = pd.Series(1.0, index=raw.index)
+    else:
+        normalized = (raw - min_score) / (max_score - min_score)
+    weights = TRAIN_RACE_WEIGHT_FLOOR + normalized.pow(TRAIN_RACE_WEIGHT_POWER)
+    return {str(idx): float(val) for idx, val in weights.items()}
+
+
+def sample_weights_for_frame(frame, race_weights):
+    if not race_weights:
+        return None
+    grouped = frame.groupby("race_id", sort=False).size().reset_index(name="rows")
+    return grouped["race_id"].map(race_weights).fillna(1.0).astype(float).to_numpy()
+
+
 def evaluate(frame, pred_score):
     scored = frame[["race_id", "driver_id", "finish_rank"]].copy()
     scored["pred_score"] = pred_score
@@ -277,10 +331,7 @@ def main():
         categorical_columns = list(BASE_CATEGORICAL_COLUMNS)
 
     available_races = train["race_id"].drop_duplicates()
-    sampled_train_races = available_races.sample(
-        n=min(TRAIN_RACES, len(available_races)),
-        random_state=42,
-    )
+    sampled_train_races = select_train_races(available_races)
     train = train[train["race_id"].isin(sampled_train_races)].copy()
 
     train_x, validation_x, test_x, categories, encoded_columns = one_hot_encode(
@@ -289,6 +340,9 @@ def main():
         test[feature_columns],
         categorical_columns,
     )
+    race_weights = load_race_weights()
+    train_weights = sample_weights_for_frame(train, race_weights)
+    validation_weights = sample_weights_for_frame(validation, race_weights)
 
     ranker = XGBRanker(
         objective="rank:pairwise",
@@ -308,8 +362,10 @@ def main():
         train_x,
         train["finish_rank"],
         group=group_sizes(train),
+        sample_weight=train_weights,
         eval_set=[(validation_x, validation["finish_rank"])],
         eval_group=[group_sizes(validation)],
+        sample_weight_eval_set=[validation_weights] if validation_weights is not None else None,
         verbose=False,
     )
 
@@ -338,6 +394,8 @@ def main():
                 "use_composition_features": USE_COMPOSITION_FEATURES,
                 "model_tag": MODEL_TAG,
                 "train_races": len(sampled_train_races),
+                "train_race_list_path": TRAIN_RACE_LIST_PATH,
+                "train_race_weights_path": TRAIN_RACE_WEIGHTS_PATH,
                 "n_estimators": N_ESTIMATORS,
                 "learning_rate": LEARNING_RATE,
                 "max_depth": MAX_DEPTH,

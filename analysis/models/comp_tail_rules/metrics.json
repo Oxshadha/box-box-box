@@ -1,0 +1,611 @@
+{
+  "rule_templates": 121,
+  "templates_with_rules": [
+    {
+      "template": "mid_short|warm|HARD>SOFT|4_5",
+      "rules": 12,
+      "train_races": 157
+    },
+    {
+      "template": "mid_short|warm|HARD>SOFT|6_7",
+      "rules": 12,
+      "train_races": 191
+    },
+    {
+      "template": "long|cool|HARD>MEDIUM|4_5",
+      "rules": 11,
+      "train_races": 200
+    },
+    {
+      "template": "mid_short|mild|HARD>MEDIUM|6_7",
+      "rules": 11,
+      "train_races": 210
+    },
+    {
+      "template": "mid_short|mild|HARD>SOFT|6_7",
+      "rules": 11,
+      "train_races": 192
+    },
+    {
+      "template": "mid_short|warm|HARD>MEDIUM|6_7",
+      "rules": 11,
+      "train_races": 198
+    },
+    {
+      "template": "long|hot|HARD>SOFT|4_5",
+      "rules": 10,
+      "train_races": 119
+    },
+    {
+      "template": "mid_short|mild|SOFT>HARD|4_5",
+      "rules": 10,
+      "train_races": 116
+    },
+    {
+      "template": "long|cool|SOFT>MEDIUM|4_5",
+      "rules": 9,
+      "train_races": 126
+    },
+    {
+      "template": "mid_short|cool|MEDIUM>HARD|4_5",
+      "rules": 9,
+      "train_races": 74
+    },
+    {
+      "template": "mid_short|mild|HARD>MEDIUM|4_5",
+      "rules": 9,
+      "train_races": 174
+    },
+    {
+      "template": "mid_short|mild|HARD>SOFT|4_5",
+      "rules": 9,
+      "train_races": 174
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>HARD|4_5",
+      "rules": 9,
+      "train_races": 127
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>SOFT|4_5",
+      "rules": 9,
+      "train_races": 69
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>SOFT|6_7",
+      "rules": 9,
+      "train_races": 50
+    },
+    {
+      "template": "mid_short|warm|HARD>MEDIUM|4_5",
+      "rules": 9,
+      "train_races": 166
+    },
+    {
+      "template": "mid|cool|HARD>MEDIUM|4_5",
+      "rules": 9,
+      "train_races": 122
+    },
+    {
+      "template": "mid|cool|SOFT>HARD|4_5",
+      "rules": 9,
+      "train_races": 106
+    },
+    {
+      "template": "mid|mild|HARD>MEDIUM|6_7",
+      "rules": 9,
+      "train_races": 217
+    },
+    {
+      "template": "mid|warm|SOFT>HARD|4_5",
+      "rules": 9,
+      "train_races": 240
+    },
+    {
+      "template": "long|cool|HARD>SOFT|4_5",
+      "rules": 8,
+      "train_races": 131
+    },
+    {
+      "template": "mid|cool|HARD>SOFT|4_5",
+      "rules": 8,
+      "train_races": 92
+    },
+    {
+      "template": "mid|cool|MEDIUM>HARD|4_5",
+      "rules": 8,
+      "train_races": 120
+    },
+    {
+      "template": "mid|mild|HARD>SOFT|4_5",
+      "rules": 8,
+      "train_races": 222
+    },
+    {
+      "template": "mid|mild|MEDIUM>SOFT|4_5",
+      "rules": 8,
+      "train_races": 108
+    },
+    {
+      "template": "mid|mild|SOFT>HARD|4_5",
+      "rules": 8,
+      "train_races": 269
+    },
+    {
+      "template": "mid|warm|HARD>MEDIUM|4_5",
+      "rules": 8,
+      "train_races": 367
+    },
+    {
+      "template": "mid|warm|HARD>SOFT|4_5",
+      "rules": 8,
+      "train_races": 209
+    },
+    {
+      "template": "mid|warm|MEDIUM>SOFT|6_7",
+      "rules": 8,
+      "train_races": 189
+    },
+    {
+      "template": "long|cool|MEDIUM>HARD|4_5",
+      "rules": 7,
+      "train_races": 170
+    },
+    {
+      "template": "mid_short|mild|SOFT>MEDIUM|6_7",
+      "rules": 7,
+      "train_races": 60
+    },
+    {
+      "template": "mid_short|warm|MEDIUM>HARD|4_5",
+      "rules": 7,
+      "train_races": 73
+    },
+    {
+      "template": "mid_short|warm|SOFT>HARD|4_5",
+      "rules": 7,
+      "train_races": 62
+    },
+    {
+      "template": "mid|mild|HARD>MEDIUM|4_5",
+      "rules": 7,
+      "train_races": 353
+    },
+    {
+      "template": "mid|mild|HARD>SOFT|6_7",
+      "rules": 7,
+      "train_races": 203
+    },
+    {
+      "template": "mid|mild|MEDIUM>SOFT|6_7",
+      "rules": 7,
+      "train_races": 199
+    },
+    {
+      "template": "mid|mild|SOFT>MEDIUM|4_5",
+      "rules": 7,
+      "train_races": 136
+    },
+    {
+      "template": "mid|mild|SOFT>MEDIUM|6_7",
+      "rules": 7,
+      "train_races": 203
+    },
+    {
+      "template": "mid|warm|HARD>SOFT|6_7",
+      "rules": 7,
+      "train_races": 233
+    },
+    {
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "rules": 7,
+      "train_races": 364
+    },
+    {
+      "template": "mid|warm|MEDIUM>HARD|6_7",
+      "rules": 7,
+      "train_races": 211
+    },
+    {
+      "template": "mid|warm|MEDIUM>SOFT|4_5",
+      "rules": 7,
+      "train_races": 106
+    },
+    {
+      "template": "mid|warm|SOFT>MEDIUM|4_5",
+      "rules": 7,
+      "train_races": 172
+    },
+    {
+      "template": "mid|warm|SOFT>MEDIUM|6_7",
+      "rules": 7,
+      "train_races": 205
+    },
+    {
+      "template": "mid_short|hot|MEDIUM>HARD|4_5",
+      "rules": 6,
+      "train_races": 75
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>HARD|6_7",
+      "rules": 6,
+      "train_races": 59
+    },
+    {
+      "template": "mid_short|mild|SOFT>MEDIUM|4_5",
+      "rules": 6,
+      "train_races": 99
+    },
+    {
+      "template": "mid|mild|MEDIUM>HARD|4_5",
+      "rules": 6,
+      "train_races": 380
+    },
+    {
+      "template": "mid|mild|MEDIUM>HARD|6_7",
+      "rules": 6,
+      "train_races": 211
+    },
+    {
+      "template": "mid|warm|HARD>MEDIUM|6_7",
+      "rules": 6,
+      "train_races": 260
+    },
+    {
+      "template": "long|hot|HARD>MEDIUM|4_5",
+      "rules": 5,
+      "train_races": 150
+    },
+    {
+      "template": "long|mild|MEDIUM>HARD|4_5",
+      "rules": 5,
+      "train_races": 103
+    },
+    {
+      "template": "long|mild|SOFT>HARD|4_5",
+      "rules": 5,
+      "train_races": 87
+    },
+    {
+      "template": "mid_short|cool|SOFT>HARD|4_5",
+      "rules": 5,
+      "train_races": 85
+    },
+    {
+      "template": "mid|hot|MEDIUM>HARD|4_5",
+      "rules": 5,
+      "train_races": 92
+    },
+    {
+      "template": "mid|hot|SOFT>HARD|4_5",
+      "rules": 5,
+      "train_races": 75
+    },
+    {
+      "template": "long|cool|MEDIUM>SOFT|4_5",
+      "rules": 4,
+      "train_races": 90
+    },
+    {
+      "template": "long|hot|SOFT>MEDIUM|4_5",
+      "rules": 4,
+      "train_races": 107
+    },
+    {
+      "template": "long|warm|MEDIUM>HARD|4_5",
+      "rules": 4,
+      "train_races": 117
+    },
+    {
+      "template": "long|warm|SOFT>HARD|4_5",
+      "rules": 4,
+      "train_races": 91
+    },
+    {
+      "template": "mid_short|cool|HARD>SOFT|4_5",
+      "rules": 4,
+      "train_races": 60
+    },
+    {
+      "template": "mid_short|warm|SOFT>MEDIUM|4_5",
+      "rules": 4,
+      "train_races": 49
+    },
+    {
+      "template": "mid|cool|SOFT>MEDIUM|4_5",
+      "rules": 4,
+      "train_races": 73
+    },
+    {
+      "template": "mid|hot|HARD>MEDIUM|4_5",
+      "rules": 4,
+      "train_races": 102
+    },
+    {
+      "template": "long|cool|SOFT>HARD|4_5",
+      "rules": 3,
+      "train_races": 138
+    },
+    {
+      "template": "long|hot|MEDIUM>HARD|4_5",
+      "rules": 3,
+      "train_races": 142
+    },
+    {
+      "template": "long|hot|SOFT>HARD|4_5",
+      "rules": 3,
+      "train_races": 118
+    },
+    {
+      "template": "long|mild|MEDIUM>SOFT|4_5",
+      "rules": 3,
+      "train_races": 47
+    },
+    {
+      "template": "long|warm|HARD>MEDIUM|4_5",
+      "rules": 3,
+      "train_races": 101
+    },
+    {
+      "template": "long|warm|HARD>SOFT|4_5",
+      "rules": 3,
+      "train_races": 67
+    },
+    {
+      "template": "long|warm|MEDIUM>SOFT|4_5",
+      "rules": 3,
+      "train_races": 63
+    },
+    {
+      "template": "mid_short|cool|SOFT>MEDIUM|4_5",
+      "rules": 3,
+      "train_races": 46
+    },
+    {
+      "template": "mid_short|hot|SOFT>HARD|4_5",
+      "rules": 3,
+      "train_races": 62
+    },
+    {
+      "template": "mid_short|mild|HARD>MEDIUM|8_10",
+      "rules": 3,
+      "train_races": 290
+    },
+    {
+      "template": "mid|cool|MEDIUM>SOFT|4_5",
+      "rules": 3,
+      "train_races": 55
+    },
+    {
+      "template": "mid|hot|HARD>SOFT|4_5",
+      "rules": 3,
+      "train_races": 67
+    },
+    {
+      "template": "mid|hot|SOFT>MEDIUM|4_5",
+      "rules": 3,
+      "train_races": 71
+    },
+    {
+      "template": "mid|mild|MEDIUM>SOFT|8_10",
+      "rules": 3,
+      "train_races": 39
+    },
+    {
+      "template": "mid|warm|MEDIUM>SOFT|8_10",
+      "rules": 3,
+      "train_races": 36
+    },
+    {
+      "template": "mid|warm|SOFT>MEDIUM|8_10",
+      "rules": 3,
+      "train_races": 37
+    },
+    {
+      "template": "long|hot|MEDIUM>SOFT|4_5",
+      "rules": 2,
+      "train_races": 69
+    },
+    {
+      "template": "long|mild|HARD>MEDIUM|4_5",
+      "rules": 2,
+      "train_races": 102
+    },
+    {
+      "template": "long|mild|SOFT>MEDIUM|4_5",
+      "rules": 2,
+      "train_races": 57
+    },
+    {
+      "template": "long|warm|SOFT>MEDIUM|4_5",
+      "rules": 2,
+      "train_races": 62
+    },
+    {
+      "template": "mid_short|mild|HARD>SOFT|8_10",
+      "rules": 2,
+      "train_races": 30
+    },
+    {
+      "template": "mid_short|mild|MEDIUM>HARD|8_10",
+      "rules": 2,
+      "train_races": 233
+    },
+    {
+      "template": "mid_short|warm|HARD>MEDIUM|8_10",
+      "rules": 2,
+      "train_races": 287
+    },
+    {
+      "template": "mid_short|warm|HARD>SOFT|8_10",
+      "rules": 2,
+      "train_races": 38
+    },
+    {
+      "template": "mid_short|warm|MEDIUM>HARD|8_10",
+      "rules": 2,
+      "train_races": 204
+    },
+    {
+      "template": "mid|mild|SOFT>MEDIUM|8_10",
+      "rules": 2,
+      "train_races": 22
+    },
+    {
+      "template": "mid|warm|MEDIUM>HARD|8_10",
+      "rules": 2,
+      "train_races": 27
+    },
+    {
+      "template": "short|mild|HARD>MEDIUM|6_7",
+      "rules": 2,
+      "train_races": 33
+    },
+    {
+      "template": "short|mild|HARD>SOFT|6_7",
+      "rules": 2,
+      "train_races": 50
+    },
+    {
+      "template": "short|warm|HARD>MEDIUM|6_7",
+      "rules": 2,
+      "train_races": 35
+    },
+    {
+      "template": "short|warm|HARD>SOFT|6_7",
+      "rules": 2,
+      "train_races": 66
+    },
+    {
+      "template": "long|cool|HARD>SOFT|6_7",
+      "rules": 1,
+      "train_races": 15
+    },
+    {
+      "template": "long|cool|SOFT>MEDIUM|6_7",
+      "rules": 1,
+      "train_races": 23
+    },
+    {
+      "template": "long|hot|HARD>SOFT|6_7",
+      "rules": 1,
+      "train_races": 16
+    },
+    {
+      "template": "long|hot|MEDIUM>HARD|6_7",
+      "rules": 1,
+      "train_races": 25
+    },
+    {
+      "template": "long|hot|SOFT>HARD|6_7",
+      "rules": 1,
+      "train_races": 17
+    },
+    {
+      "template": "long|mild|HARD>SOFT|4_5",
+      "rules": 1,
+      "train_races": 76
+    },
+    {
+      "template": "long|mild|SOFT>MEDIUM|6_7",
+      "rules": 1,
+      "train_races": 15
+    },
+    {
+      "template": "long|warm|HARD>SOFT|6_7",
+      "rules": 1,
+      "train_races": 16
+    },
+    {
+      "template": "long|warm|SOFT>MEDIUM|6_7",
+      "rules": 1,
+      "train_races": 10
+    },
+    {
+      "template": "mid_short|cool|HARD>MEDIUM|4_5",
+      "rules": 1,
+      "train_races": 55
+    },
+    {
+      "template": "mid_short|cool|MEDIUM>SOFT|4_5",
+      "rules": 1,
+      "train_races": 49
+    },
+    {
+      "template": "mid_short|hot|HARD>SOFT|4_5",
+      "rules": 1,
+      "train_races": 54
+    },
+    {
+      "template": "mid_short|hot|MEDIUM>SOFT|4_5",
+      "rules": 1,
+      "train_races": 38
+    },
+    {
+      "template": "mid_short|hot|SOFT>MEDIUM|4_5",
+      "rules": 1,
+      "train_races": 35
+    },
+    {
+      "template": "mid_short|warm|MEDIUM>SOFT|4_5",
+      "rules": 1,
+      "train_races": 35
+    },
+    {
+      "template": "mid|cool|MEDIUM>HARD|6_7",
+      "rules": 1,
+      "train_races": 19
+    },
+    {
+      "template": "mid|hot|MEDIUM>HARD|6_7",
+      "rules": 1,
+      "train_races": 17
+    },
+    {
+      "template": "mid|hot|MEDIUM>SOFT|4_5",
+      "rules": 1,
+      "train_races": 53
+    },
+    {
+      "template": "mid|mild|HARD>SOFT|8_10",
+      "rules": 1,
+      "train_races": 25
+    },
+    {
+      "template": "mid|mild|MEDIUM>HARD|8_10",
+      "rules": 1,
+      "train_races": 29
+    },
+    {
+      "template": "mid|warm|HARD>SOFT|8_10",
+      "rules": 1,
+      "train_races": 32
+    },
+    {
+      "template": "short|mild|HARD>MEDIUM|4_5",
+      "rules": 1,
+      "train_races": 17
+    },
+    {
+      "template": "short|mild|HARD>SOFT|4_5",
+      "rules": 1,
+      "train_races": 27
+    },
+    {
+      "template": "short|mild|MEDIUM>HARD|4_5",
+      "rules": 1,
+      "train_races": 16
+    },
+    {
+      "template": "short|mild|MEDIUM>SOFT|4_5",
+      "rules": 1,
+      "train_races": 11
+    },
+    {
+      "template": "short|warm|HARD>SOFT|4_5",
+      "rules": 1,
+      "train_races": 31
+    }
+  ],
+  "validation_comp_races": 3079
+}

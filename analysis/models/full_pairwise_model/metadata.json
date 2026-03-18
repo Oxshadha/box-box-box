@@ -1,0 +1,41 @@
+{
+  "categorical_columns": [
+    "branch",
+    "track",
+    "temp_band",
+    "lap_band",
+    "top_sequence",
+    "top_count_bucket",
+    "left_starting_tire",
+    "right_starting_tire",
+    "left_tire_sequence",
+    "right_tire_sequence"
+  ],
+  "numerical_columns": [
+    "gate_score_gap",
+    "abs_gate_score_gap",
+    "gate_rank_gap",
+    "blend_gap",
+    "v2_gap",
+    "v4_gap",
+    "pit_stop_gap",
+    "first_stop_frac_gap",
+    "second_stop_frac_gap",
+    "soft_frac_gap",
+    "medium_frac_gap",
+    "hard_frac_gap",
+    "stint_1_frac_gap",
+    "stint_2_frac_gap",
+    "stint_3_frac_gap",
+    "sequence_field_share_gap",
+    "starting_tire_field_share_gap",
+    "track_temp",
+    "total_laps",
+    "pit_lane_time",
+    "unique_sequence_count",
+    "one_stop_field_share",
+    "two_stop_field_share"
+  ],
+  "train_races": 6000,
+  "max_pairs": 300000
+}

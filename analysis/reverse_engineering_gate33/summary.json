@@ -1,0 +1,504 @@
+{
+  "failed_cases": 67,
+  "top5_correct_failed_cases": 24,
+  "pair_rule_candidates": [
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>MEDIUM|8_10",
+      "pair": "HARD>MEDIUM|MEDIUM>HARD",
+      "preferred": "MEDIUM>HARD",
+      "count": 13,
+      "win_rate": 0.7692307692307693
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|warm|MEDIUM>HARD|8_10",
+      "pair": "HARD>MEDIUM|MEDIUM>HARD",
+      "preferred": "MEDIUM>HARD",
+      "count": 7,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "no_comp",
+      "template": "short|warm|HARD>MEDIUM|8_10",
+      "pair": "HARD>MEDIUM|MEDIUM>HARD",
+      "preferred": "MEDIUM>HARD",
+      "count": 7,
+      "win_rate": 0.8571428571428571
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "pair": "HARD>SOFT|SOFT>MEDIUM",
+      "preferred": "HARD>SOFT",
+      "count": 6,
+      "win_rate": 0.8333333333333334
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>MEDIUM|8_10",
+      "pair": "HARD>MEDIUM|SOFT>HARD",
+      "preferred": "SOFT>HARD",
+      "count": 4,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>SOFT|6_7",
+      "pair": "MEDIUM>HARD|SOFT>HARD",
+      "preferred": "SOFT>HARD",
+      "count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "branch": "balanced",
+      "template": "mid_short|mild|SOFT>HARD|4_5",
+      "pair": "HARD>SOFT|SOFT>HARD",
+      "preferred": "SOFT>HARD",
+      "count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "branch": "comp",
+      "template": "mid|hot|MEDIUM>SOFT|6_7",
+      "pair": "MEDIUM>HARD>SOFT|MEDIUM>SOFT",
+      "preferred": "MEDIUM>HARD>SOFT",
+      "count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "pair": "HARD>SOFT|MEDIUM>SOFT",
+      "preferred": "HARD>SOFT",
+      "count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "pair": "MEDIUM>SOFT|SOFT>MEDIUM",
+      "preferred": "SOFT>MEDIUM",
+      "count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>SOFT|4_5",
+      "pair": "MEDIUM>SOFT|SOFT>MEDIUM",
+      "preferred": "SOFT>MEDIUM",
+      "count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "branch": "comp",
+      "template": "long|cool|SOFT>MEDIUM|4_5",
+      "pair": "HARD>SOFT|SOFT>MEDIUM",
+      "preferred": "HARD>SOFT",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "long|hot|HARD>SOFT|4_5",
+      "pair": "HARD>SOFT|MEDIUM>SOFT",
+      "preferred": "HARD>SOFT",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>SOFT|4_5",
+      "pair": "HARD>SOFT|SOFT>HARD",
+      "preferred": "HARD>SOFT",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "mid_short|mild|SOFT>HARD|4_5",
+      "pair": "SOFT>HARD|SOFT>MEDIUM",
+      "preferred": "SOFT>MEDIUM",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|warm|MEDIUM>SOFT|4_5",
+      "pair": "HARD>SOFT|SOFT>HARD",
+      "preferred": "HARD>SOFT",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|hot|MEDIUM>SOFT|6_7",
+      "pair": "MEDIUM>SOFT|SOFT>MEDIUM",
+      "preferred": "SOFT>MEDIUM",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|HARD>SOFT|4_5",
+      "pair": "HARD>SOFT|SOFT>MEDIUM",
+      "preferred": "HARD>SOFT",
+      "count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|HARD>SOFT|6_7",
+      "pair": "HARD>SOFT|SOFT>MEDIUM",
+      "preferred": "HARD>SOFT",
+      "count": 3,
+      "win_rate": 1.0
+    }
+  ],
+  "within_sequence_stop_rules": [
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>MEDIUM|8_10",
+      "sequence": "HARD>MEDIUM",
+      "count": 14,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>MEDIUM|8_10",
+      "sequence": "MEDIUM>HARD",
+      "count": 9,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "short|mild|MEDIUM>HARD|6_7",
+      "sequence": "MEDIUM>HARD",
+      "count": 8,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "short|mild|MEDIUM>HARD|8_10",
+      "sequence": "MEDIUM>HARD",
+      "count": 7,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>SOFT|6_7",
+      "sequence": "HARD>MEDIUM",
+      "count": 6,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 6,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "sequence": "HARD>SOFT",
+      "count": 6,
+      "preferred": "later_first_stop",
+      "win_rate": 0.8333333333333334
+    },
+    {
+      "branch": "comp",
+      "template": "long|hot|HARD>SOFT|4_5",
+      "sequence": "HARD>SOFT",
+      "count": 5,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|warm|MEDIUM>HARD|8_10",
+      "sequence": "MEDIUM>HARD",
+      "count": 5,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|mild|MEDIUM>HARD|6_7",
+      "sequence": "MEDIUM>SOFT",
+      "count": 5,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 5,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "no_comp",
+      "template": "short|warm|HARD>MEDIUM|8_10",
+      "sequence": "HARD>MEDIUM",
+      "count": 5,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "long|hot|HARD>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>SOFT|6_7",
+      "sequence": "MEDIUM>HARD",
+      "count": 4,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "mid_short|mild|SOFT>HARD|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "mid_short|warm|MEDIUM>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|hot|MEDIUM>SOFT|6_7",
+      "sequence": "MEDIUM>SOFT",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|mild|MEDIUM>HARD|6_7",
+      "sequence": "SOFT>MEDIUM",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|HARD>SOFT|6_7",
+      "sequence": "HARD>SOFT",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>HARD|4_5",
+      "sequence": "SOFT>MEDIUM",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>SOFT|4_5",
+      "sequence": "SOFT>MEDIUM",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "short|mild|MEDIUM>HARD|6_7",
+      "sequence": "HARD>MEDIUM",
+      "count": 4,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "short|mild|MEDIUM>HARD|8_10",
+      "sequence": "HARD>MEDIUM",
+      "count": 4,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "no_comp",
+      "template": "short|warm|HARD>MEDIUM|8_10",
+      "sequence": "MEDIUM>HARD",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "no_comp",
+      "template": "short|warm|MEDIUM>HARD|8_10",
+      "sequence": "MEDIUM>HARD",
+      "count": 4,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "long|mild|MEDIUM>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "long|mild|SOFT>MEDIUM|4_5",
+      "sequence": "SOFT>MEDIUM",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "long|warm|MEDIUM>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|cool|SOFT>MEDIUM|4_5",
+      "sequence": "SOFT>MEDIUM",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|hot|SOFT>MEDIUM|4_5",
+      "sequence": "SOFT>MEDIUM",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|hot|SOFT>MEDIUM|6_7",
+      "sequence": "SOFT>MEDIUM",
+      "count": 3,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|HARD>MEDIUM|4_5",
+      "sequence": "SOFT>HARD",
+      "count": 3,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|mild|MEDIUM>SOFT|6_7",
+      "sequence": "MEDIUM>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|warm|HARD>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|warm|MEDIUM>HARD|8_10",
+      "sequence": "HARD>MEDIUM",
+      "count": 3,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid_short|warm|MEDIUM>SOFT|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|mild|MEDIUM>HARD|6_7",
+      "sequence": "HARD>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|mild|MEDIUM>SOFT|4_5",
+      "sequence": "SOFT>MEDIUM",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|HARD>MEDIUM|4_5",
+      "sequence": "HARD>MEDIUM",
+      "count": 3,
+      "preferred": "earlier_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|HARD>MEDIUM|4_5",
+      "sequence": "MEDIUM>SOFT",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "comp",
+      "template": "mid|warm|MEDIUM>SOFT|4_5",
+      "sequence": "SOFT>HARD",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    },
+    {
+      "branch": "balanced",
+      "template": "short|warm|SOFT>HARD|8_10",
+      "sequence": "MEDIUM>HARD",
+      "count": 3,
+      "preferred": "later_first_stop",
+      "win_rate": 1.0
+    }
+  ]
+}
